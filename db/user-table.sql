@@ -1,2 +1,0 @@
-USE medo_db;
-
