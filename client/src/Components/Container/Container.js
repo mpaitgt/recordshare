@@ -1,13 +1,9 @@
 import React from 'react';
+import './Container.css';
 
 function Container(props) {
   return (
-    <div 
-      style={{
-        width: '60%',
-        margin: '0 auto'
-      }}
-    >
+    <div className="container">
     {props.children}
     </div>
   )

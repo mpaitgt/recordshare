@@ -1,29 +1,23 @@
 import React from 'react';
 import './ContentCard.css'; 
+import moment from 'moment';
 
 function ContentCard(props) {
-  let basePosterURL = 'https://image.tmdb.org/t/p/w185';
-  var poster = `${basePosterURL}${props.content.poster_path}`;
   return (
-    <div>
-      {props.content.poster_path
-      ?
-      <div className="card"
-        // style={{
-        //   backgroundImage: `url(${poster})`,
-        //   backgroundSize: 'cover',
-        //   backgroundPosition: 'center',
-        //   backgroundRepeat: 'no-repeat'
-        // }}
-      >
-        <span className="card-title">{props.content.title}</span>
-        <img src={poster} height="160" alt={`${props.content.title} movie poster`} className="card-img"></img>
-      </div>
-      :
-      null
-      }
+    props.content.poster_path
+    ?
+    <div className="card">
+      <img 
+        src={`https://image.tmdb.org/t/p/w185${props.content.poster_path}`} 
+        width="200" 
+        alt={`${props.content.title} movie poster`} 
+        className="card-img" 
+      />
     </div>
+    :
+    null
   )
 }
 
 export default ContentCard;
+

@@ -1,6 +1,6 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import Container from './Components/Reusable/Container';
+import Container from './Components/Container/Container';
 import Navbar from './Components/Navbar/Navbar';
 import Home from './Components/Pages/Home';
 import Dash from './Components/Pages/Dash';
@@ -10,8 +10,8 @@ import Login from './Components/Pages/Login';
 function App() {
   return (
     <Router>
-      <Container>
       <Navbar />
+      <Container>
       <Switch>
         <Route exact path="/dashboard" component={Dash}/>
         <Route exact path="/login" component={Login}/>

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './Search.css';
+import Container from '../Container/Container';
 import ContentCard from '../ContentCard/ContentCard';
 import omdb from '../../Utils/omdb';
 
@@ -31,13 +32,14 @@ class Search extends Component {
         <input name="search" value={this.state.search} className="search-bar" type="text" onChange={this.handleChange} />
         <button className="search-btn" type="submit">Search</button>
       </form>
-      {this.state.results.map(movie => {
-        return (
-          <ContentCard content={movie} key={movie.id}/>
-        )
-      })
-      }
-
+      <Container>
+        {this.state.results.map(movie => {
+          return (
+            <ContentCard content={movie} key={movie.id}/>
+          )
+        })
+        }
+      </Container>
       </div>
     )
   }

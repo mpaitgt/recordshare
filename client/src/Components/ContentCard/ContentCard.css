@@ -1,23 +1,28 @@
+@import '../../index.css';
+
 .card {
-  position: relative;
-  /* width: 240px;
-  height: 240px;
-  border: 1px solid black; */
-  margin: 16px;
-  /* display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; */
+  max-width: 200px;
+  cursor: pointer; 
+  background: var(--gray-3);
+  flex: 0 0 19.7%;
+  text-align: center;
+  margin: 0px 8px;
+  transition: transform 300ms ease 100ms;
+  color: var(--white);
+}
+
+.container:hover .item {
+  transform: translateX(-25%);
+}
+
+.card:hover {
+  transform: scale(1.05);
+  transition: all 0.25s;
+  transform-origin: center;
 }
 
 .card-title {
-  /* position: absolute; */
-  /* bottom: 0;
-  right: 0;
-  left: 0; */
-  margin: 0 auto;
-  width: 100%;
-  text-align: center;
-  /* background: rgba(255, 255, 255, 0.9);
-  padding: 8px 0px; */
+  max-width: 200px;
+  font-weight: bolder;
+  padding: 4px 6px;
 }
