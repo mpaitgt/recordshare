@@ -1,9 +1,12 @@
 import React from 'react';
+import Search from '../Search/Search';
+import About from '../About/About';
 
 const Home = () => {
   return (
     <div>
-      <h1>Home Page</h1>
+      <Search />
+      <About />
     </div>
   )
 }

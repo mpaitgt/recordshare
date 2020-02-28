@@ -1,0 +1,12 @@
+@import '../../index.css';
+
+.nav {
+  background: var(--gray-5);
+}
+
+.title {
+  font-size: 62px;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  text-align: center;
+}
