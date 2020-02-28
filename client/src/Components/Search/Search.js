@@ -13,7 +13,7 @@ class Search extends Component {
     omdb.getMovies(this.state.search)
       .then(res => {
         console.log(res.data);
-        // this.setState({ results: res.data.results });
+        this.setState({ results: res.data });
       })
       .catch(err => console.log(err));
   }
@@ -30,15 +30,15 @@ class Search extends Component {
         <input name="search" value={this.state.search} className="search-bar" type="text" onChange={this.handleChange} />
         <button className="search-btn" type="submit">Search</button>
       </form>
-      {/* {this.state.results.length > 0 ? 
+      {this.state.results.length > 0 ? 
       this.state.results.map(movie => {
         return(
-          <h4>{movie.title}</h4>
+          <h4 key={movie.id}>{movie.title}</h4>
         )
       })
       :
       null
-      } */}
+      }
 
       </div>
     )

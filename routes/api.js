@@ -9,8 +9,8 @@ router.get('/movies/:search', function(req, res) {
   const APIkey = process.env.REACT_APP_OMDB_KEY;
   const queryURL = `https://api.themoviedb.org/3/search/movie?api_key=${APIkey}&query=${req.params.search}`;
   axios.get(queryURL)
-    .then(data => res.json(data))
-    .catch(err => res.json(err));
+    .then(data => res.send(data.data.results))
+    .catch(err => console.log(err));
 })
 
 module.exports = router;
