@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './Search.css';
+import ContentCard from '../ContentCard/ContentCard';
 import omdb from '../../Utils/omdb';
 
 class Search extends Component {
@@ -30,14 +31,11 @@ class Search extends Component {
         <input name="search" value={this.state.search} className="search-bar" type="text" onChange={this.handleChange} />
         <button className="search-btn" type="submit">Search</button>
       </form>
-      {this.state.results.length > 0 ? 
-      this.state.results.map(movie => {
-        return(
-          <h4 key={movie.id}>{movie.title}</h4>
+      {this.state.results.map(movie => {
+        return (
+          <ContentCard content={movie} key={movie.id}/>
         )
       })
-      :
-      null
       }
 
       </div>

@@ -1,0 +1,23 @@
+.card {
+  position: relative;
+  /* width: 240px;
+  height: 240px;
+  border: 1px solid black; */
+  margin: 16px;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; */
+}
+
+.card-title {
+  /* position: absolute; */
+  /* bottom: 0;
+  right: 0;
+  left: 0; */
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+  /* background: rgba(255, 255, 255, 0.9);
+  padding: 8px 0px; */
+}
