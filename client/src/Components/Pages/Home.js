@@ -5,8 +5,7 @@ import About from '../About/About';
 const Home = () => {
   return (
     <div>
-      <Search />
-      <About />
+      <h1>Home page</h1>
     </div>
   )
 }

@@ -1,17 +1,11 @@
 import React, {Component} from 'react';
 import './Search.css';
 import Container from '../Container/Container';
-import ContentCard from '../ContentCard/ContentCard';
-import SearchBar from '../SearchBar/SearchBar';
 import omdb from '../../Utils/omdb';
 
-class Search extends Component {
-  state = {
-    search: '',
-    results: []
-  }
+function Search(props) {
 
-  submitSearch = e => {
+  const submitSearch = e => {
     e.preventDefault();
     omdb.getMovies(this.state.search)
       .then(res => {
@@ -21,29 +15,19 @@ class Search extends Component {
       .catch(err => console.log(err));
   }
 
-  handleChange = e => {
+  const handleChange = e => {
     let {name, value} = e.target;
     this.setState({ [name]: value });
   }
 
-  render() {
-    return (
-      <div>
-      <form className="search-form" onSubmit={this.submitSearch}>
+  return (
+    <Container>
+      <form className="search-form" onSubmit={submitSearch}>
         <input name="search" value={this.state.search} className="search-bar" type="text" onChange={this.handleChange} />
         <button className="search-btn" type="submit">Search</button>
       </form>
-      <Container>
-        {this.state.results.map(movie => {
-          return (
-            <ContentCard content={movie} key={movie.id}/>
-          )
-        })
-        }
-      </Container>
-      </div>
-    )
-  }
+    </Container>
+  )
 }
 
-export default Search;
+export default SearchBar;
