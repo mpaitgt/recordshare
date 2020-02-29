@@ -2,11 +2,10 @@ import React from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Container from './Components/Container/Container';
 import Navbar from './Components/Navbar/Navbar';
-import Home from './Components/Pages/Home';
-import Dash from './Components/Pages/Dash';
-import Register from './Components/Pages/Register';
-import Login from './Components/Pages/Login';
-import Search from './Components/Search/Search';
+import Dash from './Pages/Dash';
+import Register from './Pages/Register';
+import Login from './Pages/Login';
+import Search from './Pages/Search';
 
 function App() {
   return (
@@ -15,11 +14,9 @@ function App() {
       <Container>
       <Switch>
         <Route exact path="/dashboard" component={Dash}/>
-        <Route exact path="/search" component={Search}/>
         <Route exact path="/login" component={Login}/>
         <Route exact path="/register" component={Register}/>
-        {/* <Route path="/film/:id" component={ContentDetails}/> */}
-        <Route exact path="/" component={Home}/>
+        <Route exact path="/" component={Search}/>
       </Switch>
       </Container>
     </Router>

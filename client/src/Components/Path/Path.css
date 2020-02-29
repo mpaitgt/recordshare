@@ -1,0 +1,8 @@
+@import '../../index.css';
+
+.link {
+  text-decoration: none;
+  color: inherit;
+  font-size: 18px;
+  padding: 8px 12px;
+}

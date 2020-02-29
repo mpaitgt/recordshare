@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
-import userauth from '../../Utils/userauth';
-import {TextField, Button} from '../Reusable/FormElements';
+import userauth from '../Utils/userauth';
 
 const Register = () => {
   const [name, setName] = useState('');
@@ -26,7 +25,7 @@ const Register = () => {
       <input value={name} type="text" placeholder="Email" onChange={e => { setName(e.target.value) }}/>
       <input value={email} type="text" placeholder="Name" onChange={e => { setEmail(e.target.value) }}/>
       <input value={password} type="password" placeholder="Password" onChange={e => { setPassword(e.target.value) }}/>
-      <Button type="submit">Register</Button>
+      <button type="submit">Register</button>
     </form>
   )
 }

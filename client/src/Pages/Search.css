@@ -1,0 +1,10 @@
+@import '../index.css';
+
+.search-form {
+  font-size: 18px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
