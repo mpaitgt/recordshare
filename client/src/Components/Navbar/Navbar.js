@@ -12,13 +12,13 @@ const Navbar = () => {
         </h1>
       </Path>
       <Path to="/dashboard">
-        Dashboard
+        <strong>Dashboard</strong>
       </Path>
       <Path to="/login">
-        Login
+        <strong>Login</strong>
       </Path>
       <Path to="/register">
-        Register
+        <strong>Register</strong>
       </Path>
     </div>
   )

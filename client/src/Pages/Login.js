@@ -2,10 +2,11 @@ import React from 'react';
 import Input from '../Components/Input/Input';
 import Button from '../Components/Button/Button';
 import userauth from '../Utils/userauth';
+import axios from 'axios';
 
 const Login = () => {
   return (
-    <div>
+    <div className="page">
       <form>
         <div>
           <Input style={{ display: 'block' }} type="text" placeholder="Email"/>
