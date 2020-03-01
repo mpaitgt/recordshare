@@ -10,7 +10,8 @@ import omdb from '../Utils/omdb';
 class Search extends Component {
   state = {
     search: '',
-    results: []
+    data: [],
+    results: null
   }
 
   responsive = {
@@ -25,7 +26,12 @@ class Search extends Component {
     omdb.getMovies(this.state.search)
       .then(res => {
         console.log(res.data);
-        this.setState({ results: res.data });
+        if (res.data.length === 0) {
+          this.setState({ results: false })
+        } else {
+          this.setState({ data: res.data, results: true });
+        }
+        
       })
       .catch(err => console.log(err));
   }
@@ -36,16 +42,16 @@ class Search extends Component {
   }
 
   render() {
-    const renderCards = this.state.results.map(movie => {
+    const renderCards = this.state.data.map(movie => {
       return (
         <ContentCard onDragStart={this.handleOnDragStart} content={movie} key={movie.id}/>
       )
     })
 
     return (
-      <div>
+      <div className="page">
         <Container>
-          <form className="search-form" onSubmit={this.handleSubmit}>
+          <form className="search-form page" onSubmit={this.handleSubmit}>
             <Input 
               name="search" 
               value={this.state.search} 
@@ -55,14 +61,9 @@ class Search extends Component {
             <Button type="submit">Search</Button>
           </form>
         </Container>
-        {/* <Container>
+        <Container>
           {renderCards}
-        </Container> */}
-        <AliceCarousel 
-          mouseTrackingEnabled 
-          response={this.responsive}
-          items={renderCards}
-        />
+        </Container>
       </div>
     )
   }

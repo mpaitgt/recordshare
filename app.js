@@ -1,17 +1,22 @@
+const dotenv = require('dotenv');
+dotenv.config();
 const createError = require('http-errors');
+const cors = require('cors');
 const express = require('express');
+const passport = require('passport');
 const path = require('path');
 const db = require('./models');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const passportSetup = require('./config/passport-setup');
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
-const apiRouter = require('./routes/api');
+const authRouter = require('./routes/auth-routes');
+const apiRouter = require('./routes/api-routes');
 const PORT = process.env.PORT || 3001;
 
 const app = express();
 
+app.use(cors());
+app.use(passport.initialize());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -19,7 +24,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/auth', usersRouter);
+app.use('/auth', authRouter);
 app.use('/api', apiRouter);
 
 // catch 404 and forward to error handler

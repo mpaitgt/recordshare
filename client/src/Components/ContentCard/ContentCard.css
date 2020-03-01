@@ -1,6 +1,6 @@
 @import '../../index.css';
 
-.card {
+.content-card {
   max-width: 200px;
   cursor: pointer; 
   background: var(--gray-3);
@@ -12,7 +12,7 @@
   box-shadow: 0px 0px 14px -6px rgba(0,0,0,0.75);
 }
 
-.card:hover {
+.content-card:hover {
   transform: scale(1.05) !important;
   transition: all 0.25s;
   transform-origin: center;

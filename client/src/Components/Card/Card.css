@@ -1,0 +1,8 @@
+@import '../../index.css';
+
+.card {
+  border-radius: 4px;
+  background: var(--white);
+  border: 5px solid white;
+  padding: 24px;
+}
