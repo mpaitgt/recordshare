@@ -1,3 +1,5 @@
+const dotenv = require('dotenv');
+dotenv.config();
 const createError = require('http-errors');
 const cors = require('cors');
 const express = require('express');
@@ -6,7 +8,6 @@ const path = require('path');
 const db = require('./models');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-require('./config/passport-setup');
 const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth-routes');
 const apiRouter = require('./routes/api-routes');

@@ -51,7 +51,7 @@ class Search extends Component {
     return (
       <div className="page">
         <Container>
-          <form className="search-form" onSubmit={this.handleSubmit} className="page">
+          <form className="search-form page" onSubmit={this.handleSubmit}>
             <Input 
               name="search" 
               value={this.state.search} 
@@ -61,20 +61,9 @@ class Search extends Component {
             <Button type="submit">Search</Button>
           </form>
         </Container>
-        {/* <Container>
+        <Container>
           {renderCards}
-        </Container> */}
-        {this.state.results
-        ?
-        <AliceCarousel
-          mouseTrackingEnabled 
-          response={this.responsive}
-          items={renderCards}
-        />
-        :
-        <h1>No results found</h1>
-        }
-
+        </Container>
       </div>
     )
   }

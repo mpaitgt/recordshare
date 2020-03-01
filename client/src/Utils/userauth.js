@@ -8,8 +8,5 @@ export default {
         console.log('success!');
       }
     })
-  },
-  userLogin: function() {
-    return axios.get('/auth/google', { headers: { 'Access-Control-Allow-Origin': '*' } });
   }
 }

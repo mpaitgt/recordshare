@@ -19,7 +19,9 @@ router.get('/logout', function(req, res, next) {
 //   })
 // )
 
-router.get('/google', passport.authenticate('google'));
+router.get('/google', passport.authenticate('google', { 
+  scope: ['https://www.googleapis.com/auth/plus.login'] 
+}));
 
 // google user redirect
 router.get('/google/redirect', passport.authenticate('google'), (req, res) => {

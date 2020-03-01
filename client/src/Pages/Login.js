@@ -1,8 +1,7 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import Input from '../Components/Input/Input';
 import Button from '../Components/Button/Button';
-import userauth from '../Utils/userauth';
-import axios from 'axios';
 
 const Login = () => {
   return (
@@ -18,7 +17,6 @@ const Login = () => {
           <Button>Login</Button>
         </div>
       </form>
-      <a href="/auth/google">Google+</a>
     </div>
   )
 }
