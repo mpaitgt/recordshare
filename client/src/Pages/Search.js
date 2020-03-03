@@ -61,6 +61,12 @@ class Search extends Component {
             <Button type="submit">Search</Button>
           </form>
         </Container>
+        {this.state.data.length === 0
+        ?
+        null
+        :
+        <h2>{this.state.data.length} Results</h2>
+        }
         <Container>
           {renderCards}
         </Container>

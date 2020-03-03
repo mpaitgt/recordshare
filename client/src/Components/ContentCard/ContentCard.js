@@ -1,12 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import './ContentCard.css'; 
-// import moment from 'moment';
  
 function ContentCard(props) {
-
-  
-
   return (
     props.content.poster_path
     ?
