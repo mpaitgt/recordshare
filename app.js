@@ -1,9 +1,9 @@
-const dotenv = require('dotenv');
-dotenv.config();
+const dotenv = require('dotenv').config();
 const createError = require('http-errors');
 const cors = require('cors');
 const express = require('express');
 const passport = require('passport');
+require('./config/passport-oauth-setup');
 const path = require('path');
 const db = require('./models');
 const cookieParser = require('cookie-parser');
@@ -40,7 +40,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.send('error');
 });
 
 db.sequelize.sync()

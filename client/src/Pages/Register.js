@@ -4,9 +4,7 @@ import RegistrationForm from '../Components/Registration/RegistrationForm';
 
 const Register = () => {
   return (
-    <Card>
-      <RegistrationForm />
-    </Card>
+    <RegistrationForm />
   )
 }
 

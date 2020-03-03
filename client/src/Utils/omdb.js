@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 export default {
-  getMovies: function(search) {
-    return axios.get(`/api/movies/${search}`,
+  getMovieByTerm: function(search) {
+    return axios.get(`/api/movies/search/${search}`,
       {headers: 
         {
         'Content-Type': 'application/json',
@@ -10,5 +10,8 @@ export default {
         }
       }
     );
+  },
+  getMovieById: function(id) {
+    return axios.get(`/api/movies/id/${id}`)
   }
 }

@@ -1,9 +1,17 @@
 import React from 'react';
+import Card from '../Card/Card';
+import Input from '../Input/Input';
+import Button from '../Button/Button';
 
 class Form2 extends React.Component {
   continue = e => {
     e.preventDefault();
-    this.props.nextStep();
+    const { values } = this.props;
+    if (values.password !== values.password2) {
+      alert('Your passwords must match');
+    } else {
+      this.props.nextStep();
+    }
   }
 
   back = e => {
@@ -15,24 +23,26 @@ class Form2 extends React.Component {
     const { values, handleChange } = this.props;
 
     return (
-      <div>
-        <h1>Form 2!!!</h1>
-        <form>
-          <label>Email</label>
-          <br/>
-          <input name="email" value={values.email} onChange={handleChange}/>
-          <br/>
-          <label>Password</label>
-          <br/>
-          <input name="password" value={values.password} onChange={handleChange}/>
-          <br/>
-          <label>Re-Enter Password</label>
-          <br/>
-          <input name="password2" value={values.password2} onChange={handleChange}/>
-          <br/>
-          <button onClick={this.back}>Go Back</button>
-          <button onClick={this.continue}>Continue</button>
-        </form>
+      <div style={{ width: 'auto', margin: '0 auto' }}>
+        <Card>
+          <h1>Register</h1>
+          <form>
+            <label>Email</label>
+            <br/>
+            <Input name="email" value={values.email} onChange={handleChange}/>
+            <br/>
+            <label>Password</label>
+            <br/>
+            <Input name="password" type="password" value={values.password} onChange={handleChange}/>
+            <br/>
+            <label>Re-Enter Password</label>
+            <br/>
+            <Input name="password2" type="password" value={values.password2} onChange={handleChange}/>
+            <br/>
+            <Button onClick={this.back}>Go Back</Button>
+            <Button onClick={this.continue}>Continue</Button>
+          </form>
+        </Card>
       </div>
     )
   }

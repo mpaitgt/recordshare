@@ -23,7 +23,7 @@ class Search extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    omdb.getMovies(this.state.search)
+    omdb.getMovieByTerm(this.state.search)
       .then(res => {
         console.log(res.data);
         if (res.data.length === 0) {
