@@ -1,5 +1,4 @@
-import React, {useState} from 'react';
-import Card from '../Components/Card/Card';
+import React from 'react';
 import RegistrationForm from '../Components/Registration/RegistrationForm';
 
 const Register = () => {

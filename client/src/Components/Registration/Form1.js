@@ -6,7 +6,13 @@ import Button from '../Button/Button';
 class Form1 extends React.Component {
   continue = e => {
     e.preventDefault();
-    this.props.nextStep();
+    const { values } = this.props;
+    if (!values.first_name || !values.last_name) {
+      alert('You must fill in your first and last name.');
+    } else {
+      this.props.nextStep();
+    }
+    
   }
 
   render() {
@@ -19,11 +25,11 @@ class Form1 extends React.Component {
           <form>
             <label>First Name</label>
             <br/>
-            <Input name="first_name" value={values.first_name} onChange={handleChange}/>
+            <Input name="first_name" type="text" value={values.first_name} onChange={handleChange}/>
             <br/>
             <label>Last Name</label>
             <br/>
-            <Input name="last_name" value={values.last_name} onChange={handleChange}/>
+            <Input name="last_name" type="text" value={values.last_name} onChange={handleChange}/>
             <br/>
             <Button onClick={this.continue}>Continue</Button>
           </form>

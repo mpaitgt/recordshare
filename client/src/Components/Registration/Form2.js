@@ -7,8 +7,10 @@ class Form2 extends React.Component {
   continue = e => {
     e.preventDefault();
     const { values } = this.props;
-    if (values.password !== values.password2) {
-      alert('Your passwords must match');
+    if (!values.email || !values.password) {
+      alert('Please provide your email and set your password.');
+    } else if (values.password !== values.password2) {
+      alert('Your passwords must match.');
     } else {
       this.props.nextStep();
     }
@@ -29,7 +31,7 @@ class Form2 extends React.Component {
           <form>
             <label>Email</label>
             <br/>
-            <Input name="email" value={values.email} onChange={handleChange}/>
+            <Input name="email" type="text" value={values.email} onChange={handleChange}/>
             <br/>
             <label>Password</label>
             <br/>

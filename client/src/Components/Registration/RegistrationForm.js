@@ -64,7 +64,15 @@ class RegistrationForm extends React.Component {
         )
       case 4:
         return (
-          <div>Success</div>
+          <Success />
+        )
+      default:
+        return (
+          <Form1 
+            nextStep={this.nextStep} 
+            handleChange={this.handleChange} 
+            values={values} 
+          />
         )
     }
   }

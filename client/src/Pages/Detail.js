@@ -26,17 +26,25 @@ class Detail extends React.Component {
     const { movie } = this.state;
     return (
       <div style={{ color: 'white', width: 'auto', margin: '0 auto' }}>
-        <img 
-          src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`} 
-          width="200" 
-          alt={`${movie.title} movie poster`} 
-          className="card-img" 
-          style={{ float: 'left',
-        marginRight: '32px' }}
-        />
-        <h1>{movie.title}</h1>
-        <h3>Released: {moment(movie.release_date).format('MMMM D, YYYY')}</h3>
-        <p>{movie.overview}</p>
+        {this.state.movie
+        ?
+        <div>
+          <img 
+            src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`} 
+            width="200" 
+            alt={`${movie.title} movie poster`} 
+            className="card-img" 
+            style={{ float: 'left',
+            marginRight: '32px' }}
+          />
+          <h1>{movie.title}</h1>
+          <h3>Released: {moment(movie.release_date).format('MMMM D, YYYY')}</h3>
+          <p>{movie.overview}</p>
+        </div>
+        :
+        <h1>Loading</h1>
+        }
+        
       </div>
     )
   }
