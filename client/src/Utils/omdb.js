@@ -13,5 +13,8 @@ export default {
   },
   getMovieById: function(id) {
     return axios.get(`/api/movies/id/${id}`)
+  },
+  saveMovie: function(obj) {
+    return axios.post(`/api/movies/save`, obj);
   }
 }

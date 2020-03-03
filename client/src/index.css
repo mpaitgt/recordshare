@@ -19,7 +19,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: var(--gray-0);
+  background: radial-gradient(circle closest-side, var(--gray-1) 150px, var(--gray-2));
+  height: 100vh;
   color: var(--main-text);
 }
 

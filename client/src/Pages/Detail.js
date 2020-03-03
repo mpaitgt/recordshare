@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '../Components/Button/Button';
 import omdb from '../Utils/omdb';
 import moment from 'moment';
 
@@ -9,6 +10,13 @@ class Detail extends React.Component {
 
   back = e => {
     e.preventDefault();
+  }
+
+  add = e => {
+    e.preventDefault();
+    const { movie } = this.state;
+    omdb.saveMovie({ title: movie.title, id: movie.id })
+      .then(res => {console.log('saved!')})
   }
 
   componentDidMount() {
@@ -40,11 +48,12 @@ class Detail extends React.Component {
           <h1>{movie.title}</h1>
           <h3>Released: {moment(movie.release_date).format('MMMM D, YYYY')}</h3>
           <p>{movie.overview}</p>
+          <Button onClick={() => {this.props.history.goBack()}}>Back</Button>
+          <Button onClick={this.add}>Add to Watch List</Button>
         </div>
         :
         <h1>Loading</h1>
         }
-        
       </div>
     )
   }

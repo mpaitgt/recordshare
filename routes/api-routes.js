@@ -5,7 +5,7 @@ const db = require('../models');
 const router = express.Router();
 require('dotenv').config();
 
-// search OMDB for movies
+// search OMDB for movies by term
 router.get('/movies/search/:search', function(req, res) {
   const APIkey = process.env.REACT_APP_OMDB_KEY;
   const queryURL = `https://api.themoviedb.org/3/search/movie?api_key=${APIkey}&query=${req.params.search}`;
@@ -14,12 +14,18 @@ router.get('/movies/search/:search', function(req, res) {
     .catch(err => console.log(err));
 })
 
+// view the details of a movie using the id
 router.get('/movies/id/:id', function(req, res) {
   const APIkey = process.env.REACT_APP_OMDB_KEY;
   const queryURL = `https://api.themoviedb.org/3/movie/${req.params.id}?api_key=${APIkey}&language=en-US`;
   axios.get(queryURL)
     .then(data => res.send(data.data))
     .catch(err => console.log(err));
+})
+
+// save a movie to your watch list
+router.post('/movies/save', function(req, res) {
+  db.Movie.create(req.body)
 })
 
 module.exports = router;

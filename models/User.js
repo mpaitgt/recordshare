@@ -18,10 +18,10 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-    date: {
-      type: DataTypes.DATE,
-      default: Date.now
-    }
+    // date: {
+    //   type: DataTypes.DATE,
+    //   default: Date.now
+    // }
   }, 
   {
     // disable the modification of table names; By default, sequelize will automatically
