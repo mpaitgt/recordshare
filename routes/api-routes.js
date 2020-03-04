@@ -25,7 +25,17 @@ router.get('/movies/id/:id', function(req, res) {
 
 // save a movie to your watch list
 router.post('/movies/save', function(req, res) {
+  // db.Movie.findOne({ where: { id: req.body.id } })
+  //   .then(data => {res.send(data)})
+  //   .catch(err => {console.log(err)})
   db.Movie.create(req.body)
+})
+
+// get user watch list
+router.get('/movies/watch', function(req, res) {
+  db.Movie.findAll()
+    .then(data => { res.send(data) })
+    .catch(err => { res.send(err) })
 })
 
 module.exports = router;
