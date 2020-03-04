@@ -31,6 +31,10 @@ router.post('/movies/save', function(req, res) {
   db.Movie.create(req.body)
 })
 
+router.delete('/movies/remove/:id', function(req, res) {
+  db.Movie.destroy({ where: { id: req.params.id } });
+})
+
 // get user watch list
 router.get('/movies/watch', function(req, res) {
   db.Movie.findAll()

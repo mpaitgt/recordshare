@@ -17,6 +17,9 @@ export default {
   saveMovie: function(obj) {
     return axios.post(`/api/movies/save`, obj);
   },
+  removeMovie: function(id) {
+    return axios.delete(`/api/movies/remove/${id}`);
+  },
   getWatchList: function() {
     return axios.get('/api/movies/watch');
   }

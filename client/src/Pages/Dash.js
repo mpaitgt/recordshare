@@ -1,5 +1,6 @@
 import React from 'react';
 import omdb from '../Utils/omdb';
+import Button from '../Components/Button/Button';
 
 class Dash extends React.Component {
   state = {
@@ -8,8 +9,11 @@ class Dash extends React.Component {
 
   componentDidMount() {
     this.getWatchList();
-    omdb.getMovieById();
   }
+
+  // componentDidUpdate() {
+  //   this.getWatchList();
+  // }
 
   getWatchList = () => {
     omdb.getWatchList()
@@ -20,6 +24,12 @@ class Dash extends React.Component {
       .catch(err => { console.log(err) })
   }
 
+  remove = id => {
+    omdb.removeMovie(id)
+      .then(res => console.log(res))
+      .catch(err => {console.log(err)})
+  }
+
   render() {
     return (
       <div className="page">
@@ -27,7 +37,8 @@ class Dash extends React.Component {
         {this.state.watch_list.map(movie => {
           return (
             <div>
-              <h1>{movie.title}</h1>
+              <h1 style={{ display: 'inline' }}>{movie.title}</h1>
+              <Button onClick={() => this.remove(movie.id)}>Remove</Button>
             </div>
           )
         })}
