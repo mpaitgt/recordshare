@@ -29,18 +29,12 @@ class Form2 extends React.Component {
         <Card>
           <h1>Register</h1>
           <form>
-            <label>Email</label>
-            <br/>
+            <label style={{ display: 'block' }}>Email</label>
             <Input name="email" type="text" value={values.email} onChange={handleChange}/>
-            <br/>
-            <label>Password</label>
-            <br/>
+            <label style={{ display: 'block' }}>Password</label>
             <Input name="password" type="password" value={values.password} onChange={handleChange}/>
-            <br/>
-            <label>Re-Enter Password</label>
-            <br/>
+            <label style={{ display: 'block' }}>Re-Enter Password</label>
             <Input name="password2" type="password" value={values.password2} onChange={handleChange}/>
-            <br/>
             <Button onClick={this.back}>Go Back</Button>
             <Button onClick={this.continue}>Continue</Button>
           </form>

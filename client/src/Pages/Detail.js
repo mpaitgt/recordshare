@@ -33,7 +33,7 @@ class Detail extends React.Component {
   render() {
     const { movie } = this.state;
     return (
-      <div style={{ color: 'white', width: 'auto', margin: '0 auto' }}>
+      <div style={{ color: 'white', width: '60%', margin: '0 auto' }}>
         {this.state.movie
         ?
         <div>

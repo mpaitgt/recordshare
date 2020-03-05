@@ -5,9 +5,6 @@ import Button from '../Components/Button/Button';
 import axios from 'axios';
 
 const Login = () => {
-  let config = {
-    headers: {'Access-Control-Allow-Origin': '*'}
-  };
 
   return (
     <div style={{ width: 'auto', margin: '0 auto' }}>
@@ -15,16 +12,17 @@ const Login = () => {
       <h1>Sign In</h1>
       <form>
         <div>
-          <Input style={{ display: 'block' }} type="text" placeholder="Email"/>
+          <label htmlFor="email" style={{ display: 'block' }}>Email</label>
+          <Input name="email" style={{ display: '' }} type="text" placeholder="Email"/>
         </div>
         <div>
-          <Input style={{ display: 'block' }} type="password" placeholder="Password"/>
+          <label htmlFor="password" style={{ display: 'block' }}>Password</label>
+          <Input type="password" placeholder="Password"/>
         </div>
         <div>
           <Button>Login</Button>
         </div>
       </form>
-      <button onClick={() => { axios.get('/auth/google', config) }}>Sign in with Google</button>
     </Card>
     </div>
   )

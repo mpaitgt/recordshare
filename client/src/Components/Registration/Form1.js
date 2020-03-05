@@ -23,14 +23,10 @@ class Form1 extends React.Component {
         <Card>
           <h1>Register</h1>
           <form>
-            <label>First Name</label>
-            <br/>
+            <label style={{ display: 'block' }}>First Name</label>
             <Input name="first_name" type="text" value={values.first_name} onChange={handleChange}/>
-            <br/>
-            <label>Last Name</label>
-            <br/>
+            <label style={{ display: 'block' }}>Last Name</label>
             <Input name="last_name" type="text" value={values.last_name} onChange={handleChange}/>
-            <br/>
             <Button onClick={this.continue}>Continue</Button>
           </form>
         </Card>

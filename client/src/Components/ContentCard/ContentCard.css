@@ -23,3 +23,17 @@
   font-weight: bolder;
   padding: 4px 6px;
 }
+
+.carousel-container {
+  width: 320px;
+  margin: auto;
+  overflow: hidden;
+  border: 5px solid black;
+  position: relative;
+}
+
+.carousel-slide {
+  display: flex;
+  height: 320px;
+  width: 320px;
+}

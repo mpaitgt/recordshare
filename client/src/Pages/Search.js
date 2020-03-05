@@ -14,11 +14,6 @@ class Search extends Component {
     results: null
   }
 
-  responsive = {
-    0: { items: 1 },
-    1024: { items: 3 },
-  }
-
   handleOnDragStart = (e) => e.preventDefault();
 
   handleSubmit = e => {
