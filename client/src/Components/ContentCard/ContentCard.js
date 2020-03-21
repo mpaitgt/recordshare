@@ -6,7 +6,7 @@ function ContentCard(props) {
   return (
     props.content.poster_path
     ?
-    <Link to={`/film/${props.content.id}`}>
+    <Link to={`/movies/${props.content.id}`}>
       <div className="content-card">
         <img 
           src={`https://image.tmdb.org/t/p/w185${props.content.poster_path}`} 

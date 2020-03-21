@@ -1,22 +1,31 @@
 import React from 'react';
-import Button from '../Components/Button/Button';
+import Button from '../Components/Button';
 import omdb from '../Utils/omdb';
 import moment from 'moment';
 
-class Detail extends React.Component {
-  state = {
-    movie: {}
+let styles = {
+  title: {
+    fontFamily: 'var(--headerfont)'
+  },
+  detail: {
+    fontFamily: 'var(--subfont)'
   }
+}
 
-  back = e => {
-    e.preventDefault();
+class Detail extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      movie: {}
+    }
   }
 
   add = e => {
     e.preventDefault();
     const { movie } = this.state;
     omdb.saveMovie({ title: movie.title, id: movie.id })
-      .then(res => {console.log('saved!')})
+      .then(res => console.log(res))
+      .catch(err => console.log(err))
   }
 
   componentDidMount() {
@@ -45,9 +54,9 @@ class Detail extends React.Component {
             style={{ float: 'left',
             marginRight: '32px' }}
           />
-          <h1>{movie.title}</h1>
-          <h3>Released: {moment(movie.release_date).format('MMMM D, YYYY')}</h3>
-          <p>{movie.overview}</p>
+          <h1 style={styles.title}>{movie.title}</h1>
+          <h3 style={styles.detail}>Released: {moment(movie.release_date).format('MMMM D, YYYY')}</h3>
+          <p style={styles.detail}>{movie.overview}</p>
           <Button onClick={() => {this.props.history.goBack()}}>Back</Button>
           <Button onClick={this.add}>Add to Watch List</Button>
         </div>

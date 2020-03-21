@@ -1,7 +1,7 @@
 import React from 'react';
-import Card from '../Components/Card/Card';
-import Input from '../Components/Input/Input';
-import Button from '../Components/Button/Button';
+import Card from '../Components/Card';
+import Input from '../Components/Input';
+import Button from '../Components/Button';
 import axios from 'axios';
 
 const Login = () => {

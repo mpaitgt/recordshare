@@ -1,7 +1,7 @@
 import React from 'react';
-import Card from '../Card/Card';
-import Input from '../Input/Input';
-import Button from '../Button/Button';
+import Card from '../Card';
+import Input from '../Input';
+import Button from '../Button';
 
 class Form1 extends React.Component {
   continue = e => {
@@ -12,7 +12,6 @@ class Form1 extends React.Component {
     } else {
       this.props.nextStep();
     }
-    
   }
 
   render() {
@@ -24,7 +23,7 @@ class Form1 extends React.Component {
           <h1>Register</h1>
           <form>
             <label style={{ display: 'block' }}>First Name</label>
-            <Input name="first_name" type="text" value={values.first_name} onChange={handleChange}/>
+            <Input placeholder="first name" name="first_name" type="text" value={values.first_name} onChange={handleChange}/>
             <label style={{ display: 'block' }}>Last Name</label>
             <Input name="last_name" type="text" value={values.last_name} onChange={handleChange}/>
             <Button onClick={this.continue}>Continue</Button>

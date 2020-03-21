@@ -1,7 +1,7 @@
 import React from 'react';
-import Card from '../Card/Card';
-import Input from '../Input/Input';
-import Button from '../Button/Button';
+import Card from '../Card';
+import Input from '../Input';
+import Button from '../Button';
 
 class Form2 extends React.Component {
   continue = e => {

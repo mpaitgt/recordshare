@@ -1,11 +1,20 @@
 import React, {Component} from 'react';
-import Container from '../Components/Container/Container';
+import Container from '../Components/Container';
 import ContentCard from '../Components/ContentCard/ContentCard';
-import Input from '../Components/Input/Input';
-import Button from '../Components/Button/Button';
-import AliceCarousel from 'react-alice-carousel'
-import 'react-alice-carousel/lib/alice-carousel.css'
+import SearchBar from '../Components/SearchBar';
+import SearchBtn from '../Components/SearchBtn';
+import AliceCarousel from 'react-alice-carousel';
+import styled from '@emotion/styled';
 import omdb from '../Utils/omdb';
+
+const FORM = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-item: center;
+  justify-content: center;
+  width: auto;
+  margin: 0 auto;
+`;
 
 class Search extends Component {
   state = {
@@ -46,15 +55,15 @@ class Search extends Component {
     return (
       <div className="page">
         <Container>
-          <form className="search-form page" onSubmit={this.handleSubmit}>
-            <Input 
+          <FORM className="search-form page" onSubmit={this.handleSubmit}>
+            <SearchBar 
               name="search" 
               value={this.state.search} 
               onChange={this.handleChange} 
               placeholder="Search content" 
             />
-            <Button type="submit">Search</Button>
-          </form>
+            <SearchBtn type="submit">Search</SearchBtn>
+          </FORM>
         </Container>
         {this.state.data.length === 0
         ?

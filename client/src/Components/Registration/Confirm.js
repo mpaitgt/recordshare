@@ -1,6 +1,6 @@
 import React from 'react';
-import Card from '../Card/Card';
-import Button from '../Button/Button';
+import Card from '../Card';
+import Button from '../Button';
 import userauth from '../../Utils/userauth';
 
 class Confirm extends React.Component {
