@@ -42,7 +42,7 @@ class Dash extends React.Component {
   remove = id => {
     omdb.removeMovie(id)
       .then(res => console.log(res))
-      .catch(err => {console.log(err)})
+      .catch(err => console.log(err))
   }
 
   render() {

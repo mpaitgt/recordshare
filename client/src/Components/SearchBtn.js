@@ -2,21 +2,32 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 const BUTTON = styled.button`
+  font-family: var(--subfont);
+  font-size: 24px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, var(--light-green), var(--light-green-2));
+  color: var(--white);
   border: none;
-  background: var(--light-green);
-  padding: 12px 12px;
-  font-size: 22px;
+  padding: 16px;
   border-radius: 120px;
-  letter-spacing: inherit;
-  text-transform: inherit;
   transition: all 0.25s;
   margin: 10px auto;
   width: 200px;
-  font-family: var(--headerfont);
+  -webkit-box-shadow: 0px 11px 20px -16px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 11px 20px -16px rgba(0,0,0,0.75);
+  box-shadow: 0px 11px 20px -16px rgba(0,0,0,0.75);
   &:hover {
     transition: all 0.25s;
     cursor: pointer;
-    background: var(--white);
+    transform: scale(1.05);
+  }
+  &:active {
+    transition: all 0.25s;
+    -webkit-box-shadow: 0px 11px 20px -32px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 11px 20px -32px rgba(0,0,0,0.75);
+    box-shadow: 0px 11px 20px -32px rgba(0,0,0,0.75);
+    transform: scale(0.95);
   }
 `;
 
