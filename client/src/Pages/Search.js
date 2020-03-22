@@ -23,6 +23,12 @@ class Search extends Component {
     results: null
   }
 
+  componentDidMount() {
+    let thing = document.getElementById('test3');
+    thing.classList.add('in');
+    setTimeout(() => { thing.classList.remove('in') }, 1500);
+  }
+
   handleOnDragStart = (e) => e.preventDefault();
 
   handleSubmit = e => {
@@ -53,7 +59,7 @@ class Search extends Component {
     })
 
     return (
-      <div className="page">
+      <div className="page" id="test3">
         <Container>
           <FORM className="search-form page" onSubmit={this.handleSubmit}>
             <SearchBar 

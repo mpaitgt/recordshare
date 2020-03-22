@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from '../Card';
 import Button from '../Button';
+import Text from '../Text';
 import userauth from '../../Utils/userauth';
 
 class Confirm extends React.Component {
@@ -21,32 +22,26 @@ class Confirm extends React.Component {
     const { values } = this.props;
 
     return (
-      <div style={{ width: 'auto', margin: '0 auto' }}>
+      <div style={{ width: 'auto', margin: '0 auto', textAlign: 'center' }}>
         <Card>
-          <h1>Confirm</h1>
+          <Text variant="h3">Confirm</Text>
           <div>
-            <label>First Name</label>
-            <br/>
-            <div>{values.first_name}</div>
-            <br/>
+            <Text variant="label">First Name</Text>
+            <Text variant="h4">{values.first_name}</Text>
 
-            <label>Last Name</label>
-            <br/>
-            <div>{values.last_name}</div>
-            <br/>
+            <Text variant="label">Last Name</Text>
+            <Text variant="h4">{values.last_name}</Text>
 
-            <label>Email</label>
-            <br/>
-            <div>{values.email}</div>
-            <br/>
+            <Text variant="label">Email</Text>
+            <Text variant="h4">{values.email}</Text>
 
-            <label>Password</label>
-            <br/>
-            <div>{values.password}</div>
-            <br/>
+            <Text variant="label">Password</Text>
+            <Text variant="h4">{values.password}</Text>
 
-            <Button onClick={this.back}>Go Back</Button>
-            <Button onClick={this.continue}>Confirm</Button>
+            <div>
+              <Button onClick={this.back}>Go Back</Button>
+              <Button onClick={this.continue}>Confirm</Button>
+            </div>
           </div>
         </Card>
       </div>

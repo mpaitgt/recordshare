@@ -12,6 +12,7 @@
   --gray-5: #a0a0a0;
   --gray-6: #DFDFDF;
   --white: #f1f1f1;
+  --whiter: #ffffff;
   --headerfont: 'Yanone Kaffeesatz', sans-serif;
   --subfont: 'Josefin Sans', sans-serif;
 }
@@ -28,4 +29,35 @@ body {
   width: 100%;
   margin: 0 auto;
   text-align: center;
+}
+
+#bg {
+  clip-path: polygon(100% 0, 100% 24%, 75% 100%, 0% 100%);
+  height: 100vh;
+  width: 100%;
+  background: var(--light-green);
+  opacity: 0.25;
+  position: fixed;
+}
+
+@keyframes in {
+  0% { opacity: 0; transform: translateX(-50px) }
+  100% { opacity: 1; transform: translateX(0px) }
+}
+
+@keyframes out {
+  0% { opacity: 1; transform: translateX(0px) }
+  100% { opacity: 0; transform: translateX(50px) }
+}
+
+.in {
+  animation-name: in;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
+
+.out {
+  animation-name: out;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
 }

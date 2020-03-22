@@ -2,6 +2,7 @@ import React from 'react';
 import Card from '../Card';
 import Input from '../Input';
 import Button from '../Button';
+import Text from '../Text';
 
 class Form2 extends React.Component {
   continue = e => {
@@ -25,18 +26,20 @@ class Form2 extends React.Component {
     const { values, handleChange } = this.props;
 
     return (
-      <div style={{ width: 'auto', margin: '0 auto' }}>
+      <div style={{ width: 'auto', margin: '0 auto', textAlign: 'center' }}>
         <Card>
-          <h1>Register</h1>
+          <Text variant="h3">Register</Text>
           <form>
-            <label style={{ display: 'block' }}>Email</label>
-            <Input name="email" type="text" value={values.email} onChange={handleChange}/>
-            <label style={{ display: 'block' }}>Password</label>
-            <Input name="password" type="password" value={values.password} onChange={handleChange}/>
-            <label style={{ display: 'block' }}>Re-Enter Password</label>
-            <Input name="password2" type="password" value={values.password2} onChange={handleChange}/>
-            <Button onClick={this.back}>Go Back</Button>
-            <Button onClick={this.continue}>Continue</Button>
+            <Text variant="label">Email</Text>
+            <Input placeholder="jondon@example.com" name="email" type="text" value={values.email} onChange={handleChange}/>
+            <Text variant="label">Password</Text>
+            <Input placeholder="poopisbrown123" name="password" type="password" value={values.password} onChange={handleChange}/>
+            <Text variant="label">Re-enter Password</Text>
+            <Input placeholder="poopisbrown123" name="password2" type="password" value={values.password2} onChange={handleChange}/>
+            <div>
+              <Button onClick={this.back} style={{marginRight: '10px'}}>Go Back</Button>
+              <Button onClick={this.continue}>Continue</Button>
+            </div>
           </form>
         </Card>
       </div>

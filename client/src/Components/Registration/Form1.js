@@ -2,6 +2,7 @@ import React from 'react';
 import Card from '../Card';
 import Input from '../Input';
 import Button from '../Button';
+import Text from '../Text';
 
 class Form1 extends React.Component {
   continue = e => {
@@ -18,15 +19,17 @@ class Form1 extends React.Component {
     const { values, handleChange } = this.props;
 
     return (
-      <div style={{ width: 'auto', margin: '0 auto' }}>
+      <div style={{ width: 'auto', margin: '0 auto', textAlign: 'center' }}>
         <Card>
-          <h1>Register</h1>
+          <Text variant="h3">Register</Text>
           <form>
-            <label style={{ display: 'block' }}>First Name</label>
-            <Input placeholder="first name" name="first_name" type="text" value={values.first_name} onChange={handleChange}/>
-            <label style={{ display: 'block' }}>Last Name</label>
-            <Input name="last_name" type="text" value={values.last_name} onChange={handleChange}/>
-            <Button onClick={this.continue}>Continue</Button>
+            <Text variant="label">First Name</Text>
+            <Input placeholder="Jon" name="first_name" type="text" value={values.first_name} onChange={handleChange}/>
+            <Text variant="label">Last Name</Text>
+            <Input placeholder="Doe" name="last_name" type="text" value={values.last_name} onChange={handleChange}/>
+            <div>
+              <Button onClick={this.continue}>Continue</Button>
+            </div>
           </form>
         </Card>
       </div>

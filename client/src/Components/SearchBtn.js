@@ -12,7 +12,7 @@ const BUTTON = styled.button`
   padding: 16px;
   border-radius: 120px;
   transition: all 0.25s;
-  margin: 10px auto;
+  margin: 20px auto;
   width: 200px;
   -webkit-box-shadow: 0px 11px 20px -16px rgba(0,0,0,0.75);
   -moz-box-shadow: 0px 11px 20px -16px rgba(0,0,0,0.75);
