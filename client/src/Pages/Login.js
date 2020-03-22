@@ -2,14 +2,14 @@ import React from 'react';
 import Card from '../Components/Card';
 import Input from '../Components/Input';
 import Button from '../Components/Button';
-import axios from 'axios';
+import Typography from '../Components/Typography';
 
 const Login = () => {
 
   return (
     <div style={{ width: 'auto', margin: '0 auto' }}>
     <Card className="page">
-      <h1>Sign In</h1>
+      <Typography variant="h2">Login</Typography>
       <form>
         <div>
           <label htmlFor="email" style={{ display: 'block' }}>Email</label>
@@ -23,6 +23,9 @@ const Login = () => {
           <Button>Login</Button>
         </div>
       </form>
+      <Typography variant="p">
+        Don't have an account? Make one!
+      </Typography>
     </Card>
     </div>
   )
