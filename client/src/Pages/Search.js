@@ -3,6 +3,7 @@ import Container from '../Components/Container';
 import ContentCard from '../Components/ContentCard/ContentCard';
 import SearchBar from '../Components/SearchBar';
 import SearchBtn from '../Components/SearchBtn';
+import Button from '../Components/Button';
 import AliceCarousel from 'react-alice-carousel';
 import styled from '@emotion/styled';
 import omdb from '../Utils/omdb';
@@ -60,6 +61,10 @@ class Search extends Component {
 
     return (
       <div className="page" id="test3">
+        <div>
+          <Button>Watch</Button>
+          <Button>Listen</Button>
+        </div>
         <Container>
           <FORM className="search-form page" onSubmit={this.handleSubmit}>
             <SearchBar 

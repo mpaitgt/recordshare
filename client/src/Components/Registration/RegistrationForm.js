@@ -6,7 +6,7 @@ import Success from './Success';
 
 class RegistrationForm extends React.Component {
   state = {
-    step: 1,
+    step: 4,
     first_name: '',
     last_name: '',
     email: '',
