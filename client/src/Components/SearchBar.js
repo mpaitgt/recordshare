@@ -16,6 +16,9 @@ const INPUT = styled.input`
     font-family: var(--subfont);
     font-size: 28px;
   }
+  &:focus {
+    outline: none;
+  }
 `;
 
 const BORDER = styled.div`

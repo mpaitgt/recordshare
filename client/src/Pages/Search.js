@@ -5,6 +5,7 @@ import SearchBar from '../Components/SearchBar';
 import SearchBtn from '../Components/SearchBtn';
 import Button from '../Components/Button';
 import AliceCarousel from 'react-alice-carousel';
+import Text from '../Components/Text';
 import styled from '@emotion/styled';
 import omdb from '../Utils/omdb';
 
@@ -80,7 +81,7 @@ class Search extends Component {
         ?
         null
         :
-        <h2>{this.state.data.length} Results</h2>
+        <Text variant="h4">{this.state.data.length} Results</Text>
         }
         <Container>
           {renderCards}

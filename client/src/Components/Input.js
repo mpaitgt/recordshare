@@ -14,12 +14,13 @@ const INPUT = styled.input`
   letter-spacing: inherit;
   transition: all 0.25s;
   &:focus {
+    outline: none;
     background: var(--light-green);
     color: white;
     transition: all 0.25s;
   }
   &::placeholder {
-    color: var(--gray-1);
+    color: var(--gray-6);
     font-family: var(--subfont);
     font-size: 20px;
   }

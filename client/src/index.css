@@ -37,19 +37,19 @@ body {
   height: 100vh;
   width: 100%;
   background: var(--light-green);
-  opacity: 0.3;
+  opacity: 0.1;
   position: fixed;
   z-index: -1;
 }
 
-@keyframes in {
-  0% { opacity: 0; transform: translateX(-50px) }
-  100% { opacity: 1; transform: translateX(0px) }
-}
-
-@keyframes out {
-  0% { opacity: 1; transform: translateX(0px) }
-  100% { opacity: 0; transform: translateX(50px) }
+#bg2 {
+  clip-path: polygon(29% 0, 70% 0, 100% 100%, 0% 100%);
+  height: 100vh;
+  width: 100%;
+  background: var(--light-green);
+  opacity: 0.1;
+  position: fixed;
+  z-index: -1;
 }
 
 .in {
@@ -62,4 +62,14 @@ body {
   animation-name: out;
   animation-duration: 1s;
   animation-iteration-count: 1;
+}
+
+@keyframes in {
+  0% { opacity: 0; transform: translateX(-50px) }
+  100% { opacity: 1; transform: translateX(0px) }
+}
+
+@keyframes out {
+  0% { opacity: 1; transform: translateX(0px) }
+  100% { opacity: 0; transform: translateX(50px) }
 }
