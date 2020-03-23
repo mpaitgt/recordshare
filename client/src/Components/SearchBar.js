@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 const INPUT = styled.input`
   border: none;
   // border-bottom: 8px solid #1E6043;
-  padding: 16px 16px 4px 16px;
+  padding: 16px 16px 12px 16px;
   font-size: 28px;
   font-family: var(--subfont);
   background: none;

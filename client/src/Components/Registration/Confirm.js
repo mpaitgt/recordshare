@@ -35,9 +35,6 @@ class Confirm extends React.Component {
             <Text variant="label">Email</Text>
             <Text variant="h4">{values.email}</Text>
 
-            <Text variant="label">Password</Text>
-            <Text variant="h4">{values.password}</Text>
-
             <div>
               <Button onClick={this.back}>Go Back</Button>
               <Button onClick={this.continue}>Confirm</Button>

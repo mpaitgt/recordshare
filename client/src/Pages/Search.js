@@ -4,7 +4,7 @@ import ContentCard from '../Components/ContentCard/ContentCard';
 import SearchBar from '../Components/SearchBar';
 import SearchBtn from '../Components/SearchBtn';
 import Button from '../Components/Button';
-import AliceCarousel from 'react-alice-carousel';
+import Transition from '../Components/Transition';
 import Text from '../Components/Text';
 import styled from '@emotion/styled';
 import omdb from '../Utils/omdb';
@@ -22,13 +22,8 @@ class Search extends Component {
   state = {
     search: '',
     data: [],
-    results: null
-  }
-
-  componentDidMount() {
-    let thing = document.getElementById('test3');
-    thing.classList.add('in');
-    setTimeout(() => { thing.classList.remove('in') }, 1500);
+    results: null,
+    message: ''
   }
 
   handleOnDragStart = (e) => e.preventDefault();
@@ -53,6 +48,14 @@ class Search extends Component {
     this.setState({ [name]: value });
   }
 
+  displayResponse = () => {
+    if (this.state.data.length === 0) {
+      return <Text variant="h3">There are no results</Text>
+    } else {
+      return null;
+    }
+  }
+
   render() {
     const renderCards = this.state.data.map(movie => {
       return (
@@ -61,32 +64,34 @@ class Search extends Component {
     })
 
     return (
-      <div className="page" id="test3">
-        <div>
-          <Button>Watch</Button>
-          <Button>Listen</Button>
+      <Transition>
+        <div className="page">
+          <div>
+            <Button>Watch</Button>
+            <Button>Listen</Button>
+          </div>
+          <Container>
+            <FORM className="search-form page" onSubmit={this.handleSubmit}>
+              <SearchBar 
+                name="search" 
+                value={this.state.search} 
+                onChange={this.handleChange} 
+                placeholder="Search content" 
+              />
+              <SearchBtn type="submit">Search</SearchBtn>
+            </FORM>
+          </Container>
+          {this.state.data.length === 0
+          ?
+          null
+          :
+          <Text variant="h4">{this.state.data.length} Results</Text>
+          }
+          <Container>
+            {renderCards}
+          </Container>
         </div>
-        <Container>
-          <FORM className="search-form page" onSubmit={this.handleSubmit}>
-            <SearchBar 
-              name="search" 
-              value={this.state.search} 
-              onChange={this.handleChange} 
-              placeholder="Search content" 
-            />
-            <SearchBtn type="submit">Search</SearchBtn>
-          </FORM>
-        </Container>
-        {this.state.data.length === 0
-        ?
-        null
-        :
-        <Text variant="h4">{this.state.data.length} Results</Text>
-        }
-        <Container>
-          {renderCards}
-        </Container>
-      </div>
+      </Transition>
     )
   }
 }

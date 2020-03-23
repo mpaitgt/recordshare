@@ -4,7 +4,9 @@ const db = require('../models');
 const router = express.Router();
 
 /* login users */
-router.get('/login', function(req, res, next) {
+router.post('/login', function(req, res, next) {
+  console.log(req.body);
+  // db.User.findOne()
   res.send('User has logged in.');
 });
 

@@ -3,7 +3,7 @@
   --secondary-text: #9e3f3f;
   --dark-green: #1E6043;
   --light-green: #40C88C;
-  --light-green-2: rgb(57, 189, 131);
+  --light-green-2: #37b47e;
   --gray-0: #1f1f1f;
   --gray-1: #2B2B2B;
   --gray-2: #444444;
@@ -37,7 +37,7 @@ body {
   height: 100vh;
   width: 100%;
   background: var(--light-green);
-  opacity: 0.1;
+  opacity: 0.2;
   position: fixed;
   z-index: -1;
 }
@@ -47,7 +47,7 @@ body {
   height: 100vh;
   width: 100%;
   background: var(--light-green);
-  opacity: 0.1;
+  opacity: 0.3;
   position: fixed;
   z-index: -1;
 }
