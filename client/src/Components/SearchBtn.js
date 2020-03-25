@@ -7,7 +7,7 @@ const BUTTON = styled.button`
   text-transform: uppercase;
   letter-spacing: 1px;
   background: linear-gradient(90deg, var(--light-green), var(--light-green-2));
-  color: var(--white);
+  color: var(--whiter);
   border: none;
   padding: 16px;
   border-radius: 120px;

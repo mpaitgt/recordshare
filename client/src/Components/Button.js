@@ -6,7 +6,6 @@ const BUTTON = styled.button`
   font-size: 20px;
   letter-spacing: -1px;
   background: linear-gradient(90deg, var(--light-green), var(--light-green-2));
-  color: var(--whiter);
   border: none;
   border-radius: 12px;
   padding: 10px 18px;
@@ -32,9 +31,29 @@ const BUTTON = styled.button`
   }
 `;
 
-function Button({ children, type, onClick }) {
+function Button({ children, type, onClick, variant }) {
   return (
-    <BUTTON className="button" type={type} onClick={onClick}>
+    <BUTTON 
+      className="button" 
+      type={type} 
+      onClick={onClick}
+      variant={variant}
+      style={
+        variant === 'standard'
+        ?
+        { background: 'linear-gradient(90deg, var(--light-green), var(--light-green-2)', color: 'var(--whiter)' }
+        :
+        variant === 'warning'
+        ?
+        { background: 'linear-gradient(90deg, var(--yellow-1), var(--yellow-2)', color: 'var(--gray-1)' }
+        :
+        variant === 'danger'
+        ?
+        { background: 'linear-gradient(90deg, var(--red-1), var(--red-2)', color: 'var(--whiter)' }
+        :
+        { background: 'linear-gradient(90deg, var(--light-green), var(--light-green-2)', color: 'var(--whiter)' }
+      }
+    >
       {children}
     </BUTTON>
   )

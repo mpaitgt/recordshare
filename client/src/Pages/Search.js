@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Container from '../Components/Container';
+import Card from '../Components/Card';
 import ContentCard from '../Components/ContentCard/ContentCard';
 import SearchBar from '../Components/SearchBar';
 import SearchBtn from '../Components/SearchBtn';
@@ -65,7 +66,9 @@ class Search extends Component {
 
     return (
       <Transition>
+        
         <div className="page">
+          <Card>
           <div>
             <Button>Watch</Button>
             <Button>Listen</Button>
@@ -81,6 +84,7 @@ class Search extends Component {
               <SearchBtn type="submit">Search</SearchBtn>
             </FORM>
           </Container>
+          </Card>
           {this.state.data.length === 0
           ?
           null
@@ -91,6 +95,7 @@ class Search extends Component {
             {renderCards}
           </Container>
         </div>
+
       </Transition>
     )
   }
