@@ -1,16 +1,19 @@
 require('dotenv').config();
 const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const LocalStrategy = require('passport-local');
+const db = require('../models');
 
-passport.use(
-  new GoogleStrategy({
-    clientID: process.env.REACT_APP_GOOGLE_CLIENT_ID,
-    clientSecret: process.env.REACT_APP_GOOGLE_CLIENT_SECRET,
-    callbackURL: '/auth/google/redirect'
-  }, () => {
+passport.use(new LocalStrategy(
+  function(username, password, done) {
+    db.User.findOne({ username: username }, function(err, user) {
+      if (err) {return done(err)};
+      if (!user) {return done(null, false)};
+      if (!user.verifyPassword(password)) {return done(null, false)};
+      return done(null, user);
+    })
+  }
+));
 
-  })
-)
 
 passport.serializeUser(function(user, done) {
   done(null, user);
