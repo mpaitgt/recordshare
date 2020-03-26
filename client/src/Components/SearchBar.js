@@ -34,7 +34,6 @@ function SearchBar({ name, value, type, placeholder, onChange }) {
         name={name}
         value={value}
         type={type}
-        type="text"
         placeholder={placeholder}
         onChange={onChange}
       />

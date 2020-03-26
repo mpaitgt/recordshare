@@ -10,8 +10,7 @@ export default {
     })
   },
   userLogin: function(obj) {
-    return axios.post('/auth/login', obj, function(req, res) {
-      console.log('sent');
-    })
+    return axios.post('/auth/login', obj)
+      .then(res => console.log(res));
   }
 }

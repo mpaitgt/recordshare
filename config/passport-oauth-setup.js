@@ -5,7 +5,7 @@ const db = require('../models');
 
 passport.use(new LocalStrategy(
   function(username, password, done) {
-    db.User.findOne({ username: username }, function(err, user) {
+    db.User.findOne({ email: email }, function(err, user) {
       if (err) {return done(err)};
       if (!user) {return done(null, false)};
       if (!user.verifyPassword(password)) {return done(null, false)};
@@ -14,13 +14,12 @@ passport.use(new LocalStrategy(
   }
 ));
 
-
 passport.serializeUser(function(user, done) {
   done(null, user);
  });
  
 passport.deserializeUser(function(user, done) {
-done(null, user);
+  done(null, user);
 });
 
 module.exports = passport;

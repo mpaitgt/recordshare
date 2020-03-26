@@ -9,6 +9,7 @@ import Transition from '../Components/Transition';
 import Text from '../Components/Text';
 import styled from '@emotion/styled';
 import omdb from '../Utils/omdb';
+import spotify from '../Utils/spotify';
 
 const FORM = styled.form`
   display: flex;
@@ -24,14 +25,16 @@ class Search extends Component {
     search: '',
     data: [],
     results: null,
-    message: ''
+    message: '',
+    search_type: 'Watch'
   }
 
   handleOnDragStart = (e) => e.preventDefault();
 
   handleSubmit = e => {
     e.preventDefault();
-    omdb.getMovieByTerm(this.state.search)
+    if (this.state.search_type == 'Watch') {
+      omdb.getMovieByTerm(this.state.search)
       .then(res => {
         console.log(res.data);
         if (res.data.length === 0) {
@@ -39,9 +42,16 @@ class Search extends Component {
         } else {
           this.setState({ data: res.data, results: true });
         }
-        
       })
       .catch(err => console.log(err));
+    }
+    else if (this.state.search_type == 'Listen') {
+      spotify.getTracks(this.state.search)
+        .then(res => {
+          console.log(res)
+        })
+        .catch(err => console.log(err))
+    }
   }
 
   handleChange = e => {
@@ -57,6 +67,11 @@ class Search extends Component {
     }
   }
 
+  toggleSearch = e => {
+    console.log(e.target);
+    this.setState({ search_type: e.target.textContent }) 
+  }
+
   render() {
     const renderCards = this.state.data.map(movie => {
       return (
@@ -69,9 +84,10 @@ class Search extends Component {
         
         <div className="page">
           <Card>
+          <Text variant="h4">{this.state.search_type}</Text>
           <div>
-            <Button>Watch</Button>
-            <Button>Listen</Button>
+            <Button onClick={this.toggleSearch}>Watch</Button>
+            <Button onClick={this.toggleSearch}>Listen</Button>
           </div>
           <Container>
             <FORM className="search-form page" onSubmit={this.handleSubmit}>

@@ -4,35 +4,24 @@ const db = require('../models');
 const router = express.Router();
 
 /* login users */
-router.post('/login', function(req, res, next) {
-  console.log(req.body);
-  // db.User.findOne()
-  res.send('User has logged in.');
-});
+router.post('/login', 
+  passport.authenticate('local'),
+  function(req, res) {
+    console.log(req.body);
+    res.send('User has logged in.');
+  }
+);
 
 /* logout users */
 router.get('/logout', function(req, res, next) {
   res.send('User has logged out');
 })
 
-/* google users */
-router.get('/google', passport.authenticate('google', {
-    scope: ['profile']
-  })
-)
-
-// google user redirect
-router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
-  res.redirect('/dashboard');
-});
-
 /* register users */
 router.post('/register', function(req, res, next) {
-  console.log(req.body);
     db.User.create(req.body)
     .then(res => {
-      console.log(res)
-      console.log('User has registered')
+      console.log('User has registered');
     })
     .catch(err => console.log(err));
 });

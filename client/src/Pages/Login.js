@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import Card from '../Components/Card';
 import Input from '../Components/Input';
@@ -13,9 +13,7 @@ const Login = () => {
   
   const onSubmit = e => {
     e.preventDefault();
-    const creds = { email, password };
-    console.log(creds);
-    userauth.userLogin(creds);
+    userauth.userLogin({ email: email, password: password });
   }
 
   return (
