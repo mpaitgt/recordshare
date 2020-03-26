@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
-import Container from '../Components/Container';
+// import Container from '../Components/Container';
 import Card from '../Components/Card';
 import ContentCard from '../Components/ContentCard/ContentCard';
+import MusicCard from '../Components/MusicCard';
 import SearchBar from '../Components/SearchBar';
 import SearchBtn from '../Components/SearchBtn';
 import Button from '../Components/Button';
 import Transition from '../Components/Transition';
 import Text from '../Components/Text';
+import {Container, Row, Col} from 'react-grid-system';
 import styled from '@emotion/styled';
 import omdb from '../Utils/omdb';
 import spotify from '../Utils/spotify';
@@ -48,7 +50,12 @@ class Search extends Component {
     else if (this.state.search_type == 'Listen') {
       spotify.getTracks(this.state.search)
         .then(res => {
-          console.log(res)
+          console.log(res.data)
+          if (res.data.length === 0) {
+            this.setState({ results: false })
+          } else {
+            this.setState({ data: res.data, results: true });
+          }
         })
         .catch(err => console.log(err))
     }
@@ -76,6 +83,12 @@ class Search extends Component {
     const renderCards = this.state.data.map(movie => {
       return (
         <ContentCard onDragStart={this.handleOnDragStart} content={movie} key={movie.id}/>
+      )
+    })
+
+    const renderMusic = this.state.data.map(song => {
+      return (
+        <MusicCard content={song} key={song.id} />
       )
     })
 
@@ -108,7 +121,15 @@ class Search extends Component {
           <Text variant="h4">{this.state.data.length} Results</Text>
           }
           <Container>
-            {renderCards}
+            <Row>
+            {
+              this.state.search_type == 'watch'
+              ?
+              renderCards
+              :
+              renderMusic
+            }
+            </Row>
           </Container>
         </div>
 
