@@ -1,6 +1,9 @@
 import axios from 'axios';
 export default {
-  getTracks: function(artist) {
-    return axios.get(`/api/music/tracks/${artist}`);
+  getArtists: function(artist) {
+    return axios.get(`/api/music/artists/${artist}`);
+  },
+  getArtistById: function(id) {
+    return axios.get(`/api/music/artists/${id}`);
   }
 }

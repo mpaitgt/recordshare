@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import Text from '../Components/Text';
+import Text from '../Text';
 import styled from '@emotion/styled';
 
 const ALBUM = styled.div`
@@ -17,9 +17,9 @@ const ALBUM = styled.div`
 
  
 function MusicCard(props) {
-  console.log(props.content.images);
+
   return (
-    // <Link to={`/movies/${props.content.id}`}>
+    <Link to={`/artists/${props.content.id}`}>
       <ALBUM>
         <img 
           src={props.content.images.length > 0 ? props.content.images[0].url : null} 
@@ -29,7 +29,7 @@ function MusicCard(props) {
         />
         <Text variant="h4">{props.content.name}</Text>
       </ALBUM>
-    // </Link>
+    </Link>
   )
 }
 

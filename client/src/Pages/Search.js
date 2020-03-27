@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 // import Container from '../Components/Container';
 import Card from '../Components/Card';
 import ContentCard from '../Components/ContentCard/ContentCard';
-import MusicCard from '../Components/MusicCard';
-import SearchBar from '../Components/SearchBar';
-import SearchBtn from '../Components/SearchBtn';
+import MusicCard from '../Components/ContentCard/MusicCard';
+import SearchBar from '../Components/SearchContent/SearchBar';
+import SearchBtn from '../Components/SearchContent/SearchBtn';
 import Button from '../Components/Button';
 import Transition from '../Components/Transition';
 import Text from '../Components/Text';
@@ -12,7 +12,7 @@ import {Container, Row, Col} from 'react-grid-system';
 import styled from '@emotion/styled';
 import omdb from '../Utils/omdb';
 import spotify from '../Utils/spotify';
-import SearchCard from '../Components/SearchCard';
+import SearchCard from '../Components/SearchContent/SearchCard';
 
 class Search extends Component {
   state = {
@@ -28,7 +28,7 @@ class Search extends Component {
     if (this.state.search_type == 'Watch') {
       omdb.getMovieByTerm(this.state.search)
       .then(res => {
-        console.log(res.data);
+        // console.log(res.data);
         if (res.data.length === 0) {
           this.setState({ results: false })
         } else {
@@ -38,9 +38,9 @@ class Search extends Component {
       .catch(err => console.log(err));
     }
     else if (this.state.search_type == 'Listen') {
-      spotify.getTracks(this.state.search)
+      spotify.getArtists(this.state.search)
         .then(res => {
-          console.log(res.data)
+          // console.log(res.data)
           if (res.data.length === 0) {
             this.setState({ results: false })
           } else {
