@@ -22,9 +22,9 @@ spotify.clientCredentialsGrant()
   })
 
 router.get('/music/tracks/:artist', function(req, res) {
-  spotify.searchTracks(`artist:${req.params.artist}`)
+  spotify.searchArtists(req.params.artist)
     .then(data => {
-      res.send(data.body.tracks.items);
+      res.send(data.body.artists.items);
     })
     .catch(err => {
       res.send(err);

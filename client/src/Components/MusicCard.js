@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import Text from '../Components/Text';
 import styled from '@emotion/styled';
 
 const ALBUM = styled.div`
@@ -16,15 +17,17 @@ const ALBUM = styled.div`
 
  
 function MusicCard(props) {
+  console.log(props.content.images);
   return (
     // <Link to={`/movies/${props.content.id}`}>
       <ALBUM>
         <img 
-          src={`${props.content.album.images[0].url}`} 
+          src={`${props.content.images[0].url}`} 
           width="200" 
-          alt={`${props.content.album.name} album art`} 
+          alt={`${props.content.name} album art`} 
           className="card-img" 
         />
+        <Text variant="h3">{props.content.name}</Text>
       </ALBUM>
     // </Link>
   )

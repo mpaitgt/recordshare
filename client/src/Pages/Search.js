@@ -13,15 +13,6 @@ import styled from '@emotion/styled';
 import omdb from '../Utils/omdb';
 import spotify from '../Utils/spotify';
 
-const FORM = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-item: center;
-  justify-content: center;
-  width: auto;
-  margin: 0 auto;
-`;
-
 class Search extends Component {
   state = {
     search: '',
@@ -30,8 +21,6 @@ class Search extends Component {
     message: '',
     search_type: 'Watch'
   }
-
-  handleOnDragStart = (e) => e.preventDefault();
 
   handleSubmit = e => {
     e.preventDefault();
@@ -79,22 +68,16 @@ class Search extends Component {
     this.setState({ search_type: e.target.textContent }) 
   }
 
+  renderCards = this.state.data.map(movie => {
+    return (
+      <ContentCard onDragStart={this.handleOnDragStart} content={movie} key={movie.id}/>
+    )
+  })
+  
   render() {
-    const renderCards = this.state.data.map(movie => {
-      return (
-        <ContentCard onDragStart={this.handleOnDragStart} content={movie} key={movie.id}/>
-      )
-    })
-
-    const renderMusic = this.state.data.map(song => {
-      return (
-        <MusicCard content={song} key={song.id} />
-      )
-    })
 
     return (
       <Transition>
-        
         <div className="page">
           <Card>
           <Text variant="h4">{this.state.search_type}</Text>
@@ -103,7 +86,7 @@ class Search extends Component {
             <Button onClick={this.toggleSearch}>Listen</Button>
           </div>
           <Container>
-            <FORM className="search-form page" onSubmit={this.handleSubmit}>
+            <form className="search-form page" onSubmit={this.handleSubmit}>
               <SearchBar 
                 name="search" 
                 value={this.state.search} 
@@ -111,7 +94,7 @@ class Search extends Component {
                 placeholder="Search content" 
               />
               <SearchBtn type="submit">Search</SearchBtn>
-            </FORM>
+            </form>
           </Container>
           </Card>
           {this.state.data.length === 0
@@ -120,19 +103,14 @@ class Search extends Component {
           :
           <Text variant="h4">{this.state.data.length} Results</Text>
           }
-          <Container>
-            <Row>
-            {
-              this.state.search_type == 'watch'
-              ?
-              renderCards
-              :
-              renderMusic
-            }
-            </Row>
-          </Container>
         </div>
-
+        {
+          this.state.data.map(artist => {
+            return (
+              <MusicCard content={artist} key={artist.id} />
+            )
+          })
+        }
       </Transition>
     )
   }
