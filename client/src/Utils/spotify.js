@@ -5,5 +5,8 @@ export default {
   },
   getArtistById: function(id) {
     return axios.get(`/api/music/artists/id/${id}`);
+  },
+  getArtistAlbums: function(id) {
+    return axios.get(`/api/music/artists/id/${id}/albums`)
   }
 }

@@ -34,8 +34,10 @@ class ArtistDetail extends React.Component {
   componentDidMount() {
     spotify.getArtistById(this.props.match.params.id)
       .then(res => {
-        console.log(res.data);
         this.setState({ artist: res.data, loaded: true })
+        spotify.getArtistAlbums(this.props.match.params.id)
+          .then(res => console.log(res.data))
+          .catch(err => console.log(err));
       })
       .catch(err => console.log(err));
   }
@@ -69,6 +71,7 @@ class ArtistDetail extends React.Component {
                 <Text variant="p1">{artist.genres.join(', ')}</Text>
                 <Button onClick={() => {this.props.history.goBack()}}>Back</Button>
                 <Button>Add to Listen List</Button>
+                <Text variant="h3">Albums by {artist.name}</Text>
               </div>
               :
               null

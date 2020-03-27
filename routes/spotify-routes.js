@@ -24,26 +24,22 @@ spotify.clientCredentialsGrant()
 // get artist by search query
 router.get('/music/artists/query/:artist', function(req, res) {
   spotify.searchArtists(req.params.artist)
-    .then(data => {
-      res.send(data.body.artists.items);
-    })
-    .catch(err => {
-      res.send(err);
-    })
+    .then(data => res.send(data.body.artists.items))
+    .catch(err => res.send(err));
 })
 
 // get artist details by id
 router.get('/music/artists/id/:id', function(req, res) {
-  console.log('hello there!')
-  console.log(req.params.id)
   spotify.getArtist(req.params.id)
-    .then(data => {
-      console.log(data);
-      res.send(data.body);
-    })
-    .catch(err => {
-      res.send(err);
-    })
+    .then(data => res.send(data.body))
+    .catch(err => res.send(err));
+})
+
+// get artist albums
+router.get('/music/artists/id/:id/albums', function(req, res) {
+  spotify.getArtistAlbums(req.params.id)
+    .then(data => res.send(data))
+    .catch(err => res.send(err));
 })
 
 module.exports = router;
