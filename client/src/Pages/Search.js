@@ -12,6 +12,7 @@ import {Container, Row, Col} from 'react-grid-system';
 import styled from '@emotion/styled';
 import omdb from '../Utils/omdb';
 import spotify from '../Utils/spotify';
+import SearchCard from '../Components/SearchCard';
 
 class Search extends Component {
   state = {
@@ -68,35 +69,18 @@ class Search extends Component {
     this.setState({ search_type: e.target.textContent }) 
   }
 
-  renderCards = this.state.data.map(movie => {
-    return (
-      <ContentCard onDragStart={this.handleOnDragStart} content={movie} key={movie.id}/>
-    )
-  })
-  
   render() {
 
     return (
       <Transition>
         <div className="page">
-          <Card>
-          <Text variant="h4">{this.state.search_type}</Text>
-          <div>
-            <Button onClick={this.toggleSearch}>Watch</Button>
-            <Button onClick={this.toggleSearch}>Listen</Button>
-          </div>
-          <Container>
-            <form className="search-form page" onSubmit={this.handleSubmit}>
-              <SearchBar 
-                name="search" 
-                value={this.state.search} 
-                onChange={this.handleChange} 
-                placeholder="Search content" 
-              />
-              <SearchBtn type="submit">Search</SearchBtn>
-            </form>
-          </Container>
-          </Card>
+          <SearchCard 
+            search_type={this.state.search_type}
+            toggleSearch={this.toggleSearch}
+            handleSubmit={this.handleSubmit}
+            search={this.state.search}
+            handleChange={this.handleChange}
+          />
           {this.state.data.length === 0
           ?
           null
@@ -105,11 +89,23 @@ class Search extends Component {
           }
         </div>
         {
-          this.state.data.map(artist => {
-            return (
-              <MusicCard content={artist} key={artist.id} />
-            )
-          })
+          this.state.search_type === 'Listen' && this.state.results
+          ?
+            this.state.data.map(artist => {
+              return (
+                <MusicCard content={artist} key={artist.id} />
+              )
+            })
+          :
+          this.state.search_type === 'Watch' && this.state.results
+          ?
+            this.state.data.map(movie => {
+              return (
+                <ContentCard content={movie} key={movie.id}/>
+              )
+            })
+          :
+          null
         }
       </Transition>
     )

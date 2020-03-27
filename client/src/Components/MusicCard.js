@@ -22,12 +22,12 @@ function MusicCard(props) {
     // <Link to={`/movies/${props.content.id}`}>
       <ALBUM>
         <img 
-          src={`${props.content.images[0].url}`} 
+          src={props.content.images.length > 0 ? props.content.images[0].url : null} 
           width="200" 
           alt={`${props.content.name} album art`} 
           className="card-img" 
         />
-        <Text variant="h3">{props.content.name}</Text>
+        <Text variant="h4">{props.content.name}</Text>
       </ALBUM>
     // </Link>
   )
