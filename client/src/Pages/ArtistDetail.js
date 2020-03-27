@@ -1,5 +1,7 @@
 import React from 'react';
 import Button from '../Components/Button';
+import Text from '../Components/Text';
+import Transition from '../Components/Transition';
 import spotify from '../Utils/spotify';
 import moment from 'moment';
 
@@ -16,7 +18,8 @@ class ArtistDetail extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      artist: {}
+      artist: {},
+      loaded: false
     }
   }
 
@@ -29,35 +32,53 @@ class ArtistDetail extends React.Component {
   // }
 
   componentDidMount() {
-    console.log(this.props);
     spotify.getArtistById(this.props.match.params.id)
-      .then(res => console.log(res))
+      .then(res => {
+        console.log(res.data);
+        this.setState({ artist: res.data, loaded: true })
+      })
       .catch(err => console.log(err));
   }
   
   render() {
-    const { artist } = this.state;
+    const { artist, loaded } = this.state;
+
     return (
-      <div style={{ color: 'white', width: '60%', margin: '0 auto' }}>
-        {this.state.artist
-        ?
-        <div>
-          {/* <img 
-            src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`} 
-            width="200" 
-            alt={`${movie.title} movie poster`} 
-            className="card-img" 
-            style={{ float: 'left',
-            marginRight: '32px' }}
-          /> */}
-          <h1 style={styles.title}>Artist Detail Page</h1>
-          {/* <Button onClick={() => {this.props.history.goBack()}}>Back</Button>
-          <Button onClick={this.add}>Add to Watch List</Button> */}
+      <Transition>
+        <div style={{ color: 'white', width: '60%', margin: '0 auto' }}>
+          {this.state.artist
+          ?
+          <div>
+            <Text variant="h4">Artist Detail Page</Text>
+            {
+              loaded
+              ?
+              <div>
+                <img 
+                  src={artist.images[0].url} 
+                  width="200" 
+                  alt={`${artist.name} photo`} 
+                  className="card-img" 
+                  style={{ 
+                    float: 'left',
+                    marginRight: '32px',
+                    borderRadius: '50%'
+                  }}
+                />
+                <Text variant="h1">{artist.name}</Text>
+                <Text variant="p1">{artist.genres.join(', ')}</Text>
+                <Button onClick={() => {this.props.history.goBack()}}>Back</Button>
+                <Button>Add to Listen List</Button>
+              </div>
+              :
+              null
+            }
+          </div>
+          :
+          <h1>Loading</h1>
+          }
         </div>
-        :
-        <h1>Loading</h1>
-        }
-      </div>
+      </Transition>
     )
   }
 }

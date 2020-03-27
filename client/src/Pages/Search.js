@@ -65,7 +65,6 @@ class Search extends Component {
   }
 
   toggleSearch = e => {
-    console.log(e.target);
     this.setState({ search_type: e.target.textContent }) 
   }
 
