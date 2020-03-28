@@ -29,14 +29,10 @@ class ArtistDetail extends React.Component {
         this.setState({ 
           artist: res.data.artist, 
           albums: res.data.albums, 
+          topTracks: res.data.tracks,
           loaded: true 
         })
-      })
-      .then(res => {
-        spotify.getArtistTopTracks(this.props.match.params.id)
-          .then(res2 => {
-            console.log(res2);
-          })
+        console.log(this.state)
       })
       .catch(err => console.log(err));
   }

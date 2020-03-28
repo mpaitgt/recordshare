@@ -26,39 +26,18 @@ router.get('/music/artists/query/:artist', function(req, res) {
 
 // get artist details by id
 router.get('/music/artists/id/:id', function(req, res) {
+  let id = req.params.id;
   let obj = {};
-  spotify.getArtist(req.params.id)
-    .then(data => obj['artist'] = data.body)
-    .then(result => spotify.getArtistAlbums(result.id))
-    .then(result2 => obj['albums'] = result2.body.items)
-
-    // .then(() => spotify.getArtistAlbums(req.params.id)
-    // .then(data2 => {
-    //   obj['albums'] = data2.body.items
-    //   // res.send(obj);
-    // })
-    // .then(() => spotify.getArtistTopTracks(req.params.id)
-    // .then(data3 => {
-    //   obj['tracks'] = data3
-    //   res.send(obj)
-    // }))
-    // )
-    // })
-      
-        // .then(data2 => {
-        //   o
-        // })
-        // .catch(err => res.send(err))
-      // spotify.getArtistTopTracks(req.params.id)
-      //   .then(data3 => {
-      //     console.log(data3)
-      //   })
-      //   .catch(err => res.send(err))
-    // .then(data => res.send(data.body))
-    // .catch(err => res.send(err));
-    
-  // })
-  
+  spotify.getArtist(id)
+    .then(artistData => obj['artist'] = artistData.body)
+    .then(() => spotify.getArtistAlbums(id))
+    .then(albumData => obj['albums'] = albumData.body.items)
+    .then(() => spotify.getArtistAlbums(id))
+    .then(trackData => {
+      obj['tracks'] = trackData.body.items;
+      res.send(obj);
+    })
+    .catch(err => res.send(err));
 })
 
 module.exports = router;
