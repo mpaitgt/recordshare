@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '../Components/Button';
 import Text from '../Components/Text';
+import Image from '../Components/Image';
 import Transition from '../Components/Transition';
 import spotify from '../Utils/spotify';
 import moment from 'moment';
@@ -60,8 +61,6 @@ class ArtistDetail extends React.Component {
       })
     })
 
-    console.log(filteredAlbums);
-
     return (
       <Transition>
         <div style={{ color: 'white', width: '60%', margin: '0 auto' }}>
@@ -89,13 +88,20 @@ class ArtistDetail extends React.Component {
                 <Button onClick={() => {this.props.history.goBack()}}>Back</Button>
                 <Button>Add to Listen List</Button>
                 <Text variant="h3">Albums by {artist.name}</Text>
+                <div style={{display: 'grid', gridTemplateColumns:"33% 33% 33%"}}>
                 {filteredAlbums.map(album => {
                   return (
                     <div>
-                      <img src={album.images[1].url} alt={`${album.name} cover art`}></img>
+                      <Image 
+                        src={album.images[1].url} 
+                        alt={`${album.name} cover art`} 
+                        type="music" 
+                      />
+                      <Text variant="p1">{album.name}</Text>
                     </div>
                   )
                 })}
+                </div>
               </div>
               :
               null
