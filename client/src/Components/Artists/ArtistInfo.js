@@ -3,7 +3,7 @@ import Text from '../Text';
 import Button from '../Button';
 import Image from '../Image';
 
-function ArtistInfo({artist, onClickAdd, history}) {
+function ArtistInfo({artist, add, back}) {
   return (
     <div>
       <Image 
@@ -13,8 +13,8 @@ function ArtistInfo({artist, onClickAdd, history}) {
       />
     <Text variant="h1">{artist.name}</Text>
     <Text variant="p1">{artist.genres.join(', ')}</Text>
-    <Button onClick={() => {history.goBack()}}>Back</Button>
-    <Button onClick={onClickAdd}>Add to Listen List</Button>
+    <Button onClick={back}>Back</Button>
+    <Button onClick={add}>Add to Listen List</Button>
   </div>
   )
 }

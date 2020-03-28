@@ -18,6 +18,7 @@ class ArtistDetail extends React.Component {
     this.state = {
       artist: {},
       albums: [],
+      topTracks: [],
       loaded: false
     };
   }
@@ -25,10 +26,17 @@ class ArtistDetail extends React.Component {
   componentDidMount() {
     spotify.getArtistById(this.props.match.params.id)
       .then(res => {
-        this.setState({ artist: res.data })
-        spotify.getArtistAlbums(this.props.match.params.id)
-          .then(res => this.setState({ albums: res.data.body.items, loaded: true }))
-          .catch(err => console.log(err));
+        this.setState({ 
+          artist: res.data.artist, 
+          albums: res.data.albums, 
+          loaded: true 
+        })
+      })
+      .then(res => {
+        spotify.getArtistTopTracks(this.props.match.params.id)
+          .then(res2 => {
+            console.log(res2);
+          })
       })
       .catch(err => console.log(err));
   }
@@ -36,6 +44,10 @@ class ArtistDetail extends React.Component {
   add = () => {
     const { artist } = this.state;
     usercrud.saveArtist({ artist: artist.name, id: artist.id });
+  }
+
+  goBack = () => {
+    this.props.history.goBack();
   }
 
   render() {
@@ -62,7 +74,7 @@ class ArtistDetail extends React.Component {
           loaded
           ?
           <div>
-            <ArtistInfo artist={artist} onClick={ () => this.add() }/>
+            <ArtistInfo artist={artist} add={this.add} back={this.goBack} />
             <Text variant="h3">Albums by {artist.name}</Text>
             <ResultsContainer>
               {display}

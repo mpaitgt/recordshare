@@ -3,8 +3,7 @@ import styled from '@emotion/styled';
 
 const CONTAINER = styled.div`
   display: flex;
-  padding: 0 50px;
-  width: auto;
+  width: 80%;
   margin: 0 auto;
   text-align: left;
   position: relative;
