@@ -16,11 +16,13 @@ let styles = {
 
 class ArtistDetail extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       artist: {},
+      albums: [],
       loaded: false
-    }
+    };
+    // this.albums = this.albums.bind(this);
   }
 
   // add = e => {
@@ -34,22 +36,35 @@ class ArtistDetail extends React.Component {
   componentDidMount() {
     spotify.getArtistById(this.props.match.params.id)
       .then(res => {
-        this.setState({ artist: res.data, loaded: true })
+        this.setState({ artist: res.data })
         spotify.getArtistAlbums(this.props.match.params.id)
-          .then(res => console.log(res.data))
+          .then(res => {
+            this.setState({ albums: res.data.body.items, loaded: true })
+          })
           .catch(err => console.log(err));
       })
       .catch(err => console.log(err));
   }
-  
+
+  // albums = this.state.albums.filter((album, index) => this.state.indexOf(album) === index);
+  // filter by album type
+
   render() {
-    const { artist, loaded } = this.state;
+    const { artist, albums, loaded } = this.state;
+
+    const filteredAlbums = albums
+      .filter(item => item.album_type === 'album')
+      .filter((item, index, array) => {
+      return index === array.findIndex(sameItem => {
+        return item.name === sameItem.name
+      })
+    })
+
+    console.log(filteredAlbums);
 
     return (
       <Transition>
         <div style={{ color: 'white', width: '60%', margin: '0 auto' }}>
-          {this.state.artist
-          ?
           <div>
             <Text variant="h4">Artist Detail Page</Text>
             {
@@ -64,7 +79,9 @@ class ArtistDetail extends React.Component {
                   style={{ 
                     float: 'left',
                     marginRight: '32px',
-                    borderRadius: '50%'
+                    borderRadius: '50%',
+                    boxShadow: '0px 0px 14px -6px rgba(0,0,0,0.75)',
+                    
                   }}
                 />
                 <Text variant="h1">{artist.name}</Text>
@@ -72,14 +89,18 @@ class ArtistDetail extends React.Component {
                 <Button onClick={() => {this.props.history.goBack()}}>Back</Button>
                 <Button>Add to Listen List</Button>
                 <Text variant="h3">Albums by {artist.name}</Text>
+                {filteredAlbums.map(album => {
+                  return (
+                    <div>
+                      <img src={album.images[1].url} alt={`${album.name} cover art`}></img>
+                    </div>
+                  )
+                })}
               </div>
               :
               null
             }
           </div>
-          :
-          <h1>Loading</h1>
-          }
         </div>
       </Transition>
     )

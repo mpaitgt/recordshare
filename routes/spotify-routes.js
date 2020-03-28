@@ -1,9 +1,5 @@
 const express = require('express');
-const passport = require('passport');
-const axios = require('axios');
-const db = require('../models');
 const SpotifyWebAPI = require('spotify-web-api-node');
-const qs = require('querystring');
 const router = express.Router();
 require('dotenv').config();
 
