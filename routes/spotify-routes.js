@@ -32,7 +32,7 @@ router.get('/music/artists/id/:id', function(req, res) {
 })
 
 // get artist albums
-router.get('/music/artists/id/:id/albums', function(req, res) {
+router.get('/music/artists/albums/id/:id', function(req, res) {
   spotify.getArtistAlbums(req.params.id)
     .then(data => res.send(data))
     .catch(err => res.send(err));

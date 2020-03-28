@@ -8,7 +8,7 @@ const IMAGE = styled.img`
 
 function Image({src, alt, type}) {
   return (
-    <IMAGE 
+    <IMAGE
       src={src} 
       alt={alt}
       type={type}

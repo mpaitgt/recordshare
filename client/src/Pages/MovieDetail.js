@@ -1,16 +1,10 @@
 import React from 'react';
 import Button from '../Components/Button';
+import Text from '../Components/Text';
+import Image from '../Components/Image';
+import Container from '../Components/Container';
 import tmdb from '../Utils/tmdb';
 import moment from 'moment';
-
-let styles = {
-  title: {
-    fontFamily: 'var(--headerfont)'
-  },
-  detail: {
-    fontFamily: 'var(--subfont)'
-  }
-}
 
 class Detail extends React.Component {
   constructor(props) {
@@ -42,28 +36,20 @@ class Detail extends React.Component {
   render() {
     const { movie } = this.state;
     return (
-      <div style={{ color: 'white', width: '60%', margin: '0 auto' }}>
-        {this.state.movie
-        ?
+      <Container>
         <div>
-          <img 
+          <Image 
             src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`} 
-            width="200" 
-            alt={`${movie.title} movie poster`} 
-            className="card-img" 
-            style={{ float: 'left',
-            marginRight: '32px' }}
+            alt={`${movie.title} movie poster`}
+            type=""
           />
-          <h1 style={styles.title}>{movie.title}</h1>
-          <h3 style={styles.detail}>Released: {moment(movie.release_date).format('MMMM D, YYYY')}</h3>
-          <p style={styles.detail}>{movie.overview}</p>
+          <Text variant="h2">{movie.title}</Text>
+          <Text variant="h4">Released: {moment(movie.release_date).format('MMMM D, YYYY')}</Text>
+          <Text variant="p1">{movie.overview}</Text>
           <Button onClick={() => {this.props.history.goBack()}}>Back</Button>
           <Button onClick={this.add}>Add to Watch List</Button>
         </div>
-        :
-        <h1>Loading</h1>
-        }
-      </div>
+      </Container>
     )
   }
 }

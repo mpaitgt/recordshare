@@ -1,23 +1,22 @@
-import React, {useEffect} from 'react';
+import React from 'react';
+import Transition from '../Components/Transition';
 import RegistrationForm from '../Components/Registration/RegistrationForm';
+import styled from '@emotion/styled';
 
+const FORMWRAPPER = styled.div`
+  width: auto;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+`;
 
 const Register = () => {
-
-  useEffect(() => {
-    let thing = document.getElementById('test2');
-    thing.classList.add('in');
-    setTimeout(() => { thing.classList.remove('in') }, 1500);
-    return () => {
-      thing.classList.add('out');
-      setTimeout(() => { thing.classList.remove('out') }, 1500);
-    }
-  }, [])
-
   return (
-    <div style={{ width: 'auto', margin: '0 auto', textAlign: 'center', position: 'relative' }} id="test2">
-      <RegistrationForm />
-    </div>
+    <Transition>
+      <FORMWRAPPER>
+        <RegistrationForm />
+      </FORMWRAPPER>
+    </Transition>
   )
 }
 
