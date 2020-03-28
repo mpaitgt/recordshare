@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '../Components/Button';
-import omdb from '../Utils/omdb';
+import tmdb from '../Utils/tmdb';
 import moment from 'moment';
 
 let styles = {
@@ -23,13 +23,13 @@ class Detail extends React.Component {
   add = e => {
     e.preventDefault();
     const { movie } = this.state;
-    omdb.saveMovie({ title: movie.title, id: movie.id })
+    tmdb.saveMovie({ title: movie.title, id: movie.id })
       .then(res => console.log(res))
       .catch(err => console.log(err))
   }
 
   componentDidMount() {
-    omdb.getMovieById(this.props.match.params.id)
+    tmdb.getMovieById(this.props.match.params.id)
       .then(res => { 
         console.log(res.data);
         this.setState({ movie: res.data })

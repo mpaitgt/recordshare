@@ -10,7 +10,8 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth-routes');
-const apiRouter = require('./routes/api-routes');
+const crudRouter = require('./routes/crud-routes');
+const apiRouter = require('./routes/tmdb-routes');
 const spotifyRouter = require('./routes/spotify-routes');
 const PORT = process.env.PORT || 3001;
 
@@ -28,6 +29,7 @@ app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/api', apiRouter);
 app.use('/api', spotifyRouter);
+app.use('/user', crudRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

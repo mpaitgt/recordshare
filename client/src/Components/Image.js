@@ -12,7 +12,7 @@ function Image({src, alt, type}) {
       src={src} 
       alt={alt}
       type={type}
-      width={type === 'album' ? '200' : type === 'movie' ? '300' : '200'}
+      width={type === 'album' ? '200' : type === 'movie' ? '150' : '200'}
     />
   )
 }

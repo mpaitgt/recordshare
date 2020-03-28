@@ -6,7 +6,7 @@
   background: var(--gray-3);
   flex: 0 0 19.7%;
   text-align: center;
-  margin: 0px 8px;
+  margin: 16px 24px;
   transition: transform 300ms ease 100ms;
   color: var(--white);
   box-shadow: 0px 0px 14px -6px rgba(0,0,0,0.75);

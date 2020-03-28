@@ -1,18 +1,12 @@
 import React, {Component} from 'react';
-// import Container from '../Components/Container';
-import Card from '../Components/Card';
 import ContentCard from '../Components/ContentCard/ContentCard';
 import MusicCard from '../Components/ContentCard/MusicCard';
-import SearchBar from '../Components/SearchContent/SearchBar';
-import SearchBtn from '../Components/SearchContent/SearchBtn';
-import Button from '../Components/Button';
 import Transition from '../Components/Transition';
 import Text from '../Components/Text';
-import {Container, Row, Col} from 'react-grid-system';
-import styled from '@emotion/styled';
-import omdb from '../Utils/omdb';
+import tmdb from '../Utils/tmdb';
 import spotify from '../Utils/spotify';
 import SearchCard from '../Components/SearchContent/SearchCard';
+import ResultsContainer from '../Components/ResultsContainer';
 
 class Search extends Component {
   state = {
@@ -26,7 +20,7 @@ class Search extends Component {
   handleSubmit = e => {
     e.preventDefault();
     if (this.state.search_type == 'Watch') {
-      omdb.getMovieByTerm(this.state.search)
+      tmdb.getMovieByTerm(this.state.search)
       .then(res => {
         // console.log(res.data);
         if (res.data.length === 0) {
@@ -87,6 +81,7 @@ class Search extends Component {
           <Text variant="h4">{this.state.data.length} Results</Text>
           }
         </div>
+        <ResultsContainer>
         {
           this.state.search_type === 'Listen' && this.state.results
           ?
@@ -106,6 +101,7 @@ class Search extends Component {
           :
           null
         }
+        </ResultsContainer>
       </Transition>
     )
   }

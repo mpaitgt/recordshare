@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import Image from '../Image';
 import './ContentCard.css'; 
  
 function ContentCard(props) {
@@ -8,9 +9,9 @@ function ContentCard(props) {
     ?
     <Link to={`/movies/${props.content.id}`}>
       <div className="content-card">
-        <img 
+        <Image 
           src={`https://image.tmdb.org/t/p/w185${props.content.poster_path}`} 
-          width="200" 
+          type="movie"
           alt={`${props.content.title} movie poster`} 
           className="card-img" 
         />

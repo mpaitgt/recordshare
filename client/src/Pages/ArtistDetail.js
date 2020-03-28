@@ -3,7 +3,9 @@ import Button from '../Components/Button';
 import Text from '../Components/Text';
 import Image from '../Components/Image';
 import Transition from '../Components/Transition';
+import ResultsContainer from '../Components/ResultsContainer';
 import spotify from '../Utils/spotify';
+import usercrud from '../Utils/usercrud';
 import moment from 'moment';
 
 let styles = {
@@ -23,16 +25,16 @@ class ArtistDetail extends React.Component {
       albums: [],
       loaded: false
     };
-    // this.albums = this.albums.bind(this);
   }
 
-  // add = e => {
-  //   e.preventDefault();
-  //   const { artist } = this.state;
-  //   omdb.saveMovie({ title: movie.title, id: movie.id })
-  //     .then(res => console.log(res))
-  //     .catch(err => console.log(err))
-  // }
+  crudButton = () => {
+    
+  }
+
+  add = () => {
+    const { artist } = this.state;
+    usercrud.saveArtist({ artist: artist.name, id: artist.id });
+  }
 
   componentDidMount() {
     spotify.getArtistById(this.props.match.params.id)
@@ -47,9 +49,6 @@ class ArtistDetail extends React.Component {
       .catch(err => console.log(err));
   }
 
-  // albums = this.state.albums.filter((album, index) => this.state.indexOf(album) === index);
-  // filter by album type
-
   render() {
     const { artist, albums, loaded } = this.state;
 
@@ -63,7 +62,7 @@ class ArtistDetail extends React.Component {
 
     return (
       <Transition>
-        <div style={{ color: 'white', width: '60%', margin: '0 auto' }}>
+        <div style={{ color: 'white', width: '90%', margin: '0 auto' }}>
           <div>
             <Text variant="h4">Artist Detail Page</Text>
             {
@@ -86,22 +85,24 @@ class ArtistDetail extends React.Component {
                 <Text variant="h1">{artist.name}</Text>
                 <Text variant="p1">{artist.genres.join(', ')}</Text>
                 <Button onClick={() => {this.props.history.goBack()}}>Back</Button>
-                <Button>Add to Listen List</Button>
+                <Button onClick={() => this.add() }>Add to Listen List</Button>
                 <Text variant="h3">Albums by {artist.name}</Text>
-                <div style={{display: 'grid', gridTemplateColumns:"33% 33% 33%"}}>
+
+                <ResultsContainer>
                 {filteredAlbums.map(album => {
                   return (
-                    <div>
+                    <div key={album.id}>
                       <Image 
-                        src={album.images[1].url} 
+                        src={album.images[0].url} 
                         alt={`${album.name} cover art`} 
-                        type="music" 
+                        type="music"
                       />
                       <Text variant="p1">{album.name}</Text>
                     </div>
                   )
                 })}
-                </div>
+                </ResultsContainer>
+
               </div>
               :
               null
