@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import Card from '../Components/Card';
 import Input from '../Components/Input';
-import Button from '../Components/Button';
+import Button from '../Components/Elements/Button';
 import Text from '../Components/Text';
 import Transition from '../Components/Transition';
 import userauth from '../Utils/userauth';

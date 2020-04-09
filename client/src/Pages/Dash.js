@@ -1,6 +1,6 @@
 import React from 'react';
 import omdb from '../Utils/omdb';
-import Button from '../Components/Button';
+import Button from '../Components/Elements/Button';
 import {Link} from 'react-router-dom';
 import styled from '@emotion/styled';
 

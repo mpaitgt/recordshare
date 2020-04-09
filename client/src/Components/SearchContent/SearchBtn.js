@@ -14,6 +14,7 @@ const BUTTON = styled.button`
   transition: all 0.25s;
   margin: 20px auto;
   width: 200px;
+  display: inline;
   -webkit-box-shadow: 0px 11px 20px -24px rgba(0,0,0,0.75);
   -moz-box-shadow: 0px 11px 20px -24px rgba(0,0,0,0.75);
   box-shadow: 0px 11px 20px -24px rgba(0,0,0,0.75);

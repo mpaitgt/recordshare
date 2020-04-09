@@ -3,7 +3,6 @@ import styled from '@emotion/styled';
 
 const IMAGE = styled.img`
   box-shadow: 0px 0px 14px -6px rgba(0,0,0,0.75);
-  border: 1px solid var(--dark-green);
 `;
 
 function Image({src, alt, type}) {
@@ -12,7 +11,25 @@ function Image({src, alt, type}) {
       src={src} 
       alt={alt}
       type={type}
-      width={type === 'album' ? '200' : type === 'movie' ? '150' : '200'}
+      style={
+        type === 'artist'
+        ?
+        { borderRadius: '50%', width: '450px', margin: '20px 50px' }
+        :
+        type === 'music'
+        ?
+        { borderRadius: '5px', width: '250px' }
+        :
+        type === 'movie'
+        ?
+        { borderRadius: '5px', width: '150px' }
+        :
+        type === 'poster'
+        ?
+        { borderRadius: '5px', width: '350px' }
+        :
+        { borderRadius: '10px', width: '200px' }
+      }
     />
   )
 }

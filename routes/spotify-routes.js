@@ -31,11 +31,15 @@ router.get('/music/artists/id/:id', function(req, res) {
   spotify.getArtist(id)
     .then(artistData => obj['artist'] = artistData.body)
     .then(() => spotify.getArtistAlbums(id))
-    .then(albumData => obj['albums'] = albumData.body.items)
-    .then(() => spotify.getArtistAlbums(id))
-    .then(trackData => {
-      obj['tracks'] = trackData.body.items;
-      res.send(obj);
+    .then(albumData => {
+      obj['albums'] = albumData.body.items
+        .filter(album => album.album_type === 'album')
+        .filter((album, index, array) => {
+          return index === array.findIndex(sameAlbum => {
+            return album.name === sameAlbum.name;
+          })
+        })
+        res.send(obj);
     })
     .catch(err => res.send(err));
 })

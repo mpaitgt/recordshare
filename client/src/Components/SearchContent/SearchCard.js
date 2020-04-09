@@ -1,29 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Card from '../Card';
 import SearchBar from './SearchBar';
 import SearchBtn from './SearchBtn';
-import Button from '../Button';
-import Text from '../Text';
+// import Button from '../Elements/Button';
+// import Text from '../Text';
 import Container from '../Container';
 
-function SearchCard({ search_type, toggleSearch, handleSubmit, search, handleChange }) {
+function SearchCard({ searchMusic, searchMovies, search, handleChange }) {
   return (
     <Card>
-      <Text variant="h4">{search_type}</Text>
-      <div>
-        <Button onClick={toggleSearch}>Watch</Button>
-        <Button onClick={toggleSearch}>Listen</Button>
-      </div>
       <Container>
-        <form className="search-form page" onSubmit={handleSubmit}>
           <SearchBar 
             name="search" 
             value={search} 
             onChange={handleChange} 
             placeholder="Search content" 
           />
-          <SearchBtn type="submit">Search</SearchBtn>
-        </form>
+          <SearchBtn onClick={searchMovies} type="submit">Watch</SearchBtn>
+          <SearchBtn onClick={searchMusic} type="submit">Listen</SearchBtn>
       </Container>
     </Card>
   )

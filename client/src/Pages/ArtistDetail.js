@@ -1,15 +1,11 @@
 import React from 'react';
-import Container from '../Components/Container';
-import Button from '../Components/Button';
 import Text from '../Components/Text';
-import Image from '../Components/Image';
 import Transition from '../Components/Transition';
 import ArtistInfo from '../Components/Artists/ArtistInfo';
 import AlbumDisplay from '../Components/Artists/AlbumDisplay';
 import ResultsContainer from '../Components/ResultsContainer';
 import spotify from '../Utils/spotify';
 import usercrud from '../Utils/usercrud';
-import moment from 'moment';
 
 class ArtistDetail extends React.Component {
 
@@ -18,7 +14,7 @@ class ArtistDetail extends React.Component {
     this.state = {
       artist: {},
       albums: [],
-      topTracks: [],
+      relatedArtists: [],
       loaded: false
     };
   }
@@ -29,10 +25,8 @@ class ArtistDetail extends React.Component {
         this.setState({ 
           artist: res.data.artist, 
           albums: res.data.albums, 
-          topTracks: res.data.tracks,
           loaded: true 
         })
-        console.log(this.state)
       })
       .catch(err => console.log(err));
   }
@@ -49,15 +43,7 @@ class ArtistDetail extends React.Component {
   render() {
     const { artist, albums, loaded } = this.state;
 
-    const filteredAlbums = albums
-      .filter(item => item.album_type === 'album')
-      .filter((item, index, array) => {
-      return index === array.findIndex(sameItem => {
-        return item.name === sameItem.name
-      })
-    })
-
-    const display = filteredAlbums.map(album => {
+    const display = albums.map(album => {
       return (
         <AlbumDisplay album={album} />
       )
@@ -65,7 +51,6 @@ class ArtistDetail extends React.Component {
 
     return (
       <Transition>
-        <Text variant="h4">Artist Detail Page</Text>
         {
           loaded
           ?

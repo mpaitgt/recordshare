@@ -1,46 +1,51 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Transition from '../Components/Transition';
 import MovieInfo from '../Components/Movies/MovieInfo';
 import tmdb from '../Utils/tmdb';
+import {updateMovie} from '../Redux/Reducers/rootReducer';
+import {connect} from 'react-redux';
 
-class Detail extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      movie: {}
-    }
-  }
+function Detail(props) {
 
-  add = () => {
+  useEffect(() => {
+    tmdb.getMovieById(props.match.params.id)
+      .then(res => {
+        props.updateMovie(res.data)
+        console.log(props);
+      })
+      .catch(err => console.log(err));
+  }, []);
+
+  const add = () => {
     const { movie } = this.state;
     tmdb.saveMovie({ title: movie.title, id: movie.id })
       .then(res => console.log(res))
       .catch(err => console.log(err))
   }
 
-  goBack = () => {
-    this.props.history.goBack();
+  const goBack = () => {
+    props.history.goBack();
   }
 
-  componentDidMount() {
-    tmdb.getMovieById(this.props.match.params.id)
-      .then(res => { 
-        console.log(res.data);
-        this.setState({ movie: res.data })
-      })
-      .catch(err => {
-        console.log(err);
-      })
-  }
-  
-  render() {
-    const { movie } = this.state;
-    return (
-      <Transition>
-        <MovieInfo movie={movie} back={this.goBack} />
-      </Transition>
-    )
+  return (
+    <Transition>
+      {/* <MovieInfo movie={props.movie} back={goBack} /> */}
+    </Transition>
+  )
+}
+
+const matchStateToProps = state => {
+  return {
+    movie: state.movie
   }
 }
 
-export default Detail;
+const matchDispatchToProps = dispatch => {
+  return {
+    updateMovie: (movie_data) => {
+      dispatch(updateMovie(movie_data));
+    }
+  }
+}
+
+export default connect(matchStateToProps, matchDispatchToProps)(Detail);

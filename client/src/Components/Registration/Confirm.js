@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from '../Card';
-import Button from '../Button';
+import Button from '../Elements/Button';
 import Text from '../Text';
 import userauth from '../../Utils/userauth';
 

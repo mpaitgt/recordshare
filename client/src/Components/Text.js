@@ -53,7 +53,7 @@ function Text({ variant, children, htmlFor }) {
     case 'p1':
       return <p style={Object.assign({}, font.standard, font.p1)}>{children}</p>;
     default: 
-      return <div>{children}</div>;
+      return <p>{children}</p>;
   }
 }
 

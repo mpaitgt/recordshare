@@ -1,110 +1,84 @@
-import React, {Component} from 'react';
+import React, {Component, useState} from 'react';
 import ContentCard from '../Components/ContentCard/ContentCard';
 import MusicCard from '../Components/ContentCard/MusicCard';
 import Transition from '../Components/Transition';
-import Text from '../Components/Text';
 import tmdb from '../Utils/tmdb';
 import spotify from '../Utils/spotify';
 import SearchCard from '../Components/SearchContent/SearchCard';
 import ResultsContainer from '../Components/ResultsContainer';
+import {updateSearchResults} from '../Redux/Reducers/rootReducer';
+import {connect} from 'react-redux';
 
-class Search extends Component {
-  state = {
-    search: '',
-    data: [],
-    results: null,
-    message: '',
-    search_type: 'Watch'
-  }
+function Search(props) {
+  const [search, setSearch] = useState('');
+  const [type, setType] = useState('');
+  const [results, setResults] = useState(null);
 
-  handleSubmit = e => {
+  const searchMovies = e => {
     e.preventDefault();
-    if (this.state.search_type == 'Watch') {
-      tmdb.getMovieByTerm(this.state.search)
+    tmdb.getMovieByTerm(search)
       .then(res => {
-        // console.log(res.data);
         if (res.data.length === 0) {
-          this.setState({ results: false })
+          setResults(false);
         } else {
-          this.setState({ data: res.data, results: true });
+          setResults(true);
+          setType('Movie');
+          props.updateSearchResults(res.data);
         }
       })
       .catch(err => console.log(err));
-    }
-    else if (this.state.search_type == 'Listen') {
-      spotify.getArtists(this.state.search)
-        .then(res => {
-          // console.log(res.data)
-          if (res.data.length === 0) {
-            this.setState({ results: false })
-          } else {
-            this.setState({ data: res.data, results: true });
-          }
-        })
-        .catch(err => console.log(err))
-    }
   }
 
-  handleChange = e => {
-    const { name, value } = e.target;
-    this.setState({ [name]: value });
-  }
-
-  displayResponse = () => {
-    if (this.state.data.length === 0) {
-      return <Text variant="h3">There are no results</Text>
-    } else {
-      return null;
-    }
-  }
-
-  toggleSearch = e => {
-    this.setState({ search_type: e.target.textContent }) 
-  }
-
-  render() {
-
-    return (
-      <Transition>
-        <div className="page">
-          <SearchCard 
-            search_type={this.state.search_type}
-            toggleSearch={this.toggleSearch}
-            handleSubmit={this.handleSubmit}
-            search={this.state.search}
-            handleChange={this.handleChange}
-          />
-          {this.state.data.length === 0
-          ?
-          null
-          :
-          <Text variant="h4">{this.state.data.length} Results</Text>
-          }
-        </div>
-        <ResultsContainer>
-        {
-          this.state.search_type === 'Listen' && this.state.results
-          ?
-            this.state.data.map(artist => {
-              return (
-                <MusicCard content={artist} key={artist.id} />
-              )
-            })
-          :
-          this.state.search_type === 'Watch' && this.state.results
-          ?
-            this.state.data.map(movie => {
-              return (
-                <ContentCard content={movie} key={movie.id}/>
-              )
-            })
-          :
-          null
+  const searchMusic = e => {
+    e.preventDefault();
+    spotify.getArtists(search)
+      .then(res => {
+        if (res.data.length === 0) {
+          setResults(false);
+        } else {
+          setResults(true);
+          setType('Music');
+          props.updateSearchResults(res.data);
         }
-        </ResultsContainer>
-      </Transition>
-    )
+      })
+      .catch(err => console.log(err))
+  }
+
+  return (
+    <Transition>
+      <div className="page">
+        <SearchCard 
+          searchMovies={searchMovies}
+          searchMusic={searchMusic}
+          search={search}
+          handleChange={e => setSearch(e.target.value)}
+        />
+      </div>
+      <ResultsContainer>
+        {
+          props.search_results.map(item => {
+            return (
+              <ContentCard content={item} type={type} />
+            )
+          })
+        }
+      </ResultsContainer>
+    </Transition>
+  )
+}
+
+const matchStateToProps = (state) => {
+  return {
+    search_results: state.search_results
+  }
+};
+
+const matchDispatchToProps = (dispatch) => {
+  return {
+    updateSearchResults: (data) => {
+      dispatch(updateSearchResults(data))
+    }
   }
 }
 
-export default Search;
+export default connect(matchStateToProps, matchDispatchToProps)(Search);

@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from '../Card';
 import Input from '../Input';
-import Button from '../Button';
+import Button from '../Elements/Button';
 import Text from '../Text';
 
 class Form1 extends React.Component {
