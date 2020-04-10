@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import Transition from '../Components/Transition';
 import MovieInfo from '../Components/Movies/MovieInfo';
 import tmdb from '../Utils/tmdb';
@@ -9,29 +9,28 @@ function Detail(props) {
 
   useEffect(() => {
     tmdb.getMovieById(props.match.params.id)
-      .then(res => {
-        props.updateMovie(res.data)
-        console.log(props);
-      })
-      .catch(err => console.log(err));
+      .then(res => props.updateMovie(res.data))
+      .catch(err => console.log(err));  
   }, []);
 
-  const add = () => {
-    const { movie } = this.state;
-    tmdb.saveMovie({ title: movie.title, id: movie.id })
-      .then(res => console.log(res))
-      .catch(err => console.log(err))
-  }
+  setTimeout(() => console.log(props), 4000);
+  // const add = () => {
+  //   tmdb.saveMovie({ title: movie.title, id: movie.id })
+  //     .then(res => console.log(res))
+  //     .catch(err => console.log(err))
+  // }
 
-  const goBack = () => {
-    props.history.goBack();
-  }
+  // const goBack = () => {
+  //   props.history.goBack();
+  // }
 
-  return (
-    <Transition>
-      {/* <MovieInfo movie={props.movie} back={goBack} /> */}
-    </Transition>
-  )
+    return (
+      <Transition>
+        <MovieInfo movie={props.movie} />
+      </Transition>
+    )
+
+
 }
 
 const matchStateToProps = state => {

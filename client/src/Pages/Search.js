@@ -5,6 +5,8 @@ import Transition from '../Components/Transition';
 import tmdb from '../Utils/tmdb';
 import spotify from '../Utils/spotify';
 import SearchCard from '../Components/SearchContent/SearchCard';
+import Dashboard from '../Components/Dashboard';
+import {Container, Row, Col} from 'react-grid-system';
 import ResultsContainer from '../Components/ResultsContainer';
 import {updateSearchResults} from '../Redux/Reducers/rootReducer';
 import {connect} from 'react-redux';
@@ -45,16 +47,24 @@ function Search(props) {
   }
 
   return (
-    <Transition>
-      <div className="page">
-        <SearchCard 
-          searchMovies={searchMovies}
-          searchMusic={searchMusic}
-          search={search}
-          handleChange={e => setSearch(e.target.value)}
-        />
-      </div>
+    <Container>
+      <Row>
+        <Col lg={8} style={{border: '1px solid black'}}>
+          <SearchCard 
+            searchMovies={searchMovies}
+            searchMusic={searchMusic}
+            search={search}
+            handleChange={e => setSearch(e.target.value)}
+          />
+        </Col>
+        <Col lg={4} style={{border: '1px solid black'}}>
+          <Dashboard />
+        </Col>
+      </Row>
+      <Row>
+      <Col lg={12}>
       <ResultsContainer>
+        
         {
           props.search_results.map(item => {
             return (
@@ -62,8 +72,11 @@ function Search(props) {
             )
           })
         }
+        
       </ResultsContainer>
-    </Transition>
+      </Col>
+      </Row>
+    </Container>
   )
 }
 

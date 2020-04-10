@@ -12,7 +12,6 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <Container>
       <Switch>
         <Route exact path="/artists/:id" component={ArtistDetail} />
         <Route exact path="/movies/:id" component={MovieDetail} />
@@ -20,7 +19,6 @@ function App() {
         <Route exact path="/register" component={Register}/>
         <Route exact path="/" component={Search}/>
       </Switch>
-      </Container>
     </Router>
   );
 }

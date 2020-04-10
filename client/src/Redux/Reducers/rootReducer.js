@@ -6,15 +6,14 @@ const initState = {
 };
 
 const UPDATE_SEARCH_RESULTS = 'UPDATE_SEARCH_RESULTS';
-const UPDATE_ARTIST = 'UPDATE_ARTIST';
 const UPDATE_MOVIE = 'UPDATE_MOVIE';
 
 const rootReducer = (state = initState, action) => {
   switch (action.type) {
     case UPDATE_SEARCH_RESULTS:
-      return {
-        search_results: action.search_results
-      };
+      return { search_results: action.search_results }
+    case UPDATE_MOVIE:
+      return { movie: action.movie }
     default:
       return state;
   }
@@ -27,10 +26,10 @@ const updateSearchResults = (data) => {
   }
 }
 
-const updateMovie = (data) => {
+const updateMovie = (movie_data) => {
   return {
     type: UPDATE_MOVIE,
-    movie: [...data]
+    movie: Object.assign({}, movie_data)
   }
 }
 

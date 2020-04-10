@@ -36,7 +36,6 @@ const TEXT = styled.div`
 `;
  
 function ContentCard(props) {
-  console.log(props.content);
   return (
     props.type === 'Movie'
     ?

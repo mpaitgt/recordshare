@@ -9,6 +9,8 @@ let CARD = styled.div`
   -webkit-box-shadow: 0px 0px 26px -10px rgba(0,0,0,0.75);
   -moz-box-shadow: 0px 0px 26px -10px rgba(0,0,0,0.75);
   box-shadow: 0px 0px 26px -10px rgba(0,0,0,0.75);
+  width: auto;
+  margin: 0 auto;
 `;
 
 function Card({ children }) {
