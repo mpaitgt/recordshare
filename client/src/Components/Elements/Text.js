@@ -6,27 +6,27 @@ let font = {
     letterSpacing: '-1px',
   },
   h1: {
-    fontSize: '52px',
+    fontSize: '42px',
     margin: '1.5',
   },
   h2: {
-    fontSize: '44px'
+    fontSize: '38px'
   },
   h3: {
-    fontSize: '36px',
+    fontSize: '30px',
   },
   h4: {
-    fontSize: '28px',
+    fontSize: '24px',
     margin: '10px 0px 20px 0px',
   },
   h5: {
     fontSize: '20px'
   },
   h6: {
-    fontSize: '12px'
+    fontSize: '16px'
   },
   p1: {
-    fontSize: '18px'
+    fontSize: '16px'
   },
   label: {
     fontSize: '18px',

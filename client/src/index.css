@@ -1,4 +1,6 @@
 * {
+  margin: 0;
+  padding: 0;
   --main-text: #272727;
   --secondary-text: #9e3f3f;
   --dark-green: #1E6043;
@@ -17,8 +19,10 @@
   --gray-6: #DFDFDF;
   --white: #f1f1f1;
   --whiter: #ffffff;
-  --headerfont: 'Yanone Kaffeesatz', sans-serif;
-  --subfont: 'Josefin Sans', sans-serif;
+  /* --headerfont: 'Yanone Kaffeesatz', sans-serif; */
+  /* --subfont: 'Josefin Sans', sans-serif; */
+  --headerfont: arial;
+  --subfont: arial;
 }
 
 body {

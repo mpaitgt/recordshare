@@ -1,21 +1,22 @@
 import React, {useState} from 'react';
-import Card from '../Card';
+import Card from '../Elements/Card';
 import SearchBar from './SearchBar';
 import SearchBtn from './SearchBtn';
-import {Container} from 'react-grid-system';
+import styled from '@emotion/styled';
 
-function SearchCard({ searchMusic, searchMovies, search, handleChange }) {
+
+
+function SearchCard({ searchMusic, search, handleChange }) {
   return (
-      <Container>
+      <form onSubmit={searchMusic}>
           <SearchBar 
             name="search" 
             value={search} 
             onChange={handleChange} 
             placeholder="Search content" 
           />
-          <SearchBtn onClick={searchMovies} type="submit">Watch</SearchBtn>
-          <SearchBtn onClick={searchMusic} type="submit">Listen</SearchBtn>
-      </Container>
+          <SearchBtn type="submit" type="submit">Listen</SearchBtn>
+      </form>
   )
 }
 

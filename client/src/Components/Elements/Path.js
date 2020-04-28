@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 const style = {
   textDecoration: 'none',
   color: 'inherit',
-  fontSize: '18px'
+  fontSize: '13px'
 };
 
 function Path(props) {

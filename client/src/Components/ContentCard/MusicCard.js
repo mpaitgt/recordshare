@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import Text from '../Text';
-import Tile from '../Tile';
+import Text from '../Elements/Text';
+import Tile from '../Elements/Tile';
 import styled from '@emotion/styled';
 
 const ALBUM = styled.div`

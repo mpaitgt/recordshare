@@ -1,7 +1,7 @@
 import React from 'react';
-import Text from '../Text';
-import Image from '../Image';
-import Tile from '../Tile';
+import Text from '../Elements/Text';
+import Image from '../Elements/Image';
+import Tile from '../Elements/Tile';
 import moment from 'moment';
 // import styled from '@emotion/styled';
 

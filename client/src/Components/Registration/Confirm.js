@@ -1,7 +1,7 @@
 import React from 'react';
-import Card from '../Card';
+import Card from '../Elements/Card';
 import Button from '../Elements/Button';
-import Text from '../Text';
+import Text from '../Elements/Text';
 import userauth from '../../Utils/userauth';
 
 class Confirm extends React.Component {

@@ -1,5 +1,5 @@
 import React from 'react';
-import Text from '../Components/Text';
+import Text from '../Components/Elements/Text';
 import Transition from '../Components/Transition';
 import ArtistInfo from '../Components/Artists/ArtistInfo';
 import AlbumDisplay from '../Components/Artists/AlbumDisplay';

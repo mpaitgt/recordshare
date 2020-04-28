@@ -1,9 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import Image from '../Image';
-import Tile from '../Tile';
+import Image from '../Elements/Image';
+import Tile from '../Elements/Tile';
 import styled from '@emotion/styled';
-import Text from '../Text';
+import Text from '../Elements/Text';
 
 const ALBUM = styled.div`
   max-width: 200px;

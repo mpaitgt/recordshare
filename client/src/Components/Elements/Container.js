@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 const CONTAINER = styled.div`
   display: flex;
   width: 80%;
-  margin: 0 auto;
+  margin: 4rem auto;
   text-align: left;
   position: relative;
 `;

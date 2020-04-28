@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
-import Card from '../Components/Card';
-import Input from '../Components/Input';
+import Card from '../Components/Elements/Card';
+import Input from '../Components/Elements/Input';
 import Button from '../Components/Elements/Button';
-import Text from '../Components/Text';
+import Text from '../Components/Elements/Text';
 import Transition from '../Components/Transition';
 import userauth from '../Utils/userauth';
 import styled from '@emotion/styled';

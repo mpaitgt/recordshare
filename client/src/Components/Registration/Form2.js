@@ -1,8 +1,8 @@
 import React from 'react';
-import Card from '../Card';
-import Input from '../Input';
+import Card from '../Elements/Card';
+import Input from '../Elements/Input';
 import Button from '../Elements/Button';
-import Text from '../Text';
+import Text from '../Elements/Text';
 
 class Form2 extends React.Component {
   continue = e => {
