@@ -4,6 +4,7 @@ export const PayloadContext = createContext();
 
 export const PayloadProvider = props => {
   const [payload, setPayload] = useState([]);
+  const [search, setSearch] = useState('');
   const [results, setResults] = useState(null);
 
   return (
@@ -11,7 +12,9 @@ export const PayloadProvider = props => {
       payload, 
       setPayload, 
       results, 
-      setResults
+      setResults,
+      search,
+      setSearch
     ]}>
       {props.children}
     </PayloadContext.Provider>

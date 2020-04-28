@@ -7,15 +7,15 @@ const INPUT = styled.input`
   padding: 8px 16px;
   font-size: 13px;
   font-family: var(--subfont);
-  // background: none;
   color: var(--gray-1);
   width: 400px;
   margin-top: 20px;
   display: inline-block;
+  border-radius: 5px 0px 0px 5px;
   &::placeholder {
     color: var(--gray-1);
     font-family: var(--subfont);
-    font-size: 18px;
+    font-size: 13px;
   }
   &:focus {
     outline: none;

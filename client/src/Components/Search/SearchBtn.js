@@ -6,10 +6,10 @@ const BUTTON = styled.button`
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  background: linear-gradient(90deg, var(--light-green), var(--light-green-2));
+  background: linear-gradient(90deg, var(--red-1), var(--red-2));
   color: var(--whiter);
   border: none;
-  padding: 8px;
+  padding: 8px 12px;
   border-radius: 0px 120px 120px 0px;
   transition: all 0.25s;
   margin: 20px auto;

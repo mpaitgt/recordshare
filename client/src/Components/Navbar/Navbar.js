@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import Path from '../Elements/Path';
-import SearchCard from '../SearchContent/SearchCard';
+import SearchCard from '../Search/SearchCard';
 import spotify from '../../Utils/spotify';
 import { PayloadContext } from '../Providers/PayloadProvider';
 import styled from '@emotion/styled';
@@ -37,17 +37,25 @@ const ITEM = styled.span`
 `;
 
 const Navbar = (props) => {
-  const [search, setSearch] = useState('');
-  const [payload, setPayload, results, setResults] = useContext(PayloadContext);
+  const [input, setInput] = useState('');
+  const [
+    payload, 
+    setPayload, 
+    results, 
+    setResults,
+    search,
+    setSearch
+  ] = useContext(PayloadContext);
 
-  const searchMusic = e => {
+  const searchArtists = e => {
     e.preventDefault();
-    spotify.getArtists(search)
+    spotify.getArtists(input)
       .then(res => {
         if (res.data.length === 0) {
           setResults(false);
         } else {
           console.log(res.data);
+          setSearch(input);
           setPayload(res.data);
           setResults(true);
         }
@@ -62,9 +70,9 @@ const Navbar = (props) => {
       </Path>
       <div>
         <SearchCard 
-          searchMusic={searchMusic}
-          search={search}
-          handleChange={e => setSearch(e.target.value)}
+          searchMusic={searchArtists}
+          search={input}
+          handleChange={e => setInput(e.target.value)}
         />
       </div>
       <div>

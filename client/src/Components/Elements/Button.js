@@ -3,12 +3,12 @@ import styled from '@emotion/styled';
 
 const BUTTON = styled.button`
   font-family: var(--subfont);
-  font-size: 20px;
-  letter-spacing: -1px;
+  font-size: 14px;
+  letter-spacing: 1px;
   background: linear-gradient(90deg, var(--light-green), var(--light-green-2));
   border: none;
   border-radius: 12px;
-  padding: 10px 18px;
+  padding: 6px 12px;
   margin: 12px;
   transition: all 0.25s;
   -webkit-box-shadow: 0px 11px 20px -24px rgba(0,0,0,0.75);
@@ -41,7 +41,7 @@ function Button({ children, type, onClick, variant }) {
       style={
         variant === 'standard'
         ?
-        { background: 'linear-gradient(90deg, var(--light-green), var(--light-green-2)', color: 'var(--whiter)' }
+        { background: 'linear-gradient(90deg, var(--red-1), var(--red-2)', color: 'var(--whiter)' }
         :
         variant === 'warning'
         ?
@@ -51,7 +51,7 @@ function Button({ children, type, onClick, variant }) {
         ?
         { background: 'linear-gradient(90deg, var(--red-1), var(--red-2)', color: 'var(--whiter)' }
         :
-        { background: 'linear-gradient(90deg, var(--light-green), var(--light-green-2)', color: 'var(--whiter)' }
+        { background: 'linear-gradient(90deg, var(--red-1), var(--red-2)', color: 'var(--whiter)' }
       }
     >
       {children}
