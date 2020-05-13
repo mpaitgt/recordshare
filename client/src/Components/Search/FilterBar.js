@@ -1,7 +1,8 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Button from '../Elements/Button';
 import { PayloadContext } from '../Providers/PayloadProvider';
 import spotify from '../../Utils/spotify';
+import { css } from 'emotion'; 
 
 function FilterBar() {
   const [
@@ -20,7 +21,6 @@ function FilterBar() {
         if (res.data.length === 0) {
           setResults(false);
         } else {
-          console.log(res.data);
           setPayload(res.data);
           setResults(true);
         }
@@ -35,7 +35,6 @@ function FilterBar() {
         if (res.data.length === 0) {
           setResults(false);
         } else {
-          console.log(res.data);
           setPayload(res.data);
           setResults(true);
         }
@@ -50,7 +49,6 @@ function FilterBar() {
         if (res.data.length === 0) {
           setResults(false);
         } else {
-          console.log(res.data);
           setPayload(res.data);
           setResults(true);
         }
@@ -59,7 +57,10 @@ function FilterBar() {
   }
 
   return (
-    <div>
+    <div className={css`
+      display: flex;
+      flex-direction: row;
+    `}>
       <Button onClick={searchArtists}>Artists</Button>
       <Button onClick={searchAlbums}>Albums</Button>
       <Button onClick={searchTracks}>Tracks</Button>

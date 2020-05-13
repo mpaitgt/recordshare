@@ -72,6 +72,12 @@ body {
   animation-iteration-count: 1;
 }
 
+.search-animation {
+  animation-name: search;
+  animation-duration: .25s;
+  animation-iteration-count: 1;
+}
+
 @keyframes in {
   0% { opacity: 0; transform: translateX(-50px) }
   100% { opacity: 1; transform: translateX(0px) }
@@ -80,4 +86,11 @@ body {
 @keyframes out {
   0% { opacity: 1; transform: translateX(0px) }
   100% { opacity: 0; transform: translateX(50px) }
+}
+
+@keyframes search {
+  0% { background: var(--gray-6); transform: translateX(0px); opacity: 1; }
+  50% { background: var(--red-1); transform: translateX(50px); opacity: 0 }
+  99% { opacity: 0; }
+  100% { background: var(--gray-6); transform: translateX(0px); opacity: 1; }
 }

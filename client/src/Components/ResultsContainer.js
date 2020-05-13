@@ -3,11 +3,10 @@ import styled from '@emotion/styled';
 
 const GRID = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  justify-content: center;
-  // width: auto;
-  // margin: 0 auto;
-  grid-gap: 10px;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  align-items: center;
+  grid-gap: 50px;
 `;
 
 function ResultsContainer(props) {

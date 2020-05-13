@@ -1,11 +1,12 @@
 import React from 'react';
 import Text from '../Components/Elements/Text';
 import Transition from '../Components/Transition';
-import ArtistInfo from '../Components/Artists/ArtistInfo';
-import AlbumDisplay from '../Components/Artists/AlbumDisplay';
+import ArtistInfo from '../Components/DetailComponents/ArtistInfo';
+import AlbumDisplay from '../Components/DetailComponents/AlbumDisplay';
 import ResultsContainer from '../Components/ResultsContainer';
+import Container from '../Components/Elements/Container';
 import spotify from '../Utils/spotify';
-import usercrud from '../Utils/usercrud';
+// import usercrud from '../Utils/usercrud';
 
 class ArtistDetail extends React.Component {
 
@@ -33,7 +34,7 @@ class ArtistDetail extends React.Component {
 
   add = () => {
     const { artist } = this.state;
-    usercrud.saveArtist({ artist: artist.name, id: artist.id });
+    // usercrud.saveArtist({ artist: artist.name, id: artist.id });
   }
 
   goBack = () => {
@@ -50,7 +51,7 @@ class ArtistDetail extends React.Component {
     })
 
     return (
-      <Transition>
+      <Container>
         {
           loaded
           ?
@@ -64,7 +65,7 @@ class ArtistDetail extends React.Component {
           :
           null
         }
-      </Transition>
+      </Container>
     )
   }
 }

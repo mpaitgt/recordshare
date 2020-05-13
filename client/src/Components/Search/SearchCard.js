@@ -15,7 +15,7 @@ function SearchCard({ searchMusic, search, handleChange }) {
             onChange={handleChange} 
             placeholder="Search content" 
           />
-          <SearchBtn type="submit" type="submit">Listen</SearchBtn>
+          <SearchBtn type="submit">Listen</SearchBtn>
       </form>
   )
 }
