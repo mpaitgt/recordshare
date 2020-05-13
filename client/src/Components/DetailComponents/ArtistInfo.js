@@ -1,7 +1,7 @@
 import React from 'react';
-import Text from '../Text';
+import Text from '../Elements/Text';
 import Button from '../Elements/Button';
-import Image from '../Image';
+import Image from '../Elements/Image';
 import styled from '@emotion/styled';
 
 const CONTAINER = styled.div`

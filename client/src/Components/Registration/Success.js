@@ -1,8 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import Card from '../Card';
+import Card from '../Elements/Card';
 import Button from '../Elements/Button';
-import Text from '../Text';
+import Text from '../Elements/Text';
 
 class Success extends React.Component {
   render() {

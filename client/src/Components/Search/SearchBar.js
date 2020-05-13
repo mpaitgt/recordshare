@@ -3,33 +3,26 @@ import styled from '@emotion/styled';
 
 const INPUT = styled.input`
   border: none;
-  padding: 16px 16px 12px 16px;
-  font-size: 28px;
+  padding: 8px 16px;
+  font-size: 13px;
   font-family: var(--subfont);
-  background: none;
   color: var(--gray-1);
   width: 400px;
   margin-top: 20px;
   display: inline-block;
+  border-radius: 5px 0px 0px 5px;
   &::placeholder {
-    color: var(--gray-1);
+    color: var(--red-1);
     font-family: var(--subfont);
-    font-size: 28px;
+    font-size: 13px;
   }
   &:focus {
     outline: none;
   }
 `;
 
-const BORDER = styled.div`
-  background: #1E6043;
-  height: 8px;
-  border-radius: 5px;
-`;
-
 function SearchBar({ name, value, type, placeholder, onChange }) {
   return (
-    <div>
       <INPUT 
         name={name}
         value={value}
@@ -37,8 +30,6 @@ function SearchBar({ name, value, type, placeholder, onChange }) {
         placeholder={placeholder}
         onChange={onChange}
       />
-      <BORDER />
-    </div>
   )
 }
 

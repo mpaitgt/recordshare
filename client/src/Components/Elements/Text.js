@@ -3,30 +3,29 @@ import React from 'react';
 let font = {
   standard: {
     fontFamily: 'var(--subfont)',
-    letterSpacing: '-1px',
+    letterSpacing: '0px',
+    margin: '1em 0em'
   },
   h1: {
-    fontSize: '52px',
-    margin: '1.5',
+    fontSize: '42px',
   },
   h2: {
-    fontSize: '44px'
+    fontSize: '38px',
   },
   h3: {
-    fontSize: '36px',
+    fontSize: '30px',
   },
   h4: {
-    fontSize: '28px',
-    margin: '10px 0px 20px 0px',
+    fontSize: '24px',
   },
   h5: {
     fontSize: '20px'
   },
   h6: {
-    fontSize: '12px'
+    fontSize: '16px'
   },
   p1: {
-    fontSize: '18px'
+    fontSize: '16px'
   },
   label: {
     fontSize: '18px',

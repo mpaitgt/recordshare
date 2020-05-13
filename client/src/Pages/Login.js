@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
-import Card from '../Components/Card';
-import Input from '../Components/Input';
+import Card from '../Components/Elements/Card';
+import Input from '../Components/Elements/Input';
 import Button from '../Components/Elements/Button';
-import Text from '../Components/Text';
+import Text from '../Components/Elements/Text';
 import Transition from '../Components/Transition';
-import userauth from '../Utils/userauth';
+// import userauth from '../Utils/userauth';
 import styled from '@emotion/styled';
 
 const FORMWRAPPER = styled.div`
@@ -19,17 +19,17 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   
-  const onSubmit = e => {
-    e.preventDefault();
-    userauth.userLogin({ email: email, password: password });
-  }
+  // const onSubmit = e => {
+  //   e.preventDefault();
+  //   userauth.userLogin({ email: email, password: password });
+  // }
 
   return (
     <Transition>
       <FORMWRAPPER>
         <Card>
           <Text variant="h3">Login</Text>
-          <form onSubmit={onSubmit}>
+          {/* <form onSubmit={onSubmit}> */}
             <div>
               <Text variant="label" htmlFor="email">Email</Text>
               <Input 
@@ -52,7 +52,7 @@ const Login = () => {
             <div>
               <Button>Login</Button>
             </div>
-          </form>
+          {/* </form> */}
           <div style={{ margin: '20px 0px' }}>
             <Text variant="p1">
               Forget your password? 

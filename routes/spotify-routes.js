@@ -24,6 +24,20 @@ router.get('/music/artists/query/:artist', function(req, res) {
     .catch(err => res.send(err));
 })
 
+// get albums by search query
+router.get('/music/albums/query/:album', function(req, res) {
+  spotify.searchAlbums(req.params.album)
+    .then(data => res.send(data.body.albums.items))
+    .catch(err => res.send(err));
+})
+
+// get tracks by search query
+router.get('/music/tracks/query/:track', function(req, res) {
+  spotify.searchTracks(req.params.track)
+    .then(data => res.send(data.body.tracks.items))
+    .catch(err => res.send(err));
+})
+
 // get artist details by id
 router.get('/music/artists/id/:id', function(req, res) {
   let id = req.params.id;
