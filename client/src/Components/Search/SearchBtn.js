@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 
 const BUTTON = styled.button`
@@ -6,15 +6,14 @@ const BUTTON = styled.button`
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  background: linear-gradient(90deg, var(--red-1), var(--red-2));
-  color: var(--whiter);
+  background: linear-gradient(90deg, var(--whiter), var(--whiter));
+  color: var(--red-1);
   border: none;
   padding: 8px 12px;
   border-radius: 0px 120px 120px 0px;
   transition: all 0.25s;
   margin: 20px auto;
   display: inline;
-  transform: scale(1.05);
   -webkit-box-shadow: 0px 11px 20px -24px rgba(0,0,0,0.75);
   -moz-box-shadow: 0px 11px 20px -24px rgba(0,0,0,0.75);
   box-shadow: 0px 11px 20px -24px rgba(0,0,0,0.75);
@@ -36,9 +35,15 @@ const BUTTON = styled.button`
   // }
 `;
 
-function SearchBtn({ children, type, onClick }) {
+function SearchBtn({ children, type }) {
+  const [clicked, setClicked] = useState(false);
+
+  useEffect(() => {
+    console.log(clicked);
+  }, [clicked])
+
   return (
-    <BUTTON className="button" type={type} onClick={onClick}>
+    <BUTTON type={type} onClick={() => setClicked(true)}>
       {children}
     </BUTTON>
   )

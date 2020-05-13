@@ -3,7 +3,6 @@ import styled from '@emotion/styled';
 
 const INPUT = styled.input`
   border: none;
-  border: 1px solid var(--light-green);
   padding: 8px 16px;
   font-size: 13px;
   font-family: var(--subfont);
@@ -13,7 +12,7 @@ const INPUT = styled.input`
   display: inline-block;
   border-radius: 5px 0px 0px 5px;
   &::placeholder {
-    color: var(--gray-1);
+    color: var(--red-1);
     font-family: var(--subfont);
     font-size: 13px;
   }

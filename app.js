@@ -2,20 +2,27 @@ const dotenv = require('dotenv').config();
 const createError = require('http-errors');
 const cors = require('cors');
 const express = require('express');
+const mongoose = require('mongoose');
 const passport = require('passport');
-require('./config/passport-oauth-setup');
 const path = require('path');
-const db = require('./models');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const indexRouter = require('./routes/index');
-const authRouter = require('./routes/auth-routes');
-const crudRouter = require('./routes/crud-routes');
-const apiRouter = require('./routes/tmdb-routes');
 const spotifyRouter = require('./routes/spotify-routes');
 const PORT = process.env.PORT || 3001;
+const connection = mongoose.connection;
 
 const app = express();
+
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/medo';
+mongoose.connect(MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: true,
+});
+
+connection.once('open', function() {
+  console.log('Connected to MongoDB!');
+})
 
 app.use(cors());
 app.use(passport.initialize());
@@ -25,11 +32,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/auth', authRouter);
-app.use('/api', apiRouter);
 app.use('/api', spotifyRouter);
-app.use('/user', crudRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -47,13 +50,8 @@ app.use(function(err, req, res, next) {
   res.send('error');
 });
 
-db.sequelize.sync()
-  .then(function() {
-    app.listen(PORT, function() {
-      console.log(`🌎 ==> API server now on port ${PORT}!`)
-    });
-  })
-
-
+app.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`)
+})
 
 module.exports = app;

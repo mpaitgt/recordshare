@@ -5,8 +5,9 @@ import spotify from '../../Utils/spotify';
 import { PayloadContext } from '../Providers/PayloadProvider';
 import styled from '@emotion/styled';
 
-const NAV = styled.div`
+const NAV = styled.nav`
   background: var(--gray-0);
+  background: linear-gradient(180deg, var(--red-1), var(--red-2));
   color: var(--gray-2);
   display: flex;
   flex-direction: row;
@@ -76,7 +77,7 @@ const Navbar = (props) => {
         />
       </div>
       <div>
-      <Path to="/login">
+      <Path to="/dashboard">
           <ITEM>Dashboard</ITEM>
         </Path>
         <Path to="/login">
