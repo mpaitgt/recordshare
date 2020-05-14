@@ -13,7 +13,7 @@ const connection = mongoose.connection;
 
 const app = express();
 
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/medo';
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/recordshare';
 mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,

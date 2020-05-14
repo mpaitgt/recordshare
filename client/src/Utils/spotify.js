@@ -11,5 +11,8 @@ export default {
   },
   getArtistById: function(id) {
     return axios.get(`/api/music/artists/id/${id}`);
+  },
+  addArtist: function(obj) {
+    return axios.post(`/api/user/add-artist`, obj);
   }
 }

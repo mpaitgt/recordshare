@@ -1,4 +1,5 @@
 const express = require('express');
+const controller = require('../controller/ArtistController');
 const SpotifyWebAPI = require('spotify-web-api-node');
 const router = express.Router();
 require('dotenv').config();
@@ -56,6 +57,12 @@ router.get('/music/artists/id/:id', function(req, res) {
         res.send(obj);
     })
     .catch(err => res.send(err));
+})
+
+// save artist to db
+router.post('/user/add-artist', function(req, res) {
+  console.log(req.body);
+  controller.addArtist(req.body)
 })
 
 module.exports = router;

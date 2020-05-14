@@ -7,9 +7,9 @@ const BUTTON = styled.button`
   letter-spacing: 1px;
   background: linear-gradient(90deg, var(--light-green), var(--light-green-2));
   border: none;
-  border-radius: 12px;
+  border-radius: 5px;
   padding: 6px 12px;
-  margin: 12px;
+  margin: 12px 0px;
   transition: all 0.25s;
   -webkit-box-shadow: 0px 11px 20px -24px rgba(0,0,0,0.75);
   -moz-box-shadow: 0px 11px 20px -24px rgba(0,0,0,0.75);

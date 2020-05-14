@@ -5,15 +5,18 @@ import Confirm from './Confirm';
 import Success from './Success';
 
 class RegistrationForm extends React.Component {
-  state = {
-    step: 1,
-    first_name: '',
-    last_name: '',
-    email: '',
-    password: '',
-    password2: ''
+  constructor(props) {
+    super(props);
+    this.state = {
+      step: 1,
+      first_name: '',
+      last_name: '',
+      email: '',
+      password: '',
+      password2: ''
+    }
   }
-
+  
   // proceed to next step
   nextStep = () => {
     const { step } = this.state;

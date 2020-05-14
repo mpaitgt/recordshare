@@ -1,19 +1,18 @@
 import React, { useState, useContext } from 'react';
 import Path from '../Elements/Path';
-import SearchCard from '../Search/SearchCard';
+import SearchBar from '../Search/SearchBar';
 import spotify from '../../Utils/spotify';
 import { PayloadContext } from '../Providers/PayloadProvider';
 import styled from '@emotion/styled';
 
 const NAV = styled.nav`
   background: var(--gray-0);
-  background: linear-gradient(180deg, var(--red-1), var(--red-2));
   color: var(--gray-2);
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
-  padding: 0px;
+  padding: 20px;
   margin: 0;
 `;
 
@@ -38,54 +37,25 @@ const ITEM = styled.span`
 `;
 
 const Navbar = (props) => {
-  const [input, setInput] = useState('');
-  const [
-    payload, 
-    setPayload, 
-    results, 
-    setResults,
-    search,
-    setSearch
-  ] = useContext(PayloadContext);
-
-  const searchArtists = e => {
-    e.preventDefault();
-    spotify.getArtists(input)
-      .then(res => {
-        if (res.data.length === 0) {
-          setResults(false);
-        } else {
-          console.log(res.data);
-          setSearch(input);
-          setPayload(res.data);
-          setResults(true);
-        }
-      })
-      .catch(err => console.log(err));
-  }
 
   return (
     <NAV>
       <Path to="/">
-        <H1>Medo</H1>
+        <H1>Recordshare</H1>
       </Path>
       <div>
-        <SearchCard 
-          searchMusic={searchArtists}
-          search={input}
-          handleChange={e => setInput(e.target.value)}
-        />
-      </div>
-      <div>
-      <Path to="/dashboard">
-          <ITEM>Dashboard</ITEM>
+        <Path to="/stories">
+          <ITEM>Stories</ITEM>
+        </Path>
+        <Path to="/upload">
+          <ITEM>Upload</ITEM>
         </Path>
         <Path to="/login">
-          <ITEM>Login</ITEM>
+          <ITEM>Login / Signup</ITEM>
         </Path>
-        <Path to="/register">
+        {/* <Path to="/register">
           <ITEM>Register</ITEM>
-        </Path>
+        </Path> */}
       </div>
     </NAV>
   )

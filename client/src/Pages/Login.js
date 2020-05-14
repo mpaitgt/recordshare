@@ -4,8 +4,6 @@ import Card from '../Components/Elements/Card';
 import Input from '../Components/Elements/Input';
 import Button from '../Components/Elements/Button';
 import Text from '../Components/Elements/Text';
-import Transition from '../Components/Transition';
-// import userauth from '../Utils/userauth';
 import styled from '@emotion/styled';
 
 const FORMWRAPPER = styled.div`
@@ -25,7 +23,6 @@ const Login = () => {
   // }
 
   return (
-    <Transition>
       <FORMWRAPPER>
         <Card>
           <Text variant="h3">Login</Text>
@@ -65,7 +62,6 @@ const Login = () => {
           </div>
         </Card>
       </FORMWRAPPER>
-    </Transition>
   )
 }
 

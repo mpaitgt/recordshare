@@ -2,21 +2,22 @@ import React from 'react';
 
 let font = {
   standard: {
-    fontFamily: 'var(--subfont)',
+    fontFamily: 'var(--headerfont)',
+    color: 'var(--gray-0)',
     letterSpacing: '0px',
-    margin: '1em 0em'
+    margin: '10px 0px'
   },
   h1: {
     fontSize: '42px',
   },
   h2: {
-    fontSize: '38px',
+    fontSize: '32px',
   },
   h3: {
-    fontSize: '30px',
+    fontSize: '26px',
   },
   h4: {
-    fontSize: '24px',
+    fontSize: '20px',
   },
   h5: {
     fontSize: '20px'
@@ -25,11 +26,13 @@ let font = {
     fontSize: '16px'
   },
   p1: {
-    fontSize: '16px'
+    fontSize: '16px',
+    fontFamily: 'var(--subfont)',
+    margin: '20px 0px'
   },
   label: {
-    fontSize: '18px',
-    display: 'block'
+    fontSize: '13px',
+    margin: '10px 0px 10px 0px'
   }
 }
 

@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {useState, useContext} from 'react';
+import {PayloadContext} from '../Providers/PayloadProvider';
+import spotify from '../../Utils/spotify';
 import styled from '@emotion/styled';
 
-const INPUT = styled.input`
+const Input = styled.input`
   border: none;
   padding: 8px 16px;
   font-size: 13px;
@@ -12,7 +14,7 @@ const INPUT = styled.input`
   display: inline-block;
   border-radius: 5px 0px 0px 5px;
   &::placeholder {
-    color: var(--red-1);
+    color: var(--gray-0);
     font-family: var(--subfont);
     font-size: 13px;
   }
@@ -21,15 +23,65 @@ const INPUT = styled.input`
   }
 `;
 
+const Button = styled.button`
+  font-family: var(--subfont);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: var(--gray-4);
+  color: var(--white);
+  border: none;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 0px 120px 120px 0px;
+  transition: all 0.25s;
+  margin: 20px auto;
+  display: inline;
+  -webkit-box-shadow: 0px 11px 20px -24px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 11px 20px -24px rgba(0,0,0,0.75);
+  box-shadow: 0px 11px 20px -24px rgba(0,0,0,0.75);
+  cursor: pointer;
+`;
+
 function SearchBar({ name, value, type, placeholder, onChange }) {
+  const [input, setInput] = useState('');
+  const [
+    payload, 
+    setPayload, 
+    results, 
+    setResults,
+    search,
+    setSearch
+  ] = useContext(PayloadContext);
+
+  const searchArtists = e => {
+    e.preventDefault();
+    spotify.getAlbums(input)
+      .then(res => {
+        if (res.data.length === 0) {
+          setResults(false);
+        } else {
+          console.log(res.data);
+          setSearch(input);
+          setPayload(res.data);
+          setResults(true);
+        }
+      })
+      .catch(err => console.log(err));
+  }
+
   return (
-      <INPUT 
-        name={name}
-        value={value}
-        type={type}
-        placeholder={placeholder}
-        onChange={onChange}
+    <form onSubmit={searchArtists}>
+      <Input 
+        name='search'
+        value={input}
+        placeholder='search artists or albums'
+        onChange={e => setInput(e.target.value)}
       />
+      <Button type='submit'>
+        Listen
+      </Button>
+    </form>
   )
 }
 
