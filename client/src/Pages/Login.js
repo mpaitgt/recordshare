@@ -4,6 +4,7 @@ import Card from '../Components/Elements/Card';
 import Input from '../Components/Elements/Input';
 import Button from '../Components/Elements/Button';
 import Text from '../Components/Elements/Text';
+import Container from '../Components/Elements/Container';
 import styled from '@emotion/styled';
 
 const FORMWRAPPER = styled.div`
@@ -23,45 +24,47 @@ const Login = () => {
   // }
 
   return (
-    <FORMWRAPPER>
-      <Card>
-        <Text variant="h3">Login</Text>
-        {/* <form onSubmit={onSubmit}> */}
-          <div>
-            <Text variant="label" htmlFor="email">Email</Text>
-            <Input 
-              name="email" 
-              type="text" 
-              placeholder="jondoe@example.com" 
-              onChange={e => setEmail(e.target.value)} 
-              value={email} 
-            />
+    <Container>
+      <FORMWRAPPER>
+        <Card>
+          <Text variant="h3">Login</Text>
+          {/* <form onSubmit={onSubmit}> */}
+            <div>
+              <Text variant="label" htmlFor="email">Email</Text>
+              <Input 
+                name="email" 
+                type="text" 
+                placeholder="jondoe@example.com" 
+                onChange={e => setEmail(e.target.value)} 
+                value={email} 
+              />
+            </div>
+            <div>
+              <Text variant="label" htmlFor="password" style={{ display: 'block' }}>Password</Text>
+              <Input 
+                type="password" 
+                placeholder="poopisbrown123" 
+                onChange={e => setPassword(e.target.value)} 
+                value={password} 
+              />
+            </div>
+            <div>
+              <Button>Login</Button>
+            </div>
+          {/* </form> */}
+          <div style={{ margin: '20px 0px' }}>
+            <Text variant="p1">
+              Forget your password? 
+            </Text>
           </div>
-          <div>
-            <Text variant="label" htmlFor="password" style={{ display: 'block' }}>Password</Text>
-            <Input 
-              type="password" 
-              placeholder="poopisbrown123" 
-              onChange={e => setPassword(e.target.value)} 
-              value={password} 
-            />
+          <div style={{ margin: '20px 0px' }}>
+            <Text variant="p1">
+              Don't have an account? <Link to="/signup">Make one!</Link>
+            </Text>
           </div>
-          <div>
-            <Button>Login</Button>
-          </div>
-        {/* </form> */}
-        <div style={{ margin: '20px 0px' }}>
-          <Text variant="p1">
-            Forget your password? 
-          </Text>
-        </div>
-        <div style={{ margin: '20px 0px' }}>
-          <Text variant="p1">
-            Don't have an account? <Link to="/register">Make one!</Link>
-          </Text>
-        </div>
-      </Card>
-    </FORMWRAPPER>
+        </Card>
+      </FORMWRAPPER>
+    </Container>
   )
 }
 
