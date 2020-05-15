@@ -1,5 +1,6 @@
 import React from 'react';
-import RegistrationForm from '../Components/Registration/RegistrationForm';
+import Login from './Login';
+import RegistrationForm from '../Components/Signup/RegistrationForm';
 import styled from '@emotion/styled';
 
 const FORMWRAPPER = styled.div`

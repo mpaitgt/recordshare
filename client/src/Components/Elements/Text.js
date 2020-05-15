@@ -31,7 +31,7 @@ let font = {
     margin: '20px 0px'
   },
   label: {
-    fontSize: '13px',
+    fontSize: '16px',
     margin: '10px 0px 10px 0px'
   }
 }

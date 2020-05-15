@@ -10,6 +10,7 @@ const Flex = styled.div`
   grid-template-columns: 40% 60%;
   flex-direction: row;
   align-items: center;
+  row-gap: 20px;
 `;
 
 function ArtistDetail(props) {
@@ -18,16 +19,17 @@ function ArtistDetail(props) {
     <Container>
       <Text variant="h1">Recent Stories</Text>
       {
-        data.albums.map(item => {
+        data.albums.map(album => {
           return (
             <Flex>
-              <img style={{ justifySelf: 'center' }} width="320" src={item.image} alt={`${item.title} by ${item.artist}`} />
+              <img style={{ justifySelf: 'center' }} width="320" src={album.image} alt={`${album.title} by ${album.artist}`} />
               <div>
-                <Text variant="h1">{item.title}</Text>
-                <Text variant="h2">by {item.artist}</Text>
-                <Text variant="h6">{item.genres.join(', ')}</Text>
-                <Text variant="p1">{item.story}</Text>
-                <Button>Back this record</Button>
+                <Text variant="h1">{album.title}</Text>
+                <Text variant="h2">by {album.artist}</Text>
+                <Text variant="h6">{album.genres.join(', ')}</Text>
+                <Text variant="p1">{album.story}</Text>
+                <Button>Like {album.title}</Button>
+                <Button>Login to share your story</Button>
               </div>
             </Flex>
           )

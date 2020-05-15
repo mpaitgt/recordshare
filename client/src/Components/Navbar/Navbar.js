@@ -51,11 +51,11 @@ const Navbar = (props) => {
           <ITEM>Upload</ITEM>
         </Path>
         <Path to="/login">
-          <ITEM>Login / Signup</ITEM>
+          <ITEM>Login</ITEM>
         </Path>
-        {/* <Path to="/register">
-          <ITEM>Register</ITEM>
-        </Path> */}
+        <Path to="/signup">
+          <ITEM>Sign Up</ITEM>
+        </Path>
       </div>
     </NAV>
   )

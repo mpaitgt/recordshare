@@ -16,7 +16,7 @@
   --gray-3: #636363;
   --gray-4: #808080;
   --gray-5: #a0a0a0;
-  --gray-6: #DFDFDF;
+  --gray-6: rgb(238, 238, 238);
   --white: #f1f1f1;
   --whiter: #ffffff;
   --headerfont: 'Yanone Kaffeesatz', sans-serif;

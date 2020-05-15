@@ -23,73 +23,43 @@ class NewAlbum extends React.Component {
     }
   }
 
+  genres = ['Classic Rock', 'Indie', 'Hip Hop', 'Folk', 'Alternative', 'Electronic', 'Pop', 'Punk', 'Classical'];
+
+  renderGenres = this.genres.map(genre => {
+    return (
+      <div>
+        <input type="checkbox" name={genre.toLowerCase()} value={genre} />
+        <Text variant="label" for={genre.toLowerCase()}> {genre}</Text>
+      </div>
+    )
+  })
+
   render() {
     const { title, artist, image, story, genres } = this.state;
 
     return (
       <Card>
         <div>
-          <input type="file" />
+          <Input type="file" />
         </div>
         <div>
           <Text variant="label">Artist</Text>
-          <Input />
+          <Input type="text" />
         </div>
         <div>
           <Text variant="label">Album</Text>
-          <Input />
+          <Input type="text" />
         </div>
         <div>
           <Text variant="label">Your story</Text>
-          <Input />
+          <Input type="text" />
         </div>
         <div>
           <Text variant="label">Select genres:</Text>
           <Grid>
-            <div>
-              <input type="checkbox" name="classic-rock" value="Classic Rock" />
-              <Text variant="label" for="classic-rock"> Classic Rock</Text>
-            </div>
-            <div>
-              <input type="checkbox" name="electronic" value="Electronic" />
-              <Text variant="label" for="electronic"> Electronic</Text>
-            </div>
-            <div>
-              <input type="checkbox" name="pop" value="Pop" />
-              <Text variant="label" for="pop"> Pop</Text>
-            </div>
-            <div>
-              <input type="checkbox" name="jazz" value="Jazz" />
-              <Text variant="label" for="jazz"> Jazz</Text>
-            </div>
-            <div>
-              <input type="checkbox" name="alternative" value="Alternative" />
-              <Text variant="label" for="alternative"> Alternative</Text>
-            </div>
-            <div>
-              <input type="checkbox" name="folk" value="Folk" />
-              <Text variant="label" for="folk"> Folk</Text>
-            </div>
-            <div>
-              <input type="checkbox" name="indie" value="Indie" />
-              <Text variant="label" for="indie"> Indie</Text>
-            </div>
-            <div>
-              <input type="checkbox" name="punk" value="Punk" />
-              <Text variant="label" for="punk"> Punk</Text>
-            </div>
-            <div>
-              <input type="checkbox" name="classical" value="Classical" />
-              <Text variant="label" for="classical"> Classical</Text>
-            </div>
+            {this.renderGenres}
           </Grid>
-
-
         </div>
-
-
-
-
         <Button>Submit</Button>
       </Card>
     )
