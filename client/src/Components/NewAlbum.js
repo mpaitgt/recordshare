@@ -8,6 +8,8 @@ import styled from '@emotion/styled';
 const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 8px;
+  margin: 20px 0px;
 `;
 
 class NewAlbum extends React.Component {
@@ -20,7 +22,6 @@ class NewAlbum extends React.Component {
       story: '',
       genres: []
     }
-    this.handleChange = this.handleChange.bind(this);
   }
 
   genres = ['Classic Rock', 'Indie', 'Hip Hop', 'Folk', 'Alternative', 'Electronic', 'Pop', 'Punk', 'Classical'];
@@ -28,22 +29,31 @@ class NewAlbum extends React.Component {
   renderGenres = this.genres.map(genre => {
     return (
       <div>
-        <input type="checkbox" name={genre.toLowerCase().split(' ').join('-')} value={genre} />
-        <Text variant="label" for={genre.toLowerCase().split(' ').join('-')}> {genre}</Text>
+        <input onChange={e => this.handleGenres(e)} type='checkbox' name='genres' value={genre} />
+        <Text variant='label' for='genres'> {genre}</Text>
       </div>
     )
   })
 
+  handleGenres = e => {
+    const { genres } = this.state;
+    const { checked, name, value } = e.target;
+    if (checked) {
+      this.setState({ [name]: [...this.state.genres, value] });
+    }
+    if (!checked) {
+      const newGenres = genres.filter(item => item !== value);
+      this.setState({ [name]: newGenres })
+    }
+  }
+
   handleChange = e => {
     const { name, value } = e.target;
-    this.setState({
-      [name]: value
-    })
+    this.setState({ [name]: value });
   }
 
   render() {
-    const { album, artist, image, story, genres } = this.state;
-
+    const { album, artist, image, story } = this.state;
     return (
       <Card>
         <div>

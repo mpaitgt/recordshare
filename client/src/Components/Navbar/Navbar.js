@@ -1,8 +1,5 @@
-import React, { useState, useContext } from 'react';
+import React from 'react';
 import Path from '../Elements/Path';
-import SearchBar from '../Search/SearchBar';
-import spotify from '../../Utils/spotify';
-import { PayloadContext } from '../Providers/PayloadProvider';
 import styled from '@emotion/styled';
 
 const NAV = styled.nav`

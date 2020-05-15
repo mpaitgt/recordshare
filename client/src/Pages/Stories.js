@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import Text from '../Components/Elements/Text';
 import Container from '../Components/Elements/Container';
 import Button from '../Components/Elements/Button';
