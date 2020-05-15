@@ -22,7 +22,11 @@ function ArtistDetail(props) {
         data.albums.map(album => {
           return (
             <Flex>
-              <img style={{ justifySelf: 'center' }} width="320" src={album.image} alt={`${album.title} by ${album.artist}`} />
+              <img 
+                style={{ justifySelf: 'center' }} 
+                width="320" src={album.image} 
+                alt={`${album.title} by ${album.artist}`} 
+              />
               <div>
                 <Text variant="h1">{album.title}</Text>
                 <Text variant="h2">by {album.artist}</Text>

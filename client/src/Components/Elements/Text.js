@@ -30,6 +30,11 @@ let font = {
     fontFamily: 'var(--subfont)',
     margin: '20px 0px'
   },
+  p2: {
+    fontSize: '13px',
+    fontFamily: 'var(--subfont)',
+    margin: '10px 0px'
+  },
   label: {
     fontSize: '16px',
     margin: '10px 0px'
@@ -54,6 +59,8 @@ function Text({ variant, children, htmlFor }) {
       return <label style={Object.assign({}, font.standard, font.label)} htmlFor={htmlFor}>{children}</label>
     case 'p1':
       return <p style={Object.assign({}, font.standard, font.p1)}>{children}</p>;
+    case 'p2':
+      return <p style={Object.assign({}, font.standard, font.p2)}>{children}</p>;
     default: 
       return <p>{children}</p>;
   }
