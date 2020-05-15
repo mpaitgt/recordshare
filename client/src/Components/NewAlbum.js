@@ -53,8 +53,9 @@ class NewAlbum extends React.Component {
   }
 
   handleChange = e => {
-    const { name, value } = e.target;
-    this.setState({ [name]: value });
+    const { type, name, value } = e.target;
+    if (type === 'text') this.setState({ [name]: value });
+    if (type === 'file') this.setState({ [name]: URL.createObjectURL(e.target.files[0]) })
   }
 
   render() {
@@ -74,6 +75,7 @@ class NewAlbum extends React.Component {
         return (
           <AlbumImage 
             image={image}
+            handleChange={this.handleChange}
             nextStep={this.nextStep}
             prevStep={this.prevStep}
           />

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Input from '../Elements/Input';
 import Text from '../Elements/Text';
 import Card from '../Elements/Card';
@@ -11,13 +11,7 @@ const Image = styled.img`
   height: 250px;
 `;
 
-function AlbumImage(props) {
-  const [image, setImage] = useState('');
-  
-  const handleChange = e => {
-    setImage(URL.createObjectURL(e.target.files[0]));
-  }
-
+function AlbumImage({ image, handleChange, nextStep, prevStep }) {
   return (
     <Card>
       <Text variant="h2">Album image</Text>
@@ -25,13 +19,13 @@ function AlbumImage(props) {
       <div>
         <Input 
           type="file" 
-          name="file" 
+          name="image" 
           accept="image/png, image/jpeg"
           onChange={handleChange}
         />
       </div>
-      <Button onClick={props.nextStep}>Continue</Button>
-      <Button onClick={props.prevStep}>Back</Button>
+      <Button onClick={nextStep}>Continue</Button>
+      <Button onClick={prevStep}>Back</Button>
     </Card>
   )
 }
