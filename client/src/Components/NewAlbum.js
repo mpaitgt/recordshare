@@ -1,21 +1,14 @@
 import React from 'react';
-import Card from '../Components/Elements/Card';
-import Input from '../Components/Elements/Input';
-import Button from '../Components/Elements/Button';
+import ArtistAlbum from '../Components/NewAlbum/ArtistAlbum';
+import AlbumImage from '../Components/NewAlbum/AlbumImage';
+import AlbumStory from '../Components/NewAlbum/AlbumStory';
 import Text from '../Components/Elements/Text';
-import styled from '@emotion/styled';
-
-const Grid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 8px;
-  margin: 20px 0px;
-`;
 
 class NewAlbum extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      step: 1,
       album: '',
       artist: '',
       image: '',
@@ -24,11 +17,23 @@ class NewAlbum extends React.Component {
     }
   }
 
-  genres = ['Classic Rock', 'Indie', 'Hip Hop', 'Folk', 'Alternative', 'Electronic', 'Pop', 'Punk', 'Classical'];
+  // proceed to next step
+  nextStep = () => {
+    const { step } = this.state;
+    this.setState({ step: step + 1 })
+  }
 
-  renderGenres = this.genres.map(genre => {
+  // go back to previous step
+  prevStep = () => {
+    const { step } = this.state;
+    this.setState({ step: step - 1 })
+  }  
+
+  genres = ['Rock', 'Indie', 'Hip Hop', 'Folk', 'Alternative', 'Electronic', 'Pop', 'Punk', 'Classical'];
+
+  renderGenres = this.genres.map((genre, i) => {
     return (
-      <div>
+      <div key={i}>
         <input onChange={e => this.handleGenres(e)} type='checkbox' name='genres' value={genre} />
         <Text variant='label' for='genres'> {genre}</Text>
       </div>
@@ -39,7 +44,7 @@ class NewAlbum extends React.Component {
     const { genres } = this.state;
     const { checked, name, value } = e.target;
     if (checked) {
-      this.setState({ [name]: [...this.state.genres, value] });
+      this.setState({ [name]: [...genres, value] });
     }
     if (!checked) {
       const newGenres = genres.filter(item => item !== value);
@@ -53,33 +58,44 @@ class NewAlbum extends React.Component {
   }
 
   render() {
-    const { album, artist, image, story } = this.state;
-    return (
-      <Card>
-        <div>
-          <Input type="file" />
-        </div>
-        <div>
-          <Text variant="label">Artist</Text>
-          <Input type="text" name="artist" value={artist} onChange={this.handleChange} />
-        </div>
-        <div>
-          <Text variant="label">Album</Text>
-          <Input type="text" name="album" value={album} onChange={this.handleChange} />
-        </div>
-        <div>
-          <Text variant="label">Your story</Text>
-          <Input type="text" name="story" value={story} onChange={this.handleChange} />
-        </div>
-        <div>
-          <Text variant="label">Select genres:</Text>
-          <Grid>
-            {this.renderGenres}
-          </Grid>
-        </div>
-        <Button>Submit</Button>
-      </Card>
-    )
+    const { step, album, artist, image, story } = this.state;
+    switch(step) {
+      case 1:
+        return (
+          <ArtistAlbum 
+            album={album} 
+            artist={artist} 
+            handleChange={this.handleChange} 
+            renderGenres={this.renderGenres} 
+            nextStep={this.nextStep}
+          />
+        )
+      case 2:
+        return (
+          <AlbumImage 
+            image={image}
+            nextStep={this.nextStep}
+            prevStep={this.prevStep}
+          />
+        )
+      case 3:
+        return (
+          <AlbumStory 
+            story={story}
+            prevStep={this.prevStep}
+          />
+        )
+      default:
+        return (
+          <ArtistAlbum 
+            album={album} 
+            artist={artist} 
+            handleChange={this.handleChange} 
+            renderGenres={this.renderGenres} 
+            nextStep={this.nextStep}
+          />
+        )
+    }
   }
 };
 

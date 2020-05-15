@@ -28,8 +28,7 @@ function ArtistDetail(props) {
                 <Text variant="h2">by {album.artist}</Text>
                 <Text variant="h6">{album.genres.join(', ')}</Text>
                 <Text variant="p1">{album.story}</Text>
-                <Button>Like {album.title}</Button>
-                <Button>Login to share your story</Button>
+                <Button>Share your story</Button>
               </div>
             </Flex>
           )
