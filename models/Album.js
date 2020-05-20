@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const AlbumSchema = new Schema({
-  title: {
+  album: {
     type: String,
     required: true,
   },
@@ -22,15 +22,15 @@ const AlbumSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  genres: [{
+  genres: {
     type: Array,
     required: true
-  }],
+  },
   comments: [{
     type: Schema.Types.ObjectId,
     ref: "Comment"
   }],
-  backs: {
+  likes: {
     type: Number,
     default: 0
   }

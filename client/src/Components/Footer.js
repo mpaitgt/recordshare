@@ -1,6 +1,5 @@
 import React from 'react';
 import Text from '../Components/Elements/Text';
-import Container from '../Components/Elements/Container';
 import styled from '@emotion/styled';
 
 const Foot = styled.div`
@@ -16,10 +15,12 @@ const Foot = styled.div`
 function Footer() {
   return (
     <Foot>
-      <Text variant="p2">Terms of Use</Text>
-      <Text variant="p2">Privacy Policy</Text>
-      <Text variant="p2">Copyright</Text>
-      <Text variant="p2">Help</Text>
+      <div style={{display: 'flex', justifyContent: 'space-between'}}>
+        <Text variant="p2">Terms of Use</Text>
+        <Text variant="p2">Privacy Policy</Text>
+        <Text variant="p2">Copyright</Text>
+        <Text variant="p2">Help</Text>
+      </div>
       <Text variant="p2">Created by Matt Pignatore</Text>
     </Foot>
   )

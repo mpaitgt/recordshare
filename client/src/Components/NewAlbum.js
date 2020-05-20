@@ -2,7 +2,9 @@ import React from 'react';
 import ArtistAlbum from '../Components/NewAlbum/ArtistAlbum';
 import AlbumImage from '../Components/NewAlbum/AlbumImage';
 import AlbumStory from '../Components/NewAlbum/AlbumStory';
+import ConfirmSubmission from '../Components/NewAlbum/ConfirmSubmission';
 import Text from '../Components/Elements/Text';
+import db from '../Utils/db';
 
 class NewAlbum extends React.Component {
   constructor(props) {
@@ -58,6 +60,18 @@ class NewAlbum extends React.Component {
     if (type === 'file') this.setState({ [name]: URL.createObjectURL(e.target.files[0]) })
   }
 
+  onSubmit = e => {
+    e.preventDefault();
+    const { artist, album, image, story, genres } = this.state;
+    db.addAlbum({
+      artist: artist,
+      album: album,
+      image: image,
+      story: story, 
+      genres: genres
+    });
+  }
+
   render() {
     const { step, album, artist, image, story } = this.state;
     switch(step) {
@@ -84,9 +98,18 @@ class NewAlbum extends React.Component {
         return (
           <AlbumStory 
             story={story}
+            handleChange={this.handleChange}
+            nextStep={this.nextStep}
             prevStep={this.prevStep}
           />
         )
+      case 4: 
+      return (
+        <ConfirmSubmission 
+          state={this.state}
+          onSubmit={this.onSubmit}
+        />
+      )
       default:
         return (
           <ArtistAlbum 

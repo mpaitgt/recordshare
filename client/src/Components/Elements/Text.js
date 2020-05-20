@@ -33,7 +33,7 @@ let font = {
   p2: {
     fontSize: '13px',
     fontFamily: 'var(--subfont)',
-    margin: '10px 0px'
+    margin: '10px'
   },
   label: {
     fontSize: '16px',
