@@ -17,20 +17,14 @@ function ArtistAlbum(props) {
   return (
     <Card>
       <Text variant="h2">Share a new album</Text>
-      <div>
-        <Text variant="label">Artist</Text>
-        <Input type="text" name="artist" value={props.artist} onChange={props.handleChange} />
-      </div>
-      <div>
-        <Text variant="label">Album</Text>
-        <Input type="text" name="album" value={props.album} onChange={props.handleChange} />
-      </div>
-      <div>
-        <Text variant="label">Select genres:</Text>
-        <Grid>
-          {props.renderGenres}
-        </Grid>
-      </div>
+      <Text variant="label">Artist</Text>
+      <Input type="text" name="artist" value={props.artist} onChange={props.handleChange} />
+      <Text variant="label">Album</Text>
+      <Input type="text" name="album" value={props.album} onChange={props.handleChange} />
+      <Text variant="label">Select genres:</Text>
+      <Grid>
+        {props.renderGenres}
+      </Grid>
       <Button onClick={props.nextStep}>Continue</Button>
     </Card>
   )

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {createRef} from 'react';
 import ArtistAlbum from '../Components/NewAlbum/ArtistAlbum';
 import AlbumImage from '../Components/NewAlbum/AlbumImage';
 import AlbumStory from '../Components/NewAlbum/AlbumStory';
@@ -13,10 +13,11 @@ class NewAlbum extends React.Component {
       step: 1,
       album: '',
       artist: '',
-      image: '',
+      image: null,
       story: '',
       genres: []
     }
+    this.formRef = createRef();
   }
 
   // proceed to next step
@@ -42,38 +43,9 @@ class NewAlbum extends React.Component {
     )
   })
 
-  handleGenres = e => {
-    const { genres } = this.state;
-    const { checked, name, value } = e.target;
-    if (checked) {
-      this.setState({ [name]: [...genres, value] });
-    }
-    if (!checked) {
-      const newGenres = genres.filter(item => item !== value);
-      this.setState({ [name]: newGenres })
-    }
-  }
-
-  handleChange = e => {
-    const { type, name, value } = e.target;
-    if (type === 'text') this.setState({ [name]: value });
-    if (type === 'file') this.setState({ [name]: URL.createObjectURL(e.target.files[0]) })
-  }
-
-  onSubmit = e => {
-    e.preventDefault();
-    const { artist, album, image, story, genres } = this.state;
-    db.addAlbum({
-      artist: artist,
-      album: album,
-      image: image,
-      story: story, 
-      genres: genres
-    });
-  }
-
-  render() {
+  displayForm = () => {
     const { step, album, artist, image, story } = this.state;
+
     switch(step) {
       case 1:
         return (
@@ -92,6 +64,7 @@ class NewAlbum extends React.Component {
             handleChange={this.handleChange}
             nextStep={this.nextStep}
             prevStep={this.prevStep}
+            setState={this.setState}
           />
         )
       case 3:
@@ -120,7 +93,46 @@ class NewAlbum extends React.Component {
             nextStep={this.nextStep}
           />
         )
+      }
+  }
+
+  handleGenres = e => {
+    const { genres } = this.state;
+    const { checked, name, value } = e.target;
+    if (checked) {
+      this.setState({ [name]: [...genres, value] });
     }
+    if (!checked) {
+      const newGenres = genres.filter(item => item !== value);
+      this.setState({ [name]: newGenres })
+    }
+  }
+
+  handleChange = e => {
+    const { type, name, value, files } = e.target;
+    // for type text
+    if (type === 'text') this.setState({ [name]: value });
+    // for type file
+    if (type === 'file') this.setState({ [name]: files[0] });
+  }
+
+  onSubmit = e => {
+    e.preventDefault();
+    const { artist, album, image, story, genres } = this.state;
+    let record = {
+      artist: artist,
+      title: album,
+      image: image,
+      story: story, 
+      genres: genres
+    };
+    db.addAlbum(record);
+  }
+
+  render() {
+    return (
+      this.displayForm()
+    )
   }
 };
 

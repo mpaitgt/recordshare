@@ -5,12 +5,12 @@ const express = require('express');
 const passport = require('passport');
 const path = require('path');
 const mongo = require('./config/connection');
+const {cloudinary, upload} = require('./config/cloudinary');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const dbRouter = require('./routes/db-routes');
 const spotifyRouter = require('./routes/spotify-routes');
 const PORT = process.env.PORT || 3001;
-
 const app = express();
 
 app.use(cors());
@@ -21,6 +21,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// import routes
 app.use('/api', dbRouter);
 app.use('/api', spotifyRouter);
 

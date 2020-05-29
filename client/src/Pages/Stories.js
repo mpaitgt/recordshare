@@ -21,7 +21,6 @@ function Stories(props) {
   useEffect(() => {
     db.getAlbums()
       .then(res => {
-        console.log(res.data);
         setAlbums([...albums, ...res.data]);
         setLoaded(true);
       })

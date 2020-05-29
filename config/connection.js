@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
-let pw = process.env.REACT_APP_MONGO_PW;
+
+const pw = process.env.REACT_APP_MONGO_PW;
 const uri = `mongodb+srv://mpaitgt:${pw}@cluster0-sx2g9.mongodb.net/recordshare?retryWrites=true&w=majority`;
 const MONGODB_URI = process.env.MONGODB_URI || uri;
 

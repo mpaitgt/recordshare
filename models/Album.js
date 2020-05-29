@@ -10,10 +10,10 @@ const AlbumSchema = new Schema({
     type: String,
     required: true
   },
-  image: {
+  image: [{
     type: String,
     required: true
-  },
+  }],
   story: {
     type: String,
     required: true

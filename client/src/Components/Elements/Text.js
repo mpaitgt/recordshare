@@ -5,10 +5,9 @@ let font = {
     fontFamily: 'var(--headerfont)',
     color: 'var(--gray-0)',
     letterSpacing: '0px',
-    margin: '10px 0px'
   },
   h1: {
-    fontSize: '42px',
+    fontSize: '62px',
   },
   h2: {
     fontSize: '32px',

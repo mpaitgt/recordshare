@@ -5,25 +5,34 @@ import Card from '../Elements/Card';
 import Button from '../Elements/Button';
 import placeholder from '../../Images/placeholder.jpg';
 import styled from '@emotion/styled';
-
+  
 const Image = styled.img`
   width: 250px;
   height: 250px;
 `;
 
 function AlbumImage({ image, handleChange, nextStep, prevStep }) {
+
+  const onSubmit = e => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('image', image);
+    fetch('/api/upload', { method: 'POST', body: formData })
+      .then(res => res.json())
+      .then(data => console.log(data))
+      .catch(err => console.error(err));
+  }
+
   return (
     <Card>
       <Text variant="h2">Album image</Text>
-      <Image src={!image ? placeholder : image} />
-      <div>
-        <Input 
-          type="file" 
-          name="image" 
-          accept="image/png, image/jpeg"
-          onChange={handleChange}
-        />
-      </div>
+      <Image src={!image ? placeholder : URL.createObjectURL(image)} />
+
+      <form onSubmit={onSubmit} encType="multipart/form-data">
+        <Input type="file" name="image" onChange={handleChange} />
+        <button type="submit">Upload</button>
+      </form>
+
       <Button onClick={nextStep}>Continue</Button>
       <Button onClick={prevStep}>Back</Button>
     </Card>

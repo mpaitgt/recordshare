@@ -9,12 +9,12 @@ function ConfirmSubmission({state, onSubmit}) {
 
   return (
     <Card>
-      <img src={image} width="300" height="300" />
+      <img src={URL.createObjectURL(image)} alt={`${album} by ${artist}`} width="300" height="300" />
       <Text variant="h1">{album}</Text>
       <Text variant="h2">by {artist}</Text>
       <Text variant="label">{genres.join(', ')}</Text>
       <Text variant="p1">{story}</Text>
-      <Button onClick={onSubmit}>Submit</Button>
+      <Button type="submit">Submit</Button>
     </Card>
   )
 }
