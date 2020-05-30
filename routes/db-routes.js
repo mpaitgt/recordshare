@@ -2,11 +2,8 @@ const express = require('express');
 const router = express.Router();
 const cloudinary = require('../config/cloudinary');
 const db = require('../models');
-const dotenv = require('dotenv').config();
 const multer  = require('multer')
 const upload = multer({ dest: './uploads/' });
-// const storage = multer.memoryStorage(); 
-// const upload = multer({ storage: storage });
 
 // get albums for display
 router.get('/get-albums', function(req, res) {
@@ -14,27 +11,29 @@ router.get('/get-albums', function(req, res) {
     .then(data => res.send(data));
 })
 
-// image upload
-router.post('/upload', upload.single('image'), function(req, res) {
-  console.log(req.file);
-  cloudinary.uploader.upload(req.file.path, function(err, result) {
-    if (err) throw err;
-    console.log(result);
-  });
-  res.send('form submitted successfully!');
-})
-
 // add an album
-router.post('/user/add-album', upload.single('image'), function(req, res) {
-  console.log(`${req.body}\n\n\n`);
-  
-  if (req.file) {
-    console.log(req.file);
-  } else {
-    console.log('there was a problem uploading your file.');
+router.post('/user/add-album', upload.single('image'), async function(req, res) {
+  let dataRetrieval = cloudinary.uploader.upload(req.file.path, function(err, result) {
+    if (err) throw err;
+    return result;
+  })
+  let image = await dataRetrieval
+    .then(data => {
+      return {
+        url: data.url,
+        id: data.public_id
+      }
+    })
+  let record = {
+    artist: req.body.artist,
+    title: req.body.title,
+    story: req.body.story,
+    genres: req.body.genres.split(','),
+    image: image
   }
-  // db.Album.create(req.body) 
-    // .then(data => console.log(data));
+  db.Album.create(record) 
+    .then(data => console.log(data))
+    .catch(err => console.log(err))
 })
 
 module.exports = router;

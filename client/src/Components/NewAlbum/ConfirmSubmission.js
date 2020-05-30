@@ -5,12 +5,12 @@ import Button from '../Elements/Button';
 
 function ConfirmSubmission({state, onSubmit}) {
 
-  const { artist, album, image, story, genres } = state;
+  const { artist, title, image, story, genres } = state;
 
   return (
     <Card>
-      <img src={URL.createObjectURL(image)} alt={`${album} by ${artist}`} width="300" height="300" />
-      <Text variant="h1">{album}</Text>
+      <img src={URL.createObjectURL(image)} alt={`${title} by ${artist}`} width="300" height="300" />
+      <Text variant="h1">{title}</Text>
       <Text variant="h2">by {artist}</Text>
       <Text variant="label">{genres.join(', ')}</Text>
       <Text variant="p1">{story}</Text>

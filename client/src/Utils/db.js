@@ -5,7 +5,11 @@ export default {
     return axios.post('/api/upload', img);
   },
   addAlbum: function(obj) {
-    return axios.post(`/api/user/add-album`, obj);
+    let formData = new FormData();
+    for (let key in obj) {
+      formData.append(key, obj[key]);
+    }
+    return fetch(`/api/user/add-album`, { method: 'POST', body: formData });
   },
   getAlbums: function() {
     return axios.get(`/api/get-albums`);

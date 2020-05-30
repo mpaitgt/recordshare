@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const AlbumSchema = new Schema({
-  album: {
+  title: {
     type: String,
     required: true,
   },
@@ -10,10 +10,10 @@ const AlbumSchema = new Schema({
     type: String,
     required: true
   },
-  image: [{
-    type: String,
+  image: {
+    type: Object,
     required: true
-  }],
+  },
   story: {
     type: String,
     required: true

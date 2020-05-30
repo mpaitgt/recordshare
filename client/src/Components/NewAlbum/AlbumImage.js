@@ -28,10 +28,10 @@ function AlbumImage({ image, handleChange, nextStep, prevStep }) {
       <Text variant="h2">Album image</Text>
       <Image src={!image ? placeholder : URL.createObjectURL(image)} />
 
-      <form onSubmit={onSubmit} encType="multipart/form-data">
+      {/* <form onSubmit={onSubmit} encType="multipart/form-data"> */}
         <Input type="file" name="image" onChange={handleChange} />
-        <button type="submit">Upload</button>
-      </form>
+        {/* <button type="submit">Upload</button> */}
+      {/* </form> */}
 
       <Button onClick={nextStep}>Continue</Button>
       <Button onClick={prevStep}>Back</Button>

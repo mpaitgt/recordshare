@@ -11,7 +11,7 @@ class NewAlbum extends React.Component {
     super(props);
     this.state = {
       step: 1,
-      album: '',
+      title: '',
       artist: '',
       image: null,
       story: '',
@@ -44,13 +44,13 @@ class NewAlbum extends React.Component {
   })
 
   displayForm = () => {
-    const { step, album, artist, image, story } = this.state;
+    const { step, title, artist, image, story } = this.state;
 
     switch(step) {
       case 1:
         return (
           <ArtistAlbum 
-            album={album} 
+            title={title} 
             artist={artist} 
             handleChange={this.handleChange} 
             renderGenres={this.renderGenres} 
@@ -86,7 +86,7 @@ class NewAlbum extends React.Component {
       default:
         return (
           <ArtistAlbum 
-            album={album} 
+            title={title} 
             artist={artist} 
             handleChange={this.handleChange} 
             renderGenres={this.renderGenres} 
@@ -118,10 +118,10 @@ class NewAlbum extends React.Component {
 
   onSubmit = e => {
     e.preventDefault();
-    const { artist, album, image, story, genres } = this.state;
+    const { artist, title, image, story, genres } = this.state;
     let record = {
       artist: artist,
-      title: album,
+      title: title,
       image: image,
       story: story, 
       genres: genres
@@ -131,7 +131,9 @@ class NewAlbum extends React.Component {
 
   render() {
     return (
-      this.displayForm()
+      <form onSubmit={this.onSubmit} encType="multipart/form-data">
+        {this.displayForm()}
+      </form>
     )
   }
 };

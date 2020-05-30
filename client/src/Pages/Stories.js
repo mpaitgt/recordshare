@@ -31,7 +31,7 @@ function Stories(props) {
         <Flex>
           <img 
             style={{ justifySelf: 'center' }} 
-            width="320" src={album.image} 
+            width="320" src={album.image.url || album.image[0].url} 
             alt={`${album.title} by ${album.artist}`} 
           />
           <div>
