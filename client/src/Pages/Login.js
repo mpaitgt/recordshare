@@ -25,6 +25,7 @@ const Login = () => {
 
   return (
     <Container>
+      <Text variant="h1">Login</Text>
       <FORMWRAPPER>
         <Card>
           <Text variant="h3">Login</Text>

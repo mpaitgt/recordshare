@@ -11,7 +11,7 @@ const AlbumSchema = new Schema({
     required: true
   },
   image: {
-    type: String,
+    type: Object,
     required: true
   },
   story: {
@@ -22,15 +22,15 @@ const AlbumSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  genres: [{
+  genres: {
     type: Array,
     required: true
-  }],
+  },
   comments: [{
     type: Schema.Types.ObjectId,
     ref: "Comment"
   }],
-  backs: {
+  likes: {
     type: Number,
     default: 0
   }
