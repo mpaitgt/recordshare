@@ -6,6 +6,7 @@ import Record from '../Components/Loader';
 import data from '../Data/data.json';
 import styled from '@emotion/styled';
 import db from '../Utils/db';
+import spotify from '../Utils/spotify';
 
 const Flex = styled.div`
   display: grid;
@@ -27,20 +28,32 @@ function Stories(props) {
       })
   }, []);
 
+  const albumDetails = (search, artist) => {
+    spotify.getAlbums(search)
+      .then(res => {
+        let album = res.data.filter(item => item.artists[0].name === artist && item.type === 'album');
+        console.log(album);
+        spotify.getAlbumTracks(album[0].id)
+          .then(tracks => console.log(tracks.data))
+      })
+      .catch(err => console.log(err))
+  }
+
   const displayAlbums = albums.map(album => {
+      const { image, title, artist, genres, story } = album;
       return (
         <Flex>
           <img 
             style={{ justifySelf: 'center', margin: '20px' }} 
-            width="260" src={album.image.url || album.image[0].url} 
-            alt={`${album.title} by ${album.artist}`} 
+            width="260" src={image.url} 
+            alt={`${album.title} by ${artist}`} 
           />
           <div>
-            <Text variant="h1">{album.title}</Text>
-            <Text variant="h2">by {album.artist}</Text>
-            <Text variant="h4">{album.genres.join(', ')}</Text>
-            <Text variant="p1">{album.story}</Text>
-            <Button onClick={() => console.log(albums)}>Details</Button>
+            <Text variant="h1">{title}</Text>
+            <Text variant="h2">by {artist}</Text>
+            <Text variant="h4">{genres.join(', ')}</Text>
+            <Text variant="p1">{story}</Text>
+            <Button onClick={() => albumDetails(title, artist)}>Details</Button>
             <Button onClick={() => console.log(albums)}>Share your story</Button>
           </div>
         </Flex>
