@@ -1,39 +1,37 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import {css} from '@emotion/core';
 import RecordPlayer from '../Images/record-player.jpg';
+import Loader from '../Components/Loader';
+import Text from '../Components/Elements/Text';
+import Container from '../Components/Elements/Container';
 
-const ImageContainer = styled.div`
-  display: grid;
-  grid-template-columns: 100%;
-  grid-gap: 10px;
-  align-items: center;
-  justify-items: center;
-  margin: 20px auto;
-`;
-
-const Image = styled.img`
-  width: 100%;
-  margin: 0 auto;
-  align-self: center;
-  justify-self: center;
-  &:nth-child(1) {
-    // transform: translateX(50px);
-    width: 100%;
-  }
-  &:nth-child(2) {
-    // z-index: 999;
-  }
-  &:nth-child(3) {
-    transform: translateX(-50px);
-  }
+const Features = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  // &:nth-child(1) {
+  //   align-item: flex-start;
+  // }
+  // &:nth-child(2) {
+  //   align-item: center;
+  // }
+  // &:nth-child(3) {
+  //   align-item: flex-end;
+  // }
 `;
 
 function Home() {
 
   return (
-    <ImageContainer>
-      <Image src={RecordPlayer} alt="Elliott Smith" />
-    </ImageContainer>
+    <Container>
+      <Text variant="headline">Welcome to Recordshare.</Text>
+      <Features>
+        <Text className={css`align-self: flex-start`} variant="h1">Find</Text>
+        <Text className={css`align-self: center`} variant="h1">Share</Text>
+        <Text className={css`align-self: flex-end`} variant="h1">Recommend</Text>
+      </Features>
+    </Container>
   )
 }
 

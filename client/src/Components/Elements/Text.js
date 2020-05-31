@@ -5,6 +5,10 @@ let font = {
     fontFamily: 'var(--headerfont)',
     color: 'var(--gray-0)',
     letterSpacing: '0px',
+    margin: '10px 0px'
+  },
+  headline: {
+    fontSize: '86px'
   },
   h1: {
     fontSize: '62px',
@@ -26,22 +30,21 @@ let font = {
   },
   p1: {
     fontSize: '16px',
-    fontFamily: 'var(--subfont)',
-    margin: '20px 0px'
+    fontFamily: 'var(--subfont)'
   },
   p2: {
     fontSize: '13px',
-    fontFamily: 'var(--subfont)',
-    margin: '10px'
+    fontFamily: 'var(--subfont)'
   },
   label: {
-    fontSize: '16px',
-    margin: '10px 0px'
+    fontSize: '16px'
   }
 }
 
 function Text({ variant, children, htmlFor }) {
   switch(variant) {
+    case 'headline':
+      return <h1 style={Object.assign({}, font.standard, font.headline)}>{children}</h1>;
     case 'h1':
       return <h1 style={Object.assign({}, font.standard, font.h1)}>{children}</h1>;
     case 'h2':

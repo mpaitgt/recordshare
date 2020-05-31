@@ -41,12 +41,15 @@ const Navbar = (props) => {
         <H1>Recordshare</H1>
       </Path>
       <div>
+        <Path to="/about">
+          <ITEM>About</ITEM>
+        </Path>
         <Path to="/stories">
-          <ITEM>Stories</ITEM>
+          <ITEM>Recently Shared</ITEM>
         </Path>
-        <Path to="/upload">
+        {/* <Path to="/upload">
           <ITEM>Upload</ITEM>
-        </Path>
+        </Path> */}
         <Path to="/login">
           <ITEM>Login</ITEM>
         </Path>

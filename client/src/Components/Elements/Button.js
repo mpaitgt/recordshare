@@ -10,12 +10,12 @@ const BUTTON = styled.button`
   border-radius: 5px;
   padding: 6px 12px;
   margin: 12px 20px 12px 0px;
-  transition: all 0.25s;
+  transition: all 0.1s;
   -webkit-box-shadow: 0px 11px 20px -24px rgba(0,0,0,0.75);
   -moz-box-shadow: 0px 11px 20px -24px rgba(0,0,0,0.75);
   box-shadow: 0px 11px 20px -24px rgba(0,0,0,0.75);
   &:hover {
-    transition: all 0.25s;
+    transition: all 0.1s;
     cursor: pointer;
     transform: scale(1.05);
     -webkit-box-shadow: 0px 11px 20px -16px rgba(0,0,0,0.75);
