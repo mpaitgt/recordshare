@@ -13,7 +13,7 @@ const Flex = styled.div`
   grid-gap: 20px;
 `;
 
-function AlbumDisplay({ album }) {
+function AlbumDisplay({ display, album }) {
   let [artistAlbum, setArtistAlbum] = useContext(PayloadContext);
   const { image, title, artist, genres, story } = album;
 
