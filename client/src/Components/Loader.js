@@ -7,7 +7,7 @@ const spin = keyframes`
   100% { transform: rotate(360deg) };
 `;
 
-const Record = styled.div`
+const RecordLoader = styled.div`
   animation: ${spin} 2s linear infinite;
   position: relative;
   margin: 19px auto;
@@ -36,7 +36,7 @@ const Record = styled.div`
 
 function Loader() {
   return (
-    <Record />
+    <RecordLoader />
   )
 }
 
