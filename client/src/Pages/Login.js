@@ -6,6 +6,7 @@ import Button from '../Components/Elements/Button';
 import Text from '../Components/Elements/Text';
 import Container from '../Components/Elements/Container';
 import styled from '@emotion/styled';
+import userauth from '../Utils/userauth';
 
 const FORMWRAPPER = styled.div`
   width: auto;
@@ -47,6 +48,9 @@ const Login = () => {
                 />
                 <Button>Login</Button>
             </form>
+            <Text variant="p1">OR</Text>
+            <Button onClick={() => userauth.googleLogin()}>Login with Google</Button>
+            <Button>Login with Facebook</Button>
             <Text variant="p1">
               Forget your password? 
             </Text>
