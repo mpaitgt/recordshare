@@ -15,9 +15,9 @@ const mongo = require('./config/connection');
 const {cloudinary, upload} = require('./config/cloudinary');
 
 // route config
+const authRouter = require('./routes/auth-routes');
 const dbRouter = require('./routes/db-routes');
 const spotifyRouter = require('./routes/spotify-routes');
-const authRouter = require('./routes/passport-routes');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -33,6 +33,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // import routes
+app.use('/auth', authRouter);
 app.use('/api', dbRouter);
 app.use('/api', spotifyRouter);
 app.use('/auth', authRouter);
