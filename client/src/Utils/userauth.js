@@ -1,12 +1,19 @@
-import axios from 'axios';
-
 export default {
-  googleLogin: function() {
-    return fetch('/auth/google');
+  userLogin: function(obj) {
+    const config = {
+      headers: { 
+        'content-type': 'application/json; charset=utf-8', 
+        'access-control-allow-origin': '*', 
+        'accept': 'application/json' 
+      },
+      method: "POST",
+      body: JSON.stringify(obj)
+    }
+    return fetch('/auth/login', config);
   },
   userRegister: function(obj) {
     const config = {
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'content-type': 'application/json' },
       method: "POST",
       body: JSON.stringify(obj)
     }

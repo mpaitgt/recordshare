@@ -1,40 +1,43 @@
 const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
-const GoogleStrategy = require('passport-google-oauth2').Strategy;
-const dotenv = require('dotenv').config();
+const User = require('../models/User');
+const settings = require('./settings');
+const jwtStrategy = require('passport-jwt').Strategy;
+const ExtractJwt = require('passport-jwt').ExtractJwt;
+// const LocalStrategy = require('passport-local').Strategy;
 
-const { REACT_APP_GOOGLE_CLIENT_ID, REACT_APP_GOOGLE_CLIENT_SECRET } = process.env;
+let opts = {};
+opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
+opts.secretOrKey = settings.secret;
+
+passport.use(new jwtStrategy(opts, function(jwt_payload, done) {
+  User.findOne({ _id: jwt_payload._id }, function(err, user) {
+    if (err) {
+      return done(err, false)
+    }
+    if (user) {
+      return done(err, user);
+    } else {
+      return done(err, false);
+      // or you could create a new account
+    }
+  })
+}))
 
 // Local strategy
-passport.use(new LocalStrategy(
-  function(username, password, done) {
-    User.findOne({ username: username }, function(err, user) {
-      if (err) { return done(err); }
-      if (!user) {
-        return done(null, false, { message: 'Incorrect username.' });
-      }
-      if (!user.validPassword(password)) {
-        return done(null, false, { message: 'Incorrect password.' });
-      }
-      return done(null, user);
-    })
-  }
-));
-
-// Google oauth strategy
-passport.use(new GoogleStrategy(
-  {
-    clientID: REACT_APP_GOOGLE_CLIENT_ID,
-    clientSecret: REACT_APP_GOOGLE_CLIENT_SECRET,
-    callbackURL: 'http://localhost:3000/auth/google/callback',
-    passReqToCallback: true
-  },
-  function(accessToken, refreshToken, profile, done) {
-    User.findOrCreate({ googleId: profile.id }, function(err, user) {
-      return done(err, user);
-    }); 
-  }
-));
+// passport.use(new LocalStrategy(
+//   function(username, password, done) {
+//     User.findOne({ username: username }, function(err, user) {
+//       if (err) { return done(err); }
+//       if (!user) {
+//         return done(null, false, { message: 'Incorrect username.' });
+//       }
+//       if (!user.validPassword(password)) {
+//         return done(null, false, { message: 'Incorrect password.' });
+//       }
+//       return done(null, user);
+//     })
+//   }
+// ));
 
 passport.serializeUser(function(user, cb) {
   cb(null, user);

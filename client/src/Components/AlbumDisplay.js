@@ -14,12 +14,12 @@ const Flex = styled.div`
 `;
 
 function AlbumDisplay({ display, album }) {
-  let [artistAlbum, setArtistAlbum] = useContext(PayloadContext);
+  // let [artistAlbum, setArtistAlbum] = useContext(PayloadContext);
   const { image, title, artist, genres, story } = album;
 
-  const artistAlbumState = (artist, title) => {
-    setArtistAlbum({ artist: artist, title: title });
-  }
+  // const artistAlbumState = (artist, title) => {
+  //   setArtistAlbum({ artist: artist, title: title });
+  // }
 
   return (
     <Flex>

@@ -21,7 +21,10 @@ const Login = () => {
   
   const onSubmit = e => {
     e.preventDefault();
-    // userauth.userLogin({ email: email, password: password });
+    userauth.userLogin({ email: email, password: password })
+      .then(res => res.json())
+      .then(data => console.log(data))
+      .catch(err => console.log(err));
   }
 
   return (
@@ -48,9 +51,6 @@ const Login = () => {
                 />
                 <Button>Login</Button>
             </form>
-            <Text variant="p1">OR</Text>
-            <Button onClick={() => userauth.googleLogin()}>Login with Google</Button>
-            <Button>Login with Facebook</Button>
             <Text variant="p1">
               Forget your password? 
             </Text>

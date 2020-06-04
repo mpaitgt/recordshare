@@ -1,11 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import Text from '../Components/Elements/Text';
 import Container from '../Components/Elements/Container';
-import styled from '@emotion/styled';
-import spotify from '../Utils/spotify';
+// import styled from '@emotion/styled';
+// import spotify from '../Utils/spotify';
 
 function AlbumDetails(props) {
-  const [album, setAlbum] = useState(null);
+  // const [album, setAlbum] = useState(null);
   useEffect(() => {
     setTimeout(() => console.log(props), 3000);
   }, [])
