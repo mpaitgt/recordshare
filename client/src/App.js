@@ -6,6 +6,7 @@ import Login from './Pages/Login';
 import Stories from './Pages/Stories';
 import Home from './Pages/Home';
 import Upload from './Pages/Upload';
+import Dashboard from './Pages/Dashboard';
 import Footer from './Components/Footer';
 import AlbumDetails from './Pages/AlbumDetails';
 import {PayloadProvider, PayloadContext} from './Components/Providers/PayloadProvider';
@@ -22,6 +23,7 @@ function App() {
           <Route exact path="/upload" component={Upload} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Register} />
+          <Route exact path="/dashboard" component={Dashboard} />
           <Route 
             path="/albums/id/:artist/:title" 
             render={() => <AlbumDetails album={artistAlbum.title} artist={artistAlbum.artist} />} 

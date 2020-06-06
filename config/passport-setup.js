@@ -5,9 +5,10 @@ const jwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
 // const LocalStrategy = require('passport-local').Strategy;
 
-let opts = {};
-opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-opts.secretOrKey = settings.secret;
+let opts = {
+  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+  secretOrKey: settings.secret
+};
 
 passport.use(new jwtStrategy(opts, function(jwt_payload, done) {
   User.findOne({ _id: jwt_payload._id }, function(err, user) {

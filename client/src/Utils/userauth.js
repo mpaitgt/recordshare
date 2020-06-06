@@ -18,5 +18,9 @@ export default {
       body: JSON.stringify(obj)
     }
     return fetch('/auth/register', config);
+  },
+  populateLocalStorage: function(userData) {
+    localStorage.setItem('jwtToken', userData.token);
+    localStorage.setItem('user', JSON.stringify(userData.user));
   }
 };

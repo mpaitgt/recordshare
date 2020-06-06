@@ -18,13 +18,23 @@ const FORMWRAPPER = styled.div`
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
   
   const onSubmit = e => {
     e.preventDefault();
     userauth.userLogin({ email: email, password: password })
       .then(res => res.json())
-      .then(data => console.log(data))
-      .catch(err => console.log(err));
+      .then(data => {
+        if (data.success) {
+          userauth.populateLocalStorage(data);
+          window.location.replace('/dashboard');
+        } else {
+          setMessage(data.msg);
+        }
+      })
+      .catch(err => {
+        console.log(err, 'this is an err msg');
+      });
   }
 
   return (
@@ -33,6 +43,7 @@ const Login = () => {
       <FORMWRAPPER>
         <Card>
           <Text variant="h3">Login</Text>
+            { message.length > 0 ? <Text variant="p1">{message}</Text> : null }
             <form onSubmit={onSubmit}>
                 <Text variant="label" htmlFor="email">Email</Text>
                 <Input 
