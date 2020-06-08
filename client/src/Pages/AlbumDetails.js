@@ -10,11 +10,11 @@ function AlbumDetails(props) {
   useEffect(() => {
     spotify.getAlbumTracks(props.match.params.id)
       .then(res => {
-        console.log(res.data.body);
+        // console.log(res.data.body);
         setTracks(res.data.body);
       })
       .catch(err => console.log(err))
-  }, []);
+  }, [props.match.params.id]);
 
   return (
     <Container>
@@ -23,7 +23,7 @@ function AlbumDetails(props) {
         tracks
         ?
         tracks.items.map(track => {
-          return <Text variant="p1">{track.name}</Text>
+          return <Text key={track.track_number} variant="p1">{track.name}</Text>
         })
         :
         null

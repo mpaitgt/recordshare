@@ -1,5 +1,4 @@
-import React, {useState, useContext} from 'react';
-import Path from '../Components/Elements/Path';
+import React, {useContext} from 'react';
 import Button from '../Components/Elements/Button';
 import Text from '../Components/Elements/Text';
 import {PayloadContext} from '../Components/Providers/PayloadProvider';
@@ -15,15 +14,14 @@ const Flex = styled.div`
 `;
 
 function AlbumDisplay({ display, album }) {
-  const [id, setId] = useState('');
-  const [record, setRecord] = useContext(PayloadContext);
+  const [setRecord] = useContext(PayloadContext);
   const { image, title, artist, genres, story } = album;
 
   const recordDetails = (title, artist) => {
     spotify.getAlbums(title)
       .then(res => {
         let albumData = res.data.filter(item => {
-          return item.album_type === 'album' && item.artists[0].name == artist;
+          return item.album_type === 'album' && item.artists[0].name === artist;
         });
         setRecord(albumData);
         return albumData[0];

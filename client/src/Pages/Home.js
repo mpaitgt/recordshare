@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import {css} from '@emotion/core';
-import RecordPlayer from '../Images/record-player.jpg';
-import Loader from '../Components/Loader';
 import Text from '../Components/Elements/Text';
 import Container from '../Components/Elements/Container';
 

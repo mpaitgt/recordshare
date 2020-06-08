@@ -36,7 +36,7 @@ const ITEM = styled.span`
 `;
 
 const Navbar = (props) => {
-  const [user, setUser] = useContext(UserContext);
+  const [user] = useContext(UserContext);
 
   return (
     <NAV>

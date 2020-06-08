@@ -13,26 +13,21 @@ const Image = styled.img`
 
 function AlbumImage({ image, handleChange, nextStep, prevStep }) {
 
-  const onSubmit = e => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append('image', image);
-    fetch('/api/upload', { method: 'POST', body: formData })
-      .then(res => res.json())
-      .then(data => console.log(data))
-      .catch(err => console.error(err));
-  }
+  // const onSubmit = e => {
+  //   e.preventDefault();
+  //   const formData = new FormData();
+  //   formData.append('image', image);
+  //   fetch('/api/upload', { method: 'POST', body: formData })
+  //     .then(res => res.json())
+  //     .then(data => console.log(data))
+  //     .catch(err => console.error(err));
+  // }
 
   return (
     <Card>
       <Text variant="h2">Album image</Text>
       <Image src={!image ? placeholder : URL.createObjectURL(image)} />
-
-      {/* <form onSubmit={onSubmit} encType="multipart/form-data"> */}
-        <Input type="file" name="image" onChange={handleChange} />
-        {/* <button type="submit">Upload</button> */}
-      {/* </form> */}
-
+      <Input type="file" name="image" onChange={handleChange} />
       <Button onClick={nextStep}>Continue</Button>
       <Button onClick={prevStep}>Back</Button>
     </Card>
