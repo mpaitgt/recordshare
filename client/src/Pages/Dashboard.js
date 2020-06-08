@@ -27,6 +27,13 @@ function Dashboard() {
         :
         null
       }
+      {/* {
+        user.albums.length > 0
+        ?
+        <Text variant="h1">Album display here!</Text>
+        :
+        <Text variant="h1">You haven't uploaded any albums yet. Upload now.</Text>
+      } */}
     </Container>
   )
 }
