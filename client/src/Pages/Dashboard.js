@@ -1,10 +1,10 @@
-import React, {useEffect, useContext} from 'react';
+import React, {useContext} from 'react';
 import Text from '../Components/Elements/Text';
 import Container from '../Components/Elements/Container';
 import {UserContext} from '../Components/Providers/UserProvider';
 
 function Dashboard() {
-  const [user, setUser] = useContext(UserContext);
+  const [user] = useContext(UserContext);
 
   const fullDate = (date) => {
     let 

@@ -1,6 +1,4 @@
-import React, {useState, useContext} from 'react';
-import {PayloadContext} from '../Providers/PayloadProvider';
-import spotify from '../../Utils/spotify';
+import React, {useState} from 'react';
 import styled from '@emotion/styled';
 
 const Input = styled.input`
@@ -46,29 +44,9 @@ const Button = styled.button`
 
 function SearchBar({ name, value, type, placeholder, onChange }) {
   const [input, setInput] = useState('');
-  // const [
-  //   payload, 
-  //   setPayload, 
-  //   results, 
-  //   setResults,
-  //   search,
-  //   setSearch
-  // ] = useContext(PayloadContext);
 
   const searchArtists = e => {
     e.preventDefault();
-    // spotify.getAlbums(input)
-    //   .then(res => {
-    //     if (res.data.length === 0) {
-    //       setResults(false);
-    //     } else {
-    //       console.log(res.data);
-    //       setSearch(input);
-    //       setPayload(res.data);
-    //       setResults(true);
-    //     }
-    //   })
-    //   .catch(err => console.log(err));
   }
 
   return (

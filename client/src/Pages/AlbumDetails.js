@@ -1,28 +1,33 @@
-import React, {useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import Text from '../Components/Elements/Text';
 import Container from '../Components/Elements/Container';
 // import styled from '@emotion/styled';
-// import spotify from '../Utils/spotify';
+import spotify from '../Utils/spotify';
 
 function AlbumDetails(props) {
-  // const [album, setAlbum] = useState(null);
+  const [tracks, setTracks] = useState(null);
+
   useEffect(() => {
-    setTimeout(() => console.log(props), 3000);
-  }, [])
-  // useEffect(() => {
-  //   spotify.getAlbums(search)
-  //     .then(res => {
-  //       let album = res.data.filter(item => item.artists[0].name === artist && item.type === 'album');
-  //       console.log(album);
-  //       spotify.getAlbumTracks(album[0].id)
-  //         .then(tracks => console.log(tracks.data))
-  //     })
-  //     .catch(err => console.log(err))
-  // }, []);
+    spotify.getAlbumTracks(props.match.params.id)
+      .then(res => {
+        // console.log(res.data.body);
+        setTracks(res.data.body);
+      })
+      .catch(err => console.log(err))
+  }, [props.match.params.id]);
 
   return (
     <Container>
       <Text variant="h1">Album Details</Text>
+      {
+        tracks
+        ?
+        tracks.items.map(track => {
+          return <Text key={track.track_number} variant="p1">{track.name}</Text>
+        })
+        :
+        null
+      }
     </Container>
   )
 }

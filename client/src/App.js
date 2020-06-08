@@ -10,13 +10,11 @@ import Search from './Pages/Search';
 import Dashboard from './Pages/Dashboard';
 import Footer from './Components/Footer';
 import AlbumDetails from './Pages/AlbumDetails';
-import { UserContext, UserProvider } from './Components/Providers/UserProvider';
-import {PayloadProvider, PayloadContext} from './Components/Providers/PayloadProvider';
+import { UserContext } from './Components/Providers/UserProvider';
 import userauth from './Utils/userauth';
 
 function App() {
-  // const {artistAlbum, setArtistAlbum} = useContext(PayloadContext);
-  const [user, setUser] = useContext(UserContext);
+  const [setUser] = useContext(UserContext);
 
   useEffect(
 		() => {
@@ -25,7 +23,7 @@ function App() {
 				setUser(userObj);
     	}
     },
-		[]
+		[setUser]
 	);
 
   return (
@@ -38,10 +36,7 @@ function App() {
         <Route exact path="/signup" component={Register} />
         <Route exact path="/search" component={Search} />
         <Route exact path="/dashboard" component={Dashboard} />
-        {/* <Route 
-          path="/albums/id/:artist/:title" 
-          render={() => <AlbumDetails album={artistAlbum.title} artist={artistAlbum.artist} />} 
-        /> */}
+        <Route path="/albums/id/:id" component={AlbumDetails} />
         <Route exact path="/" component={Home}/>
       </Switch>
       <Footer />
