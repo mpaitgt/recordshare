@@ -5,7 +5,7 @@ import Container from '../Components/Elements/Container';
 import RecordLoader from '../Components/Loader';
 import data from '../Data/data.json';
 import db from '../Utils/db';
-import spotify from '../Utils/spotify';
+// import spotify from '../Utils/spotify';
 import AlbumDisplay from '../Components/AlbumDisplay';
 import styled from '@emotion/styled';
 

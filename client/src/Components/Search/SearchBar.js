@@ -5,6 +5,7 @@ import styled from '@emotion/styled';
 
 const Input = styled.input`
   border: none;
+  border: 1px solid var(--gray-4);
   padding: 8px 16px;
   font-size: 13px;
   font-family: var(--subfont);
@@ -32,7 +33,7 @@ const Button = styled.button`
   color: var(--white);
   border: none;
   font-weight: 500;
-  padding: 8px 12px;
+  padding: 9px 12px;
   border-radius: 0px 120px 120px 0px;
   transition: all 0.25s;
   margin: 20px auto;
@@ -45,29 +46,29 @@ const Button = styled.button`
 
 function SearchBar({ name, value, type, placeholder, onChange }) {
   const [input, setInput] = useState('');
-  const [
-    payload, 
-    setPayload, 
-    results, 
-    setResults,
-    search,
-    setSearch
-  ] = useContext(PayloadContext);
+  // const [
+  //   payload, 
+  //   setPayload, 
+  //   results, 
+  //   setResults,
+  //   search,
+  //   setSearch
+  // ] = useContext(PayloadContext);
 
   const searchArtists = e => {
     e.preventDefault();
-    spotify.getAlbums(input)
-      .then(res => {
-        if (res.data.length === 0) {
-          setResults(false);
-        } else {
-          console.log(res.data);
-          setSearch(input);
-          setPayload(res.data);
-          setResults(true);
-        }
-      })
-      .catch(err => console.log(err));
+    // spotify.getAlbums(input)
+    //   .then(res => {
+    //     if (res.data.length === 0) {
+    //       setResults(false);
+    //     } else {
+    //       console.log(res.data);
+    //       setSearch(input);
+    //       setPayload(res.data);
+    //       setResults(true);
+    //     }
+    //   })
+    //   .catch(err => console.log(err));
   }
 
   return (
