@@ -3,10 +3,10 @@ import React, { useState, createContext } from 'react';
 export const PayloadContext = createContext();
 
 export const PayloadProvider = props => {
-  const [artistAlbum, setArtistAlbum] = useState({ artist: '', title: '' });
+  const [record, setRecord] = useState(null);
 
   return (
-    <PayloadContext.Provider value={[ artistAlbum, setArtistAlbum ]}>
+    <PayloadContext.Provider value={[ record, setRecord ]}>
       {props.children}
     </PayloadContext.Provider>
   )

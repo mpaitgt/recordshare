@@ -1,9 +1,10 @@
-import React, {useContext} from 'react';
+import React, {useState, useContext} from 'react';
 import Path from '../Components/Elements/Path';
 import Button from '../Components/Elements/Button';
 import Text from '../Components/Elements/Text';
 import {PayloadContext} from '../Components/Providers/PayloadProvider';
 import styled from '@emotion/styled';
+import spotify from '../Utils/spotify';
 
 const Flex = styled.div`
   display: grid;
@@ -14,12 +15,25 @@ const Flex = styled.div`
 `;
 
 function AlbumDisplay({ display, album }) {
-  // let [artistAlbum, setArtistAlbum] = useContext(PayloadContext);
+  const [id, setId] = useState('');
+  const [record, setRecord] = useContext(PayloadContext);
   const { image, title, artist, genres, story } = album;
 
-  // const artistAlbumState = (artist, title) => {
-  //   setArtistAlbum({ artist: artist, title: title });
-  // }
+  const recordDetails = (title, artist) => {
+    spotify.getAlbums(title)
+      .then(res => {
+        let albumData = res.data.filter(item => {
+          return item.album_type === 'album' && item.artists[0].name == artist;
+        });
+        setRecord(albumData);
+        return albumData[0];
+      })
+      .then(data => {
+        console.log(data.id);
+        window.location.replace(`/albums/id/${data.id}`)
+      })
+      .catch(err => console.log(err));
+  }
 
   return (
     <Flex>
@@ -33,9 +47,9 @@ function AlbumDisplay({ display, album }) {
         <Text variant="h2">by {artist}</Text>
         <Text variant="h4">{genres.join(', ')}</Text>
         <Text variant="p1">{story}</Text>
-        <Path to={`/albums/id/${artist}/${title}`}>
-          <Button>Details</Button>
-        </Path>
+        {/* <Path to={`/albums/id/${artist}/${title}`}> */}
+          <Button onClick={() => recordDetails(title, artist)}>Details</Button>
+        {/* </Path> */}
         <Button>Share your story</Button>
       </div>
     </Flex>

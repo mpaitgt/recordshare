@@ -42,6 +42,7 @@ function App() {
           path="/albums/id/:artist/:title" 
           render={() => <AlbumDetails album={artistAlbum.title} artist={artistAlbum.artist} />} 
         /> */}
+        <Route path="/albums/id/:id" component={AlbumDetails} />
         <Route exact path="/" component={Home}/>
       </Switch>
       <Footer />
