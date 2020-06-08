@@ -1,6 +1,8 @@
-import React from 'react';
+import React, {Fragment, useContext} from 'react';
 import Path from '../Elements/Path';
+import { UserContext } from '../Providers/UserProvider';
 import styled from '@emotion/styled';
+import userauth from '../../Utils/userauth';
 
 const NAV = styled.nav`
   background: var(--gray-0);
@@ -34,6 +36,7 @@ const ITEM = styled.span`
 `;
 
 const Navbar = (props) => {
+  const [user, setUser] = useContext(UserContext);
 
   return (
     <NAV>
@@ -41,21 +44,35 @@ const Navbar = (props) => {
         <H1>Recordshare</H1>
       </Path>
       <div>
-        <Path to="/about">
-          <ITEM>About</ITEM>
+        <Path to="/search">
+          <ITEM>Search</ITEM>
         </Path>
         <Path to="/stories">
           <ITEM>Recently Shared</ITEM>
         </Path>
-        {/* <Path to="/upload">
-          <ITEM>Upload</ITEM>
-        </Path> */}
-        <Path to="/login">
-          <ITEM>Login</ITEM>
-        </Path>
-        <Path to="/signup">
-          <ITEM>Sign Up</ITEM>
-        </Path>
+        {
+          user
+          ? (
+          <Fragment>
+            <Path to="/dashboard">
+              <ITEM>Dashboard</ITEM>
+            </Path>
+            <Path to="/upload">
+              <ITEM>Upload</ITEM>
+            </Path>
+            <ITEM onClick={() => userauth.userLogout()}>Logout</ITEM>
+          </Fragment>
+          ) : (
+          <Fragment>
+            <Path to="/login">
+              <ITEM>Login</ITEM>
+            </Path>
+            <Path to="/signup">
+              <ITEM>Sign Up</ITEM>
+            </Path>
+          </Fragment>
+          )
+        }
       </div>
     </NAV>
   )

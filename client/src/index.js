@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { PayloadProvider } from './Components/Providers/PayloadProvider';
+import { UserProvider } from './Components/Providers/UserProvider';
 
 ReactDOM.render(
-  <PayloadProvider>
+  <UserProvider>
     <App />
-  </PayloadProvider>, 
+  </UserProvider>, 
   document.getElementById('root')
 );
