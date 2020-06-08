@@ -9,8 +9,7 @@ const INPUT = styled.input`
   font-size: 14px;
   background: var(--gray-6);
   transition: all 0.25s;
-  width: 80%;
-  margin: 0 auto;
+  margin: 5px 10px;
   padding: 5px 10px;
   &:focus {
     outline: none;
@@ -27,15 +26,13 @@ const INPUT = styled.input`
 
 function Input({ name, value, type, placeholder, onChange }) {
   return (
-    <div>
-      <INPUT 
-        name={name}
-        value={value}
-        type={type}
-        placeholder={placeholder}
-        onChange={onChange}
-      />
-    </div>
+    <INPUT 
+      name={name}
+      value={value}
+      type={type}
+      placeholder={placeholder}
+      onChange={onChange}
+    />
   )
 }
 

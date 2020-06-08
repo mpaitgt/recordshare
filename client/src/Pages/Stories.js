@@ -16,12 +16,12 @@ const Header = styled.div`
 
 function Stories(props) {
   let [loaded, setLoaded] = useState(false);
-  let [albums, setAlbums] = useState([...data.albums]);
+  let [albums, setAlbums] = useState([]);
 
   useEffect(() => {
     db.getAlbums()
       .then(res => {
-        setAlbums([...albums, ...res.data]);
+        setAlbums(res.data);
         setLoaded(true);
       })
   }, []);

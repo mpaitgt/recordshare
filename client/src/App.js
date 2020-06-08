@@ -14,7 +14,7 @@ import { UserContext } from './Components/Providers/UserProvider';
 import userauth from './Utils/userauth';
 
 function App() {
-  const [setUser] = useContext(UserContext);
+  const [user, setUser] = useContext(UserContext);
 
   useEffect(
 		() => {

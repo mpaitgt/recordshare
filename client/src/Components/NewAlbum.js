@@ -1,9 +1,10 @@
-import React, {createRef} from 'react';
+import React from 'react';
 import ArtistAlbum from '../Components/NewAlbum/ArtistAlbum';
 import AlbumImage from '../Components/NewAlbum/AlbumImage';
 import AlbumStory from '../Components/NewAlbum/AlbumStory';
 import ConfirmSubmission from '../Components/NewAlbum/ConfirmSubmission';
 import Text from '../Components/Elements/Text';
+import Input from '../Components/Elements/Input';
 import db from '../Utils/db';
 
 class NewAlbum extends React.Component {
@@ -17,7 +18,6 @@ class NewAlbum extends React.Component {
       story: '',
       genres: []
     }
-    this.formRef = createRef();
   }
 
   // proceed to next step
@@ -37,8 +37,8 @@ class NewAlbum extends React.Component {
   renderGenres = this.genres.map((genre, i) => {
     return (
       <div key={i}>
-        <input onChange={e => this.handleGenres(e)} type='checkbox' name='genres' value={genre} />
-        <Text variant='label' for='genres'> {genre}</Text>
+        <Input onChange={e => this.handleGenres(e)} type='checkbox' name='genres' value={genre} />
+        <Text variant='label' for='genres'>{genre}</Text>
       </div>
     )
   })
