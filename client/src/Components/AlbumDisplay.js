@@ -4,18 +4,19 @@ import Text from '../Components/Elements/Text';
 import {PayloadContext} from '../Components/Providers/PayloadProvider';
 import styled from '@emotion/styled';
 import spotify from '../Utils/spotify';
+import helpers from '../Utils/helpers';
 
 const Flex = styled.div`
   display: grid;
-  grid-template-columns: 30% 70%;
+  grid-template-columns: 40% 60%;
   flex-direction: row;
   align-items: center;
   grid-gap: 20px;
 `;
 
 function AlbumDisplay({ display, album }) {
-  const [setRecord] = useContext(PayloadContext);
-  const { image, title, artist, genres, story } = album;
+  const [record, setRecord] = useContext(PayloadContext);
+  const { image, title, artist, genres, story, date_added } = album;
 
   const recordDetails = (title, artist) => {
     spotify.getAlbums(title)
@@ -37,7 +38,7 @@ function AlbumDisplay({ display, album }) {
     <Flex>
       <img 
         style={{ justifySelf: 'center', margin: '20px' }} 
-        width="260" src={image.url} 
+        width="350" src={image.url} 
         alt={`${album.title} by ${artist}`} 
       />
       <div>
@@ -49,6 +50,7 @@ function AlbumDisplay({ display, album }) {
           <Button onClick={() => recordDetails(title, artist)}>Details</Button>
         {/* </Path> */}
         <Button>Share your story</Button>
+        <Text variant="h4">Added on {helpers.convertDate(date_added)}</Text>
       </div>
     </Flex>
   )
