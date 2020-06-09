@@ -11,7 +11,7 @@ const Image = styled.img`
   height: 250px;
 `;
 
-function AlbumImage({ image, handleChange, nextStep, prevStep }) {
+function ImageUpload({ image, handleChange, nextStep, prevStep }) {
 
   // const onSubmit = e => {
   //   e.preventDefault();
@@ -34,4 +34,4 @@ function AlbumImage({ image, handleChange, nextStep, prevStep }) {
   )
 }
 
-export default AlbumImage;
+export default ImageUpload;

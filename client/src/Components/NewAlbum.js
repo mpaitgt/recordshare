@@ -1,7 +1,7 @@
 import React from 'react';
-import ArtistAlbum from '../Components/NewAlbum/ArtistAlbum';
-import AlbumImage from '../Components/NewAlbum/AlbumImage';
-import AlbumStory from '../Components/NewAlbum/AlbumStory';
+import DetailsUpload from '../Components/NewAlbum/DetailsUpload';
+import ImageUpload from '../Components/NewAlbum/ImageUpload';
+import StoryUpload from './NewAlbum/StoryUpload';
 import ConfirmSubmission from '../Components/NewAlbum/ConfirmSubmission';
 import Text from '../Components/Elements/Text';
 import Input from '../Components/Elements/Input';
@@ -49,7 +49,7 @@ class NewAlbum extends React.Component {
     switch(step) {
       case 1:
         return (
-          <ArtistAlbum 
+          <DetailsUpload 
             title={title} 
             artist={artist} 
             handleChange={this.handleChange} 
@@ -59,7 +59,7 @@ class NewAlbum extends React.Component {
         )
       case 2:
         return (
-          <AlbumImage 
+          <ImageUpload 
             image={image}
             handleChange={this.handleChange}
             nextStep={this.nextStep}
@@ -69,7 +69,7 @@ class NewAlbum extends React.Component {
         )
       case 3:
         return (
-          <AlbumStory 
+          <StoryUpload 
             story={story}
             handleChange={this.handleChange}
             nextStep={this.nextStep}
@@ -85,7 +85,7 @@ class NewAlbum extends React.Component {
       )
       default:
         return (
-          <ArtistAlbum 
+          <DetailsUpload 
             title={title} 
             artist={artist} 
             handleChange={this.handleChange} 

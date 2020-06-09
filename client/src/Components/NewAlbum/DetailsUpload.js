@@ -12,7 +12,7 @@ const Grid = styled.div`
   margin: 20px 0px;
 `;
 
-function ArtistAlbum(props) {
+function DetailsUpload(props) {
   
   return (
     <Card>
@@ -34,4 +34,4 @@ function ArtistAlbum(props) {
   )
 }
 
-export default ArtistAlbum;
+export default DetailsUpload;

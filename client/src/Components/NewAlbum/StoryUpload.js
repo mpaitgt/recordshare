@@ -4,16 +4,16 @@ import Input from '../Elements/Input';
 import Card from '../Elements/Card';
 import Button from '../Elements/Button';
 
-function AlbumStory({story, nextStep, prevStep, handleChange}) {
+function StoryUpload({story, nextStep, prevStep, handleChange}) {
   
   return (
     <Card>
       <Text variant="h2">Share your story</Text>
-      <Input type="text" value={story} name="story" onChange={handleChange} />
+      <Input style="textarea" type="text" value={story} name="story" onChange={handleChange} />
       <Button onClick={nextStep}>Submit</Button>
       <Button onClick={prevStep}>Back</Button>
     </Card>
   )
 }
 
-export default AlbumStory;
+export default StoryUpload;
