@@ -19,11 +19,9 @@ function App() {
   useEffect(
 		() => {
       const userObj = JSON.parse(userauth.getLocalStorage('user'));
-			if (userObj) {
-				setUser(userObj);
-    	}
+			if (userObj) setUser(userObj);
     },
-		[setUser]
+		[]
 	);
 
   return (

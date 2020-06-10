@@ -20,6 +20,7 @@ const Stories = () => {
   })
 
   return (
+    <div style={{ marginBottom: '100px' }}>
     <Container>
       <div>
         <Text variant="h1">Recently Shared</Text>
@@ -28,6 +29,7 @@ const Stories = () => {
       </div>
       { loaded ? displayAlbums : <RecordLoader /> }
     </Container>
+    </div>
   )
 }
 

@@ -24,15 +24,18 @@ const INPUT = styled.input`
   }
 `;
 
-const Input = ({ key, name, value, type, placeholder, onChange }) => (
-  <INPUT 
-    name={name}
-    value={value}
-    type={type}
-    placeholder={placeholder}
-    onChange={onChange}
-    key={key}
-  />
-)
+function Input({ key, name, value, type, placeholder, onChange }) {
+  return (
+    <div>
+    <INPUT 
+      name={name}
+      value={value}
+      type={type}
+      placeholder={placeholder}
+      onChange={onChange}
+    />
+    </div>
+  )
+}
 
 export default Input;

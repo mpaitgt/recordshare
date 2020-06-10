@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import {Path, Card, Input, Button, Text, Container} from '../Components/Elements';
+import {Path, Card, Button, Input, Text, Container} from '../Components/Elements';
 import userauth from '../Utils/userauth';
 import styled from '@emotion/styled';
 
-const Login = React.memo(function Login() {
+function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
@@ -26,14 +26,14 @@ const Login = React.memo(function Login() {
 
   return (
     <Container>
-      <Card align="center">
+      <Card>
         <Text variant="h2">Login</Text>
           { message.length > 0 ? <Text variant="p2">{message}</Text> : null }
-          <form onSubmit={onSubmit}>
+          <form key="form1" onSubmit={onSubmit}>
             <Text variant="label-block" htmlFor="email">Email</Text>
-            <Input key="random1" name="email" type="text" placeholder="your email" onChange={e => setEmail(e.target.value)} value={email} />
+            <Input name="email" type="text" placeholder="your email" onChange={e => setEmail(e.target.value)} value={email} />
             <Text variant="label-block" htmlFor="password">Password</Text>
-            <Input key="random2" type="password" placeholder="your password" onChange={e => setPassword(e.target.value)} value={password} />
+            <Input type="password" placeholder="your password" onChange={e => setPassword(e.target.value)} value={password} />
             <Button display="block">Login</Button>
           </form>
           <Text variant="p2">
@@ -48,6 +48,6 @@ const Login = React.memo(function Login() {
       </Card>
     </Container>
   )
-})
+}
 
 export default Login;

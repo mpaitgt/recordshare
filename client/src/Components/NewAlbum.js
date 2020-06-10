@@ -3,6 +3,7 @@ import DetailsUpload from '../Components/NewAlbum/DetailsUpload';
 import ImageUpload from '../Components/NewAlbum/ImageUpload';
 import StoryUpload from './NewAlbum/StoryUpload';
 import ConfirmSubmission from '../Components/NewAlbum/ConfirmSubmission';
+import Success from '../Components/Signup/Success';
 import Text from '../Components/Elements/Text';
 import Input from '../Components/Elements/Input';
 import db from '../Utils/db';
@@ -83,6 +84,10 @@ class NewAlbum extends React.Component {
           onSubmit={this.onSubmit}
         />
       )
+      case 5:
+        return (
+          <Success />
+        )
       default:
         return (
           <DetailsUpload 
@@ -127,6 +132,7 @@ class NewAlbum extends React.Component {
       genres: genres
     };
     db.addAlbum(record);
+    this.nextStep();
   }
 
   render() {

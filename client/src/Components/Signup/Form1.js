@@ -20,7 +20,7 @@ class Form1 extends React.Component {
     const { values, handleChange } = this.props;
 
     return (
-      <Card align="center">
+      <Card>
         <Text variant="h2">Sign Up</Text>
         <form>
           <Text variant="label-block">First Name</Text>
