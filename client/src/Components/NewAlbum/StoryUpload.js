@@ -7,7 +7,7 @@ import Button from '../Elements/Button';
 function StoryUpload({story, nextStep, prevStep, handleChange}) {
   
   return (
-    <Card>
+    <Card align="center">
       <Text variant="h2">Share your story</Text>
       <Input style="textarea" type="text" value={story} name="story" onChange={handleChange} />
       <Button onClick={nextStep}>Submit</Button>

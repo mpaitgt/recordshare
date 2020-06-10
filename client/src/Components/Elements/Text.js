@@ -5,7 +5,7 @@ import styles from './Text.module.scss';
 function Text({ variant, children, htmlFor }) {
   switch(variant) {
     case 'headline':
-      return <h1 className={styles.h1}>{children}</h1>;
+      return <h1 className={styles.headline}>{children}</h1>;
     case 'h1':
       return <h1 className={styles.h1}>{children}</h1>;
     case 'h2':
@@ -18,16 +18,18 @@ function Text({ variant, children, htmlFor }) {
       return <h5 className={styles.h5}>{children}</h5>;
     case 'h6':
       return <h6 className={styles.h6}>{children}</h6>;
-    case 'label':
-      return (
-        <div>
-          <label className={styles.standard} htmlFor={htmlFor}>{children}</label>
-        </div> 
-      )
+    case 'label-block':
+      return <label className={styles.label_block} htmlFor={htmlFor}>{children}</label>;
+    case 'label-inline':
+      return <label className={styles.label_inline} htmlFor={htmlFor}>{children}</label>;
+    case 'description':
+      return <p className={styles.description}>{children}</p>
     case 'p1':
-      return <p className={styles.standard}>{children}</p>;
+      return <p className={styles.p1}>{children}</p>;
     case 'p2':
-      return <p className={styles.standard}>{children}</p>;
+      return <p className={styles.p2}>{children}</p>;
+    case 'tag':
+      return <p className={styles.tag}>{children}</p>;
     default: 
       return <p className={styles.standard}>{children}</p>;
   }

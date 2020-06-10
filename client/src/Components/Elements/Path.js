@@ -1,15 +1,17 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-
-const style = {
-  textDecoration: 'none',
-  color: 'inherit',
-  fontSize: '13px'
-};
+import {css} from '@emotion/core';
 
 function Path(props) {
   return (
-    <Link to={props.to} style={style}> 
+    <Link 
+      to={props.to} 
+      className={css`
+        text-decoration: none;
+        color: inherit;
+        font-size: 13px;
+        color: var(--red-2);
+      `}> 
       {props.children} 
     </Link>
   )

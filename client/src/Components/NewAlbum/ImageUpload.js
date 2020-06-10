@@ -24,7 +24,7 @@ function ImageUpload({ image, handleChange, nextStep, prevStep }) {
   // }
 
   return (
-    <Card>
+    <Card align="center">
       <Text variant="h2">Album image</Text>
       <Image src={!image ? placeholder : URL.createObjectURL(image)} />
       <Input type="file" name="image" onChange={handleChange} />

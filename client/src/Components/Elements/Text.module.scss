@@ -1,36 +1,100 @@
 .standard {
   font-family: var(--headerfont);
   color: var(--gray-0);
+  letter-spacing: 1px;
+  margin: 5px 0px;
+}
+
+.content {
+  font-family: var(--subfont);
+  color: var(--gray-0);
   letter-spacing: 0px;
-  margin: 10px 0px;
+  line-height: 24px;
+  margin: 20px 0px 20px 0px;
 }
 
 .h1 {
   @extend .standard;
-  font-size: 62px;
+  font-size: 52px;
+  // margin: 20px 0px;
 }
 
 .h2 {
   @extend .standard;
-  font-size: 32px;
+  font-size: 46px;
+  // margin: 20px 0px;
 }
 
 .h3 {
   @extend .standard;
-  font-size: 26px;
+  font-size: 38px;
 }
 
 .h4 {
   @extend .standard;
-  font-size: 20px;
+  font-size: 30px;
 }
 
 .h5 {
   @extend .standard;
-  font-size: 20px;
+  font-size: 24px;
 }
 
 .h6 {
   @extend .standard;
+  font-size: 18px;
+}
+
+.headline {
+  @extend .standard;
+  font-size: 82px;
+}
+
+.description {
+  @extend .standard;
   font-size: 20px;
+  margin: 20px 0px;
+}
+
+.p1 {
+  @extend .content;
+  font-size: 16px;
+}
+
+.p2 {
+  @extend .content;
+  font-size: 14px;
+}
+
+.label {
+  @extend .standard;
+  font-size: 20px;
+}
+
+.label_block {
+  @extend .label;
+  display: block;
+}
+
+.label_inline {
+  @extend .label;
+  font-size: 16px;
+  display: inline;
+}
+
+.tag {
+  @extend .standard;
+  background: var(--gray-5);
+  border-radius: 3px;
+  margin-right: 8px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 4px 10px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+  &:hover {
+    background: var(--gray-4);
+    transition: all 0.1s ease-in-out;
+  }
 }

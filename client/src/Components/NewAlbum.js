@@ -38,7 +38,7 @@ class NewAlbum extends React.Component {
     return (
       <div key={i}>
         <Input onChange={e => this.handleGenres(e)} type='checkbox' name='genres' value={genre} />
-        <Text variant='label' for='genres'>{genre}</Text>
+        <Text variant='label-inline' for='genres'>{genre}</Text>
       </div>
     )
   })

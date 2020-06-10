@@ -1,4 +1,5 @@
 import React from 'react';
+import Path from '../Elements/Path';
 import Card from '../Elements/Card';
 import Input from '../Elements/Input';
 import Button from '../Elements/Button';
@@ -19,20 +20,22 @@ class Form1 extends React.Component {
     const { values, handleChange } = this.props;
 
     return (
-      <div style={{ width: 'auto', margin: '0 auto', textAlign: 'center' }}>
-        <Card>
-          <Text variant="h3">Register</Text>
-          <form>
-            <Text variant="label">First Name</Text>
-            <Input placeholder="Jon" name="first_name" type="text" value={values.first_name} onChange={handleChange}/>
-            <Text variant="label">Last Name</Text>
-            <Input placeholder="Doe" name="last_name" type="text" value={values.last_name} onChange={handleChange}/>
-            <div>
-              <Button onClick={this.continue}>Continue</Button>
-            </div>
-          </form>
-        </Card>
-      </div>
+      <Card align="center">
+        <Text variant="h2">Sign Up</Text>
+        <form>
+          <Text variant="label-block">First Name</Text>
+          <Input placeholder="Jon" name="first_name" type="text" value={values.first_name} onChange={handleChange}/>
+          <Text variant="label-block">Last Name</Text>
+          <Input placeholder="Doe" name="last_name" type="text" value={values.last_name} onChange={handleChange}/>
+          <div>
+            <Button onClick={this.continue}>Continue</Button>
+          </div>
+        </form>
+        <Text variant="p2">
+          Already have an account?<br/>
+          <Path to="/login">Login here.</Path>
+        </Text>
+      </Card>
     )
   }
 

@@ -1,9 +1,8 @@
 import React from 'react';
-import Text from '../Components/Elements/Text';
-import Container from '../Components/Elements/Container';
+import {Text, Container} from '../Components/Elements';
 import NewAlbum from '../Components/NewAlbum';
 
-function Upload() {
+const Upload = () => {
   return (
     <Container>
       <Text variant="h1">Upload</Text>

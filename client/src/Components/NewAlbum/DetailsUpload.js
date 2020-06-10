@@ -15,17 +15,17 @@ const Grid = styled.div`
 function DetailsUpload(props) {
   
   return (
-    <Card>
+    <Card align="center">
       <Text variant="h2">Share a new album</Text>
       <div>
-        <Text variant="label">Album Title</Text>
+        <Text variant="label-block">Album Title</Text>
         <Input type="text" name="title" value={props.title} onChange={props.handleChange} />      
       </div>
       <div>
-        <Text variant="label">Artist</Text>
+        <Text variant="label-block">Artist</Text>
         <Input type="text" name="artist" value={props.artist} onChange={props.handleChange} />
       </div>
-      <Text variant="label">Select genres:</Text>
+      <Text variant="label-block">Select genres:</Text>
       <Grid>
         {props.renderGenres}
       </Grid>
