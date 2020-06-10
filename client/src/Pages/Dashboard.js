@@ -12,9 +12,9 @@ const Dashboard = () => {
         user
         ?
         <div>
-          <Text variant="h1">Dashboard - Welcome {user.first_name}!</Text>
-          <Text variant="h2">Email: {user.email}</Text>
-          <Text variant="h2">Date Joined: {helpers.convertDate(user.date_joined)}</Text>
+          <Text variant="h1">Dashboard - Welcome {user.username}!</Text>
+          <Text variant="h3">Email: {user.email}</Text>
+          <Text variant="h3">Date Joined: {helpers.convertDate(user.date_joined)}</Text>
         </div>
         :
         <Text variant="h1">User Dashboard - user not logged in</Text>

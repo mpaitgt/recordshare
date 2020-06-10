@@ -3,7 +3,7 @@ import DetailsUpload from '../Components/NewAlbum/DetailsUpload';
 import ImageUpload from '../Components/NewAlbum/ImageUpload';
 import StoryUpload from './NewAlbum/StoryUpload';
 import ConfirmSubmission from '../Components/NewAlbum/ConfirmSubmission';
-import Success from '../Components/Signup/Success';
+import {NewSubmissionSuccess} from './Success';
 import Text from '../Components/Elements/Text';
 import Input from '../Components/Elements/Input';
 import db from '../Utils/db';
@@ -86,7 +86,7 @@ class NewAlbum extends React.Component {
       )
       case 5:
         return (
-          <Success />
+          <NewSubmissionSuccess />
         )
       default:
         return (

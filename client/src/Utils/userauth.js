@@ -15,7 +15,11 @@ export default {
   // register a new user
   userRegister: function(obj) {
     const config = {
-      headers: { 'content-type': 'application/json' },
+      headers: { 
+        'content-type': 'application/json; charset=utf-8', 
+        'access-control-allow-origin': '*', 
+        'accept': 'application/json' 
+      },
       method: "POST",
       body: JSON.stringify(obj)
     }
