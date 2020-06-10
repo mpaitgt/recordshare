@@ -1,7 +1,7 @@
 import React, {useContext, useEffect} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Navbar from './Components/Navbar/Navbar';
-import SignUp from './Pages/SignUp';
+import SignUp from './Pages/Signup';
 import Login from './Pages/Login';
 import Stories from './Pages/Stories';
 import Home from './Pages/Home';

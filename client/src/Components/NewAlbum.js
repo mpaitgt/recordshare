@@ -32,7 +32,7 @@ class NewAlbum extends React.Component {
     this.setState({ step: step - 1 })
   }  
 
-  genres = ['Rock', 'Indie', 'Hip Hop', 'Folk', 'Alternative', 'Electronic', 'Pop', 'Punk', 'Classical'];
+  genres = ['Rock', 'Indie', 'Hip Hop', 'Folk', 'Alternative', 'Electronic', 'Pop', 'Punk', 'Reggae', 'Jazz', 'Funk', 'Hardcore'];
 
   renderGenres = this.genres.map((genre, i) => {
     return (

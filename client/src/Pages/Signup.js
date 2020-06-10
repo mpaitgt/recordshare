@@ -16,6 +16,10 @@ class SignUp extends React.Component {
       password: '',
       password2: ''
     }
+    this.handleChange = this.handleChange.bind(this);
+    this.nextStep = this.nextStep.bind(this);
+    this.prevStep = this.prevStep.bind(this);
+    this.renderForm = this.renderForm.bind(this);
   }
   
   nextStep = () => {

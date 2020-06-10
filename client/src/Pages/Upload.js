@@ -5,7 +5,6 @@ import NewAlbum from '../Components/NewAlbum';
 const Upload = () => {
   return (
     <Container>
-      <Text variant="h1">Upload</Text>
       <NewAlbum />
     </Container>
   )

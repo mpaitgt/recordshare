@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import Button from '../Components/Elements/Button';
-import Text from '../Components/Elements/Text';
+import {Text, Image} from '../Components/Elements';
 import {PayloadContext} from '../Components/Providers/PayloadProvider';
 import GenreTag from '../Components/GenreTag';
 import styled from '@emotion/styled';
@@ -36,9 +36,11 @@ function AlbumDisplay({ display, album }) {
 
   return (
     <Flex>
-      <img 
+      <Image 
         style={{ justifySelf: 'center', margin: '20px' }} 
-        width="350" src={image.url} 
+        width="340" 
+        height="340"
+        src={image.url} 
         alt={`${album.title} by ${artist}`} 
       />
       <div>
