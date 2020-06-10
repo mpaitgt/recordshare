@@ -42,23 +42,18 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-function SearchBar({ name, value, type, placeholder, onChange }) {
-  const [input, setInput] = useState('');
-
-  const searchArtists = e => {
-    e.preventDefault();
-  }
+function SearchBar({ input, onChange, onSubmit }) {
 
   return (
-    <form onSubmit={searchArtists}>
+    <form onSubmit={onSubmit}>
       <Input 
         name='search'
         value={input}
         placeholder='search artists or albums'
-        onChange={e => setInput(e.target.value)}
+        onChange={onChange}
       />
       <Button type='submit'>
-        Listen
+        Search
       </Button>
     </form>
   )
