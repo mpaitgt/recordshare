@@ -29,6 +29,8 @@ const Text = ({ variant, children, htmlFor }) => {
       return <p className={styles.p2}>{children}</p>;
     case 'tag':
       return <p className={styles.tag}>{children}</p>;
+    case 'likes':
+      return <span className={styles.likes}>{children}</span>;
     default: 
       return <p className={styles.standard}>{children}</p>;
   }

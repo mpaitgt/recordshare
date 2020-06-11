@@ -16,13 +16,13 @@
 .h1 {
   @extend .standard;
   font-size: 52px;
-  margin: 20px 0px;
+  // margin: 20px 0px;
 }
 
 .h2 {
   @extend .standard;
   font-size: 46px;
-  margin: 20px 0px;
+  // margin: 20px 0px;
 }
 
 .h3 {
@@ -97,4 +97,10 @@
     background: var(--gray-4);
     transition: all 0.1s ease-in-out;
   }
+}
+
+.likes {
+  @extend .standard;
+  display: inline;
+  margin: 0px 20px 0px 10px;
 }

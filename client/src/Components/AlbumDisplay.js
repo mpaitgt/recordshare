@@ -1,18 +1,22 @@
 import React, {useContext} from 'react';
 import Button from '../Components/Elements/Button';
 import {Text, Image} from '../Components/Elements';
+import Like from '../Components/Like';
 import {PayloadContext} from '../Components/Providers/PayloadProvider';
 import GenreTag from '../Components/GenreTag';
 import styled from '@emotion/styled';
 import spotify from '../Utils/spotify';
 import helpers from '../Utils/helpers';
+// import {faHeart} from '@fortawesome/free-solid-svg-icons';
+import {faHeart} from '@fortawesome/free-regular-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
 const Flex = styled.div`
   display: grid;
   grid-template-columns: 40% 60%;
   flex-direction: row;
   align-items: center;
-  grid-gap: 20px;
+  grid-gap: 50px;
 `;
 
 function AlbumDisplay({ display, album }) {
@@ -32,6 +36,10 @@ function AlbumDisplay({ display, album }) {
         window.location.replace(`/albums/id/${data.id}`)
       })
       .catch(err => console.log(err));
+  }
+
+  const likeAlbum = () => {
+
   }
 
   return (
@@ -55,8 +63,9 @@ function AlbumDisplay({ display, album }) {
         </div>
         <Text variant="p1">{story}</Text>
         <div>
+          <Like album={album} />
           <Button margin="0px 20px 0px 0px" display="inline" onClick={() => recordDetails(title, artist)}>Details</Button>
-          <Button display="inline">Share your story</Button>
+          <Button margin="0px 20px 0px 0px" display="inline">Share your story</Button>
         </div>
         <Text variant="description">Added on {helpers.convertDate(date_added)}</Text>
       </div>

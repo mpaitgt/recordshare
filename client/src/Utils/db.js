@@ -1,9 +1,6 @@
 import axios from 'axios';
 
 export default {
-  uploadImage: function(img) {
-    return axios.post('/api/upload', img);
-  },
   addAlbum: function(obj) {
     let formData = new FormData();
     for (let key in obj) {
@@ -13,5 +10,8 @@ export default {
   },
   getAlbums: function() {
     return axios.get(`/api/get-albums`);
+  },
+  searchAlbums: function(query) {
+    return axios.get(`/api/search/albums/${query}`);
   }
 }

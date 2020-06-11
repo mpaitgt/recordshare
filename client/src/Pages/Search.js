@@ -11,12 +11,14 @@ const Search = () => {
 
   const onSubmit = e => {
     e.preventDefault();
-    API.db.getAlbums(input)
+    API.db.searchAlbums(input)
       .then(res => {
         if (res.data) {
           setResults(res.data);
           setLoaded(true);
-          console.log(res.data)
+          console.log(res)
+        } else {
+          console.log(res)
         }
       })
       .catch(err => console.log(err))

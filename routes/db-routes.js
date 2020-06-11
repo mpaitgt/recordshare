@@ -5,7 +5,7 @@ const db = require('../models');
 const multer  = require('multer')
 const upload = multer({ dest: './uploads/' });
 
-// get albums for display
+// get all albums for display
 router.get('/get-albums', function(req, res) {
   db.Album.find({})
     .then(data => res.send(data));
@@ -34,6 +34,17 @@ router.post('/user/add-album', upload.single('image'), async function(req, res) 
   db.Album.create(record) 
     .then(data => console.log(data))
     .catch(err => console.log(err))
+})
+
+// get albums by query term
+router.get('/search/albums/:query', function(req, res) {
+  let query = new RegExp(req.params.query, 'i')
+  db.Album.find({ $or: [{artist: query}, {title: query}] })
+    .then(data => {
+      if (data) res.json(data);
+      if (!data) res.json({ msg: `There does not seem to be any results that match your search.` })
+  })
+    .catch(err => res.json(err))
 })
 
 module.exports = router;
