@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {css} from '@emotion/core';
+import {css} from 'emotion';
 
 function Path(props) {
   return (

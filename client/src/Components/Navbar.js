@@ -29,13 +29,18 @@ const H1 = styled.h1`
 `;
 
 const ITEM = styled.span`
+display: inline-block;
   font-family: var(--subfont);
   font-size: 14px;
-  padding: 0px 10px;
+  padding: 10px 10px;
   margin: 0px 10px;
   color: var(--white);
+  cursor: pointer;
+  transition: all 0.1s ease-in;
   &:hover {
-    transform: translateX(20px);
+    transition: all 0.1s ease-in-out;
+    transform: translateY(-5px);
+    text-shadow: 2px 2px rgba(0,0,0,1);
   }
 `;
 

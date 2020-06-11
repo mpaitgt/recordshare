@@ -13,6 +13,11 @@ const UserSchema = new Schema({
     required: true,
     unique: true
   },
+  likes: {
+    type: Array,
+    required: true,
+    unique: true
+  },
   password: {
     type: String,
     required: true

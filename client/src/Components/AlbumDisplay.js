@@ -14,7 +14,12 @@ const Flex = styled.div`
   grid-template-columns: 40% 60%;
   flex-direction: row;
   align-items: center;
-  grid-gap: 50px;
+  justify-items: center;
+  grid-gap: 20px;
+`;
+
+const Content = styled.div`
+  max-width: 600px;
 `;
 
 function AlbumDisplay({ display, album }) {
@@ -45,8 +50,8 @@ function AlbumDisplay({ display, album }) {
     <Flex>
       <Image 
         style={{ justifySelf: 'center', margin: '20px' }} 
-        width="340" 
-        height="340"
+        width="360" 
+        height="360"
         src={image.url} 
         alt={`${album.title} by ${artist}`} 
       />
@@ -60,7 +65,9 @@ function AlbumDisplay({ display, album }) {
           })
         }
         </div>
-        <Text variant="p1">{story}</Text>
+        <Content>
+          <Text variant="p1">{story}</Text>
+        </Content>
         <div>
           { user ? <Like album={album} /> : null }
           <Button margin="0px 20px 0px 0px" display="inline" onClick={() => recordDetails(title, artist)}>Details</Button>

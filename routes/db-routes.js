@@ -47,4 +47,14 @@ router.get('/search/albums/:query', function(req, res) {
     .catch(err => res.json(err))
 })
 
+// like an album
+router.post(`/like/album/:id`, async function(req, res) {
+  let id = { _id: req.params.id };
+  let update = { $inc: { likes: 1 } };
+  let album = await db.Album.findOneAndUpdate(id, update)
+  console.log(album)
+  // album.update({likes: likes + 1});
+  // album.save;
+})
+
 module.exports = router;

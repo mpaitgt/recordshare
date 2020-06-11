@@ -13,7 +13,7 @@ const Tag = styled.div`
 
 function GenreTag({ genre }) {
   return (
-    <Tag>
+    <Tag onClick={() => console.log('search genres!')}>
       <Text variant="tag">{genre}</Text>
     </Tag>
   )
