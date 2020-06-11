@@ -1,8 +1,7 @@
 import React from 'react';
-import {jsx, css} from '@emotion/core';
 import styles from './Text.module.scss';
 
-function Text({ variant, children, htmlFor }) {
+const Text = ({ variant, children, htmlFor }) => {
   switch(variant) {
     case 'headline':
       return <h1 className={styles.headline}>{children}</h1>;

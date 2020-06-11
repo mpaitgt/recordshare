@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
 import {Text, Container} from '../Components/Elements';
-import ResultsContainer from '../Components/ResultsContainer';
 import AlbumDisplay from '../Components/AlbumDisplay';
 import SearchBar from '../Components/Search/SearchBar';
-import db from '../Utils/db';
+import API from '../Utils';
 
 const Search = () => {
   const [input, setInput] = useState('');
@@ -12,7 +11,7 @@ const Search = () => {
 
   const onSubmit = e => {
     e.preventDefault();
-    db.getAlbums(input)
+    API.db.getAlbums(input)
       .then(res => {
         if (res.data) {
           setResults(res.data);

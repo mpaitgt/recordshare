@@ -1,8 +1,8 @@
 import React, {Fragment, useContext} from 'react';
-import Path from '../Elements/Path';
-import { UserContext } from '../Providers/UserProvider';
+import {Path} from './Elements';
+import { UserContext } from './Providers/UserProvider';
 import styled from '@emotion/styled';
-import userauth from '../../Utils/userauth';
+import userauth from '../Utils/userauth';
 
 const NAV = styled.nav`
   background: var(--gray-0);
@@ -10,18 +10,22 @@ const NAV = styled.nav`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
-  padding: 20px;
+  justify-content: space-between;
+  padding: 10px;
   margin: 0;
 `;
 
 const H1 = styled.h1`
   font-family: var(--headerfont);
-  font-size: 22px;
+  font-size: 42px;
   letter-spacing: 1px;
   text-transform: uppercase;
   text-align: center;
   color: var(--white);
+  background: -webkit-linear-gradient(var(--blue), var(--yellow));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding-left: 40px;
 `;
 
 const ITEM = styled.span`
@@ -35,6 +39,10 @@ const ITEM = styled.span`
   }
 `;
 
+const NavItems = styled.div`
+  padding-right: 40px;
+`;
+
 const Navbar = (props) => {
   const [user] = useContext(UserContext);
 
@@ -43,37 +51,26 @@ const Navbar = (props) => {
       <Path to="/">
         <H1>Recordshare</H1>
       </Path>
-      <div>
+      <NavItems>
         <Path to="/search">
           <ITEM>Search</ITEM>
-        </Path>
-        <Path to="/stories">
-          <ITEM>Recently Shared</ITEM>
         </Path>
         {
           user
           ? (
           <Fragment>
-            <Path to="/dashboard">
-              <ITEM>Dashboard</ITEM>
-            </Path>
-            <Path to="/upload">
-              <ITEM>Upload</ITEM>
-            </Path>
+            <Path to="/dashboard"><ITEM>Dashboard</ITEM></Path>
+            <Path to="/upload"><ITEM>Upload</ITEM></Path>
             <ITEM onClick={() => userauth.userLogout()}>Logout</ITEM>
           </Fragment>
           ) : (
           <Fragment>
-            <Path to="/login">
-              <ITEM>Login</ITEM>
-            </Path>
-            <Path to="/signup">
-              <ITEM>Sign Up</ITEM>
-            </Path>
+            <Path to="/login"><ITEM>Login</ITEM></Path>
+            <Path to="/signup"><ITEM>Sign Up</ITEM></Path>
           </Fragment>
           )
         }
-      </div>
+      </NavItems>
     </NAV>
   )
 }

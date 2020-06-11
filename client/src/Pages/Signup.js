@@ -1,7 +1,5 @@
 import React from 'react';
-import Form1 from '../Components/Signup/Form1';
-import Form2 from '../Components/Signup/Form2';
-import Confirm from '../Components/Signup/Confirm';
+import {Form1, Form2, Confirm} from '../Components/Signup';
 import {NewUserSuccess} from '../Components/Success';
 import {Container, Image, Text} from '../Components/Elements';
 import image from '../Images/record-listening.jpg';
@@ -77,7 +75,7 @@ class SignUp extends React.Component {
         <Grid>
           <Image src={image} alt="record-flipping" width="400px" height="auto"/>
           <div>
-          {this.renderForm()}
+            {this.renderForm()}
             <Blurb>
               <Text variant="p1">
                 Recordshare is the place where you can come and share the records that mean something to you, and help others find the meaning in them too.

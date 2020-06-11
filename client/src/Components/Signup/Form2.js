@@ -27,7 +27,7 @@ class Form2 extends React.Component {
 
     return (
       <Card align="center">
-        <Text variant="h3">Register</Text>
+        <Text variant="h3">Almost there...</Text>
         <form>
           <Text variant="label-block">Email</Text>
           <Input placeholder="email" name="email" type="text" value={values.email} onChange={handleChange}/>
@@ -36,7 +36,7 @@ class Form2 extends React.Component {
           <Text variant="label-block">Re-enter Password</Text>
           <Input placeholder="re-enter password" name="password2" type="password" value={values.password2} onChange={handleChange}/>
           <div>
-            <Button onClick={this.back} style={{marginRight: '10px'}}>Go Back</Button>
+            <Button margin="0px 20px 0px 0px" onClick={this.back} style={{marginRight: '10px'}}>Go Back</Button>
             <Button onClick={this.continue}>Continue</Button>
           </div>
         </form>

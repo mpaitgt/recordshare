@@ -33,14 +33,14 @@ class Confirm extends React.Component {
         <Card>
           <Text variant="h3">Confirm</Text>
           <div>
-            <Text variant="label-block">Username</Text>
-            <Text variant="p1">{values.username}</Text>
-
-            <Text variant="label-block">Email</Text>
-            <Text variant="p1">{values.email}</Text>
-
+            <Text variant="p1">
+              <strong>Username:</strong> {values.username}
+              </Text>
+            <Text variant="p1">
+              <strong>Email:</strong> {values.email}
+            </Text>
             <div>
-              <Button onClick={this.back}>Go Back</Button>
+              <Button margin="0px 20px 0px 0px" onClick={this.back}>Go Back</Button>
               <Button onClick={this.register}>Confirm</Button>
             </div>
           </div>

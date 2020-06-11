@@ -16,15 +16,11 @@ router.post('/login', function(req, res) {
     } else {
       user.comparePassword(password, function(err, isMatch) {
         if (isMatch && !err) {
-          // if user is found and password is correct create a token
           const token = jwt.sign(user.toJSON(), settings.secret);
-          // return appropriate information including token as json
           user.password = undefined;
           let response = { success: true, token: `JWT: ${token}`, user: user, msg: 'You are logged in!!' };
-          console.log(response);
           res.json(response);
         } else {
-          // user found, but password incorrect
           res.status(401).json({ success: false, msg: 'Authentication failed. Password is incorrect.' });
         }
       })
@@ -35,9 +31,7 @@ router.post('/login', function(req, res) {
 // user register
 router.post('/register', function(req, res) {
   let user = new User(req.body);
-  User.create(user)
-    .then(data => console.log(data))
-    .catch(err => console.log(err));
+  user.save();
 })
 
 module.exports = router;

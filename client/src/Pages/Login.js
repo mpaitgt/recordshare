@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Path, Card, Button, Input, Text, Container} from '../Components/Elements';
-import userauth from '../Utils/userauth';
+import API from '../Utils';
 import styled from '@emotion/styled';
 
 function Login() {
@@ -10,11 +10,11 @@ function Login() {
   
   const onSubmit = e => {
     e.preventDefault();
-    userauth.userLogin({ email: email, password: password })
+    API.userauth.userLogin({ email: email, password: password })
       .then(res => res.json())
       .then(data => {
         if (data.success) {
-          userauth.populateLocalStorage(data);
+          API.userauth.populateLocalStorage(data);
           // might have to change this to a more React appropriate action
           window.location.replace('/dashboard');
         } else {
@@ -34,7 +34,9 @@ function Login() {
             <Input name="email" type="text" placeholder="your email" onChange={e => setEmail(e.target.value)} value={email} />
             <Text variant="label-block" htmlFor="password">Password</Text>
             <Input type="password" placeholder="your password" onChange={e => setPassword(e.target.value)} value={password} />
-            <Button display="block">Login</Button>
+            <div>
+              <Button display="block">Login</Button>
+            </div>
           </form>
           <Text variant="p2">
             <Path to="/forgot-password">

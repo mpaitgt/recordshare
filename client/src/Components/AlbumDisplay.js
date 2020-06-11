@@ -55,7 +55,7 @@ function AlbumDisplay({ display, album }) {
         </div>
         <Text variant="p1">{story}</Text>
         <div>
-          <Button display="inline" onClick={() => recordDetails(title, artist)}>Details</Button>
+          <Button margin="0px 20px 0px 0px" display="inline" onClick={() => recordDetails(title, artist)}>Details</Button>
           <Button display="inline">Share your story</Button>
         </div>
         <Text variant="description">Added on {helpers.convertDate(date_added)}</Text>

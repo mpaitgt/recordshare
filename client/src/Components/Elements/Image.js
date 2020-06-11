@@ -8,15 +8,9 @@ const IMAGE = styled.img`
   margin: 20px;
 `;
 
-function Image({src, alt, type, width, height}) {
+const Image = ({src, alt, type, width, height}) => {
   return (
-    <IMAGE
-      src={src} 
-      alt={alt}
-      type={type}
-      width={width ? width : '150'}
-      height={height ? height : '150'}
-    />
+    <IMAGE src={src} alt={alt} type={type} width={width ? width : '150'} height={height ? height : '150'} />
   )
 }
 

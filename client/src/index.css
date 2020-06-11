@@ -19,6 +19,11 @@
   --gray-6: rgb(238, 238, 238);
   --white: #f1f1f1;
   --whiter: #ffffff;
+  --blue: #01b9f5;
+  --orange-1: #ff9b6a;
+  --orange-2: #febc5c;
+  --orange-3: #fbcb7f;
+  --yellow: #fde851;
   --headerfont: 'Yanone Kaffeesatz', sans-serif;
   --subfont: 'Josefin Sans', sans-serif;
 }

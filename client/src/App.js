@@ -1,16 +1,9 @@
 import React, {useContext, useEffect} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import Navbar from './Components/Navbar/Navbar';
-import SignUp from './Pages/Signup';
-import Login from './Pages/Login';
-import Stories from './Pages/Stories';
-import Home from './Pages/Home';
-import Upload from './Pages/Upload';
-import Search from './Pages/Search';
-import Dashboard from './Pages/Dashboard';
+import Navbar from './Components/Navbar';
 import Footer from './Components/Footer';
-import AlbumDetails from './Pages/AlbumDetails';
-import { UserContext } from './Components/Providers/UserProvider';
+import {SignUp, Login, Stories, Home, Upload, Search, Dashboard, AlbumDetails} from './Pages';
+import {UserContext} from './Components/Providers/UserProvider';
 import userauth from './Utils/userauth';
 
 function App() {

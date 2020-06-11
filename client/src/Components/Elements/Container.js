@@ -8,7 +8,7 @@ const CONTAINER = styled.div`
   position: relative;
 `;
 
-function Container(props) {
+const Container = (props) => {
   return (
     <CONTAINER>
       {props.children}

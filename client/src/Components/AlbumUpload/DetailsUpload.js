@@ -1,8 +1,5 @@
 import React from 'react';
-import Input from '../Elements/Input';
-import Text from '../Elements/Text';
-import Card from '../Elements/Card';
-import Button from '../Elements/Button';
+import {Input, Text, Card, Button} from '../Elements';
 import styled from '@emotion/styled';
 
 const Grid = styled.div`
@@ -12,10 +9,9 @@ const Grid = styled.div`
   margin: 20px 0px;
 `;
 
-function DetailsUpload(props) {
-  
+const DetailsUpload = (props) => {
   return (
-    <Card align="center">
+    <Card>
       <Text variant="h2">Share a new album</Text>
       <div>
         <Text variant="label-block">Album Title</Text>

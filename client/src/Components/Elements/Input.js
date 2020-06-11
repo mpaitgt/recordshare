@@ -24,17 +24,9 @@ const INPUT = styled.input`
   }
 `;
 
-function Input({ key, name, value, type, placeholder, onChange }) {
+const Input = ({ name, value, type, placeholder, onChange }) => {
   return (
-    <div>
-    <INPUT 
-      name={name}
-      value={value}
-      type={type}
-      placeholder={placeholder}
-      onChange={onChange}
-    />
-    </div>
+    <INPUT name={name} value={value} type={type} placeholder={placeholder} onChange={onChange} />
   )
 }
 
