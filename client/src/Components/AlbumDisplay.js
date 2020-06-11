@@ -3,13 +3,11 @@ import Button from '../Components/Elements/Button';
 import {Text, Image} from '../Components/Elements';
 import Like from '../Components/Like';
 import {PayloadContext} from '../Components/Providers/PayloadProvider';
+import {UserContext} from '../Components/Providers/UserProvider';
 import GenreTag from '../Components/GenreTag';
 import styled from '@emotion/styled';
 import spotify from '../Utils/spotify';
 import helpers from '../Utils/helpers';
-// import {faHeart} from '@fortawesome/free-solid-svg-icons';
-import {faHeart} from '@fortawesome/free-regular-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
 const Flex = styled.div`
   display: grid;
@@ -20,6 +18,7 @@ const Flex = styled.div`
 `;
 
 function AlbumDisplay({ display, album }) {
+  const [user, setUser] = useContext(UserContext);
   const [record, setRecord] = useContext(PayloadContext);
   const { image, title, artist, genres, story, date_added } = album;
 
@@ -63,7 +62,7 @@ function AlbumDisplay({ display, album }) {
         </div>
         <Text variant="p1">{story}</Text>
         <div>
-          <Like album={album} />
+          { user ? <Like album={album} /> : null }
           <Button margin="0px 20px 0px 0px" display="inline" onClick={() => recordDetails(title, artist)}>Details</Button>
           <Button margin="0px 20px 0px 0px" display="inline">Share your story</Button>
         </div>
