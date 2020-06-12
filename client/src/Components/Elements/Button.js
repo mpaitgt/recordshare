@@ -7,7 +7,7 @@ const Button = ({ margin, children, type, onClick, variant }) => {
     <button className={css`
       display: inline;
       font-family: var(--subfont);
-      font-size: 16px;
+      font-size: 14px;
       letter-spacing: 1px;
       background: linear-gradient(90deg, var(--orange-1), var(--orange-2));
       border: none;

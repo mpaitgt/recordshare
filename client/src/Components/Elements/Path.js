@@ -9,8 +9,7 @@ function Path(props) {
       className={css`
         text-decoration: none;
         color: inherit;
-        font-size: 13px;
-        color: var(--red-2);
+        color: var(--blue);
       `}> 
       {props.children} 
     </Link>

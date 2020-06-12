@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useEffect, useContext} from 'react';
 import Button from '../Components/Elements/Button';
 import {Text, Image} from '../Components/Elements';
 import Like from '../Components/Like';
@@ -42,9 +42,9 @@ function AlbumDisplay({ display, album }) {
       .catch(err => console.log(err));
   }
 
-  const likeAlbum = () => {
-
-  }
+  useEffect(() => {
+    console.log(album);
+  }, [])
 
   return (
     <Flex>
@@ -69,11 +69,11 @@ function AlbumDisplay({ display, album }) {
           <Text variant="p1">{story}</Text>
         </Content>
         <div>
-          { user ? <Like album={album} /> : null }
+          {/* { user ? <Like album={album} /> : null } */}
           <Button margin="0px 20px 0px 0px" display="inline" onClick={() => recordDetails(title, artist)}>Details</Button>
           <Button margin="0px 20px 0px 0px" display="inline">Share your story</Button>
         </div>
-        <Text variant="description">Added on {helpers.convertDate(date_added)}</Text>
+        <Text variant="description">Added {helpers.convertDate(date_added)}</Text>
       </div>
     </Flex>
   )
