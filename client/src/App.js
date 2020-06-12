@@ -28,7 +28,7 @@ function App() {
         <Route exact path="/search" component={Search} />
         <Route exact path="/dashboard" component={Dashboard} />
         <Route path="/albums/id/:id" component={AlbumDetails} />
-        <Route exact path="/upload" component={Upload} />
+        <Route exact path="/upload" render={() => <Upload user={user} />} />
         <Route exact path="/" component={Home}/>
       </Switch>
       <Footer />

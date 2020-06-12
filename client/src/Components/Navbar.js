@@ -31,7 +31,7 @@ display: inline-block;
     transition: all 0.1s ease-in-out;
     transform: translate(2px, -2px) scale(1.1);
     background: var(--yellow);
-    color: var(--gray-1) !important;
+    color: var(--gray-1);
     box-shadow: -4px 4px rgba(255,255,255,0.8);
   }
   &:focus {

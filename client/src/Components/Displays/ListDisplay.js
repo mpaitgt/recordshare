@@ -13,9 +13,12 @@ const Flex = styled.div`
   display: grid;
   grid-template-columns: 40% 60%;
   flex-direction: row;
-  align-items: center;
+  align-items: start;
   justify-items: center;
   grid-gap: 20px;
+  border-top: 2px solid var(--gray-6);
+  border-bottom: 1px solid var(--gray-6);
+  padding: 24px 0px;
 `;
 
 const Content = styled.div`
@@ -50,8 +53,8 @@ function ListDisplay({ display, album }) {
     <Flex>
       <Image 
         style={{ justifySelf: 'center', margin: '20px' }} 
-        width="360" 
-        height="360"
+        width="300" 
+        height="300"
         src={image.url} 
         alt={`${album.title} by ${artist}`} 
       />
