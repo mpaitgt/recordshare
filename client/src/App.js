@@ -31,7 +31,7 @@ function App() {
         <Route exact path="/upload" render={() => <Upload user={user} />} />
         <Route exact path="/" component={Home}/>
       </Switch>
-      <Footer />
+      {/* <Footer /> */}
     </Router>
   );
 }

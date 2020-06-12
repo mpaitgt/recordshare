@@ -52,7 +52,7 @@
 
 .p1 {
   @extend .content;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .p2 {
@@ -64,7 +64,7 @@
   @extend .p1;
   color: var(--gray-5);
   font-weight: 200;
-  font-size: 18px;
+  font-size: 14px;
   margin: 20px 0px;
   // letter-spacing: -1px;
 }

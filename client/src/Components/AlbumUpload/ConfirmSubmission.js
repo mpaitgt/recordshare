@@ -1,17 +1,19 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Text, Card, Button, Image} from '../Elements';
 
-const ConfirmSubmission = ({state, onSubmit}) => {
+const ConfirmSubmission = ({album}) => {
 
-  const { artist, title, image, story, genres } = state;
+  useEffect(() => {
+    console.log(album);
+  }, [])
 
   return (
     <Card>
-      <Image src={URL.createObjectURL(image)} alt={`${title} by ${artist}`} width="300" height="300" />
-      <Text variant="h1">{title}</Text>
-      <Text variant="h2">by {artist}</Text>
-      <Text variant="label-inline">{genres.join(', ')}</Text>
-      <Text variant="p1">{story}</Text>
+      <Image src={URL.createObjectURL(album.image)} alt={`${album.title} by ${album.artist}`} width="300" height="300" />
+      <Text variant="h1">{album.title}</Text>
+      <Text variant="h2">by {album.artist}</Text>
+      <Text variant="label-inline">{album.genres.join(', ')}</Text>
+      <Text variant="p1">{album.story}</Text>
       <Button type="submit">Submit</Button>
     </Card>
   )

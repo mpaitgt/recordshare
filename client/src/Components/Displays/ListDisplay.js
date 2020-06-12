@@ -45,10 +45,6 @@ function ListDisplay({ display, album }) {
       .catch(err => console.log(err));
   }
 
-  useEffect(() => {
-    console.log(album);
-  }, [])
-
   return (
     <Flex>
       <Image 
