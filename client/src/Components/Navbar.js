@@ -1,5 +1,6 @@
 import React, {Fragment, useContext} from 'react';
-import {Path} from './Elements';
+import {Path} from '../Components/Elements';
+import Logo from '../Components/Logo';
 import { UserContext } from './Providers/UserProvider';
 import styled from '@emotion/styled';
 import userauth from '../Utils/userauth';
@@ -12,31 +13,16 @@ const NAV = styled.nav`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  // padding: 10px;
+  padding: 10px;
   margin: 0;
-`;
-
-const H1 = styled.h1`
-  // position: absolute;
-  // top: 0px;
-  font-family: var(--headerfont);
-  font-size: 48px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  text-align: center;
-  color: var(--white);
-  background: -webkit-linear-gradient(var(--yellow), var(--blue));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  padding-left: 40px;
 `;
 
 const ITEM = styled.li`
 display: inline-block;
   font-family: var(--subfont);
-  font-size: 16px;
-  padding: 20px 10px;
-  margin: 0px 32px;
+  font-size: 14px;
+  padding: 8px 10px;
+  margin: 0px 24px;
   cursor: pointer;
   transition: all 0.1s ease-in;
   color: var(--blue);
@@ -44,11 +30,12 @@ display: inline-block;
   &:hover {
     transition: all 0.1s ease-in-out;
     transform: translate(2px, -2px) scale(1.1);
-    text-shadow: -1px 1px rgba(253,232,81,0.4);
+    background: var(--yellow);
+    color: var(--gray-1) !important;
+    box-shadow: -4px 4px rgba(255,255,255,0.8);
   }
   &:focus {
     border: 1px solid var(--blue);
-    color: var(--yellow);
   }
   a {
     &:active {
@@ -67,7 +54,7 @@ const Navbar = (props) => {
   return (
     <NAV>
       <Path to="/">
-        <H1>Recordshare</H1>
+        <Logo size="32px" padding="0px 0px 0px 40px" />
       </Path>
       <NavItems>
         <ITEM>

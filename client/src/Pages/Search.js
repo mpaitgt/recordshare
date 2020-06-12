@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Text, Container} from '../Components/Elements';
-import AlbumDisplay from '../Components/AlbumDisplay';
+import {ListDisplay, GridDisplay} from '../Components/Displays';
 import SearchBar from '../Components/Search/SearchBar';
 import API from '../Utils';
 
@@ -32,7 +32,7 @@ const Search = () => {
           loaded
           ?
           results.map(album => {
-            return <AlbumDisplay album={album} />
+            return <ListDisplay album={album} />
           })
           : 
           null
