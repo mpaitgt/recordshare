@@ -16,14 +16,22 @@ const ImageDisplay = styled.div`
   position: relative;
 `;
 
+const Image1 = styled.img`
+
+`;
+
+const Image2 = styled.img`
+
+`;
+
 const Home = () => {
   return (
     <Container>
       {/* <Text variant="headline">Welcome to Recordshare.</Text> */}
       <ImageDisplay>
       {/* <Logo size="102px" padding="0px" /> */}
-        <img src={img} width="400"/>
-        <img src={img2} width="600"/>
+        <Image1 src={img} width="400"/>
+        <Image2 src={img2} width="600"/>
       </ImageDisplay>
       {/* <Features>
         <Text className={css`align-self: flex-start`} variant="h1">Find</Text>

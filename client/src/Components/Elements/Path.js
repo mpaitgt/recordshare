@@ -2,15 +2,19 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {css} from 'emotion';
 
-function Path(props) {
+function Path({to, children, underline}) {
   return (
     <Link 
-      to={props.to} 
+      to={to} 
       className={css`
         text-decoration: none;
         color: inherit;
+        font-weight: ${underline ? '900' : '100'};
+        &:hover {
+          color: ${underline ? 'var(--blue)' : 'inherit'};
+        }
       `}> 
-      {props.children} 
+      {children} 
     </Link>
   )
 }

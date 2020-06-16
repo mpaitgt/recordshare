@@ -31,7 +31,7 @@ class Form1 extends React.Component {
         </form>
         <Text variant="p2">
           Already have an account?<br/>
-          <Path to="/login">Login here.</Path>
+          <Path to="/login" underline={true}>Login here.</Path>
         </Text>
       </Card>
     )

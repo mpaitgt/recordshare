@@ -4,6 +4,7 @@ import {ListDisplay, GridDisplay} from '../Components/Displays';
 import SearchBar from '../Components/Search/SearchBar';
 import API from '../Utils';
 import styled from '@emotion/styled';
+import Loader from '../Components/Loader';
 
 const Flex = styled.div`
   display: flex;
