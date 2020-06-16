@@ -1,7 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react';
-import {Text, Button} from '../Components/Elements';
+import {Text} from '../Components/Elements';
 import {UserContext} from '../Components/Providers/UserProvider';
-import styled from '@emotion/styled';
 import {faHeart} from '@fortawesome/free-solid-svg-icons';
 import {faHeart as notLiked} from '@fortawesome/free-regular-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';

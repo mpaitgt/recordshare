@@ -1,28 +1,31 @@
 import React, {useEffect, useContext} from 'react';
-import Button from '../Components/Elements/Button';
-import {Text, Image} from '../Components/Elements';
-import Like from '../Components/Like';
-import {PayloadContext} from '../Components/Providers/PayloadProvider';
-import {UserContext} from '../Components/Providers/UserProvider';
-import GenreTag from '../Components/GenreTag';
+import Button from '../Elements/Button';
+import {Text, Image} from '../Elements';
+import Like from '../Like';
+import {PayloadContext} from '../Providers/PayloadProvider';
+import {UserContext} from '../Providers/UserProvider';
+import GenreTag from '../GenreTag';
 import styled from '@emotion/styled';
-import spotify from '../Utils/spotify';
-import helpers from '../Utils/helpers';
+import spotify from '../../Utils/spotify';
+import helpers from '../../Utils/helpers';
 
 const Flex = styled.div`
   display: grid;
   grid-template-columns: 40% 60%;
   flex-direction: row;
-  align-items: center;
+  align-items: start;
   justify-items: center;
   grid-gap: 20px;
+  border-top: 2px solid var(--gray-6);
+  border-bottom: 1px solid var(--gray-6);
+  padding: 24px 0px;
 `;
 
 const Content = styled.div`
   max-width: 600px;
 `;
 
-function AlbumDisplay({ display, album }) {
+function ListDisplay({ display, album }) {
   const [user, setUser] = useContext(UserContext);
   const [record, setRecord] = useContext(PayloadContext);
   const { image, title, artist, genres, story, date_added } = album;
@@ -50,8 +53,8 @@ function AlbumDisplay({ display, album }) {
     <Flex>
       <Image 
         style={{ justifySelf: 'center', margin: '20px' }} 
-        width="360" 
-        height="360"
+        width="300" 
+        height="300"
         src={image.url} 
         alt={`${album.title} by ${artist}`} 
       />
@@ -79,4 +82,4 @@ function AlbumDisplay({ display, album }) {
   )
 }
 
-export default AlbumDisplay;
+export default ListDisplay;
