@@ -25,7 +25,7 @@ const DetailsUpload = (props) => {
       <Grid>
         {props.renderGenres}
       </Grid>
-      <Button onClick={props.nextStep}>Continue</Button>
+      <Button onClick={() => props.setStep(props.step + 1)}>Continue</Button>
     </Card>
   )
 }

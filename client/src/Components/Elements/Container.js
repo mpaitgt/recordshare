@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 
 const CONTAINER = styled.div`
   width: 80%;
-  margin: 2rem auto;
+  margin: 6rem auto;
   text-align: left;
   position: relative;
 `;

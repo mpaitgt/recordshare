@@ -39,13 +39,13 @@ function Login() {
             </div>
           </form>
           <Text variant="p2">
-            <Path to="/forgot-password">
-              Forget your password? 
+            <Path to="/forgot-password" underline={true}>
+              Forgot your password? 
             </Path>
           </Text>
           <Text variant="p2">
             Don't have an account?<br/>
-            <Path to="/signup">Make one!</Path>
+            <Path to="/signup" underline={true}>Make one!</Path>
           </Text>
       </Card>
     </Container>

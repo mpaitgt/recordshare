@@ -1,85 +1,78 @@
-import React, {useContext} from 'react';
+import React, {useState, useContext} from 'react';
 import {DetailsUpload, ImageUpload, StoryUpload, ConfirmSubmission} from '../Components/AlbumUpload';
 import {NewSubmissionSuccess} from '../Components/Success';
 import {Text, Input, Container} from '../Components/Elements';
 import {UserContext} from '../Components/Providers/UserProvider';
 import db from '../Utils/db';
 
-class Upload extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      step: 1,
-      title: '',
-      artist: '',
-      image: null,
-      story: '',
-      genres: [],
-      user: null
-    }
+const Upload = () => {
+  const [user, setUser] = useContext(UserContext);
+  const [step, setStep] = useState(1);
+  const [title, setTitle] = useState('');
+  const [artist, setArtist] = useState('');
+  const [image, setImage] = useState(null);
+  const [story, setStory] = useState('');
+  const [genres, setGenres] = useState([]);
+
+  const album = async function() {
+      return {
+        submitted_by: { _id: await user._id, username: await user.username },
+        title: title,
+        artist: artist,
+        image: image,
+        story: story,
+        genres: genres
+      };
   }
 
-  // proceed to next step
-  nextStep = () => {
-    const { step } = this.state;
-    this.setState({ step: step + 1 })
-  }
+  const genresArray = ['Rock', 'Indie', 'Hip Hop', 'Folk', 'Alternative', 'Electronic', 'Pop', 'Punk', 'Reggae', 'Jazz', 'Funk', 'Hardcore'];
 
-  // go back to previous step
-  prevStep = () => {
-    const { step } = this.state;
-    this.setState({ step: step - 1 })
-  }  
-
-  genres = ['Rock', 'Indie', 'Hip Hop', 'Folk', 'Alternative', 'Electronic', 'Pop', 'Punk', 'Reggae', 'Jazz', 'Funk', 'Hardcore'];
-
-  renderGenres = this.genres.map((genre, i) => {
+  const renderGenres = genresArray.map((genre, i) => {
     return (
       <div key={i}>
-        <Input onChange={e => this.handleGenres(e)} type='checkbox' name='genres' value={genre} />
+        <Input onChange={e => handleGenres(e)} type='checkbox' name='genres' value={genre} />
         <Text variant='label-inline' for='genres'>{genre}</Text>
       </div>
     )
   })
 
-  displayForm = () => {
-    const { step, title, artist, image, story } = this.state;
-
+  const displayForm = () => {
     switch(step) {
       case 1:
         return (
           <DetailsUpload 
             title={title} 
             artist={artist} 
-            handleChange={this.handleChange} 
-            renderGenres={this.renderGenres} 
-            nextStep={this.nextStep}
+            handleChange={handleChange} 
+            renderGenres={renderGenres} 
+            setStep={setStep}
+            step={step}
           />
         )
       case 2:
         return (
           <ImageUpload 
             image={image}
-            handleChange={this.handleChange}
-            nextStep={this.nextStep}
-            prevStep={this.prevStep}
-            setState={this.setState}
+            handleChange={handleChange}
+            setStep={setStep}
+            step={step}
           />
         )
       case 3:
         return (
           <StoryUpload 
             story={story}
-            handleChange={this.handleChange}
-            nextStep={this.nextStep}
-            prevStep={this.prevStep}
+            handleChange={handleChange}
+            setStep={setStep}
+            step={step}
           />
         )
       case 4: 
       return (
-        <ConfirmSubmission 
-          state={this.state}
-          onSubmit={this.onSubmit}
+        <ConfirmSubmission
+          album={album}
+          onSubmit={onSubmit}
+          step={step}
         />
       )
       case 5:
@@ -91,57 +84,59 @@ class Upload extends React.Component {
           <DetailsUpload 
             title={title} 
             artist={artist} 
-            handleChange={this.handleChange} 
-            renderGenres={this.renderGenres} 
-            nextStep={this.nextStep}
+            handleChange={handleChange} 
+            renderGenres={renderGenres} 
+            setStep={setStep}
+            step={step}
           />
         )
       }
   }
 
-  handleGenres = e => {
-    const { genres } = this.state;
-    const { checked, name, value } = e.target;
+  const handleGenres = e => {
+    const { checked, value } = e.target;
     if (checked) {
-      this.setState({ [name]: [...genres, value] });
+      setGenres([...genres, value]);
     }
     if (!checked) {
       const newGenres = genres.filter(item => item !== value);
-      this.setState({ [name]: newGenres })
+      setGenres(newGenres);
     }
   }
 
-  handleChange = e => {
+  const handleChange = e => {
     const { type, name, value, files } = e.target;
     // for type text
-    if (type === 'text') this.setState({ [name]: value });
+    if (type === 'text') {
+      if (name === 'title') setTitle(value);
+      if (name === 'artist') setArtist(value);
+      if (name === 'story') setStory(value);
+    }
     // for type file
-    if (type === 'file') this.setState({ [name]: files[0] });
+    if (type === 'file') setImage(files[0]);
   }
 
-  onSubmit = e => {
+  const onSubmit = e => {
     e.preventDefault();
-    const { artist, title, image, story, genres } = this.state;
     let record = {
       artist: artist,
       title: title,
       image: image,
       story: story, 
-      genres: genres
+      genres: genres,
+      submitted_by: user
     };
     db.addAlbum(record);
-    this.nextStep();
+    setStep(step + 1);
   }
 
-  render() {
-    return (
-      <Container>
-        <form onSubmit={this.onSubmit} encType="multipart/form-data">
-          {this.displayForm()}
-        </form>
-      </Container>
-    )
-  }
+  return (
+    <Container>
+      <form onSubmit={onSubmit} encType="multipart/form-data">
+        {displayForm()}
+      </form>
+    </Container>
+  )
 };
 
 export default Upload;

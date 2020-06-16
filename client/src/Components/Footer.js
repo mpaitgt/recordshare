@@ -4,10 +4,11 @@ import styled from '@emotion/styled';
 
 const Foot = styled.div`
   background: var(--gray-6);
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  left: 0;
+  position: relative;
+  // position: fixed;
+  // bottom: 0;
+  // right: 0;
+  // left: 0;
   display: flex;
   justify-content: space-around;
 `;
