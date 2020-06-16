@@ -5,7 +5,7 @@ const db = require('../models');
 const multer  = require('multer')
 const upload = multer({ dest: './uploads/' });
 
-// get all albums for display
+// get all albums for display in feed
 router.get('/get-albums', function(req, res) {
   db.Album.find({})
     .then(data => res.send(data));
@@ -45,6 +45,29 @@ router.get('/search/albums/:query', function(req, res) {
       if (!data) res.json({ msg: `There does not seem to be any results that match your search.` })
   })
     .catch(err => res.json(err))
+})
+
+// like an album
+router.post(`/like/album/:user/:id`, async function(req, res) {
+  let album_id = req.params.id;
+  let user_id = req.params.user;
+  console.log(album_id, user_id);
+  // when user clicks to like this album
+  // we search the db for this user
+  // db.User.findOneAndUpdate(
+  //   { _id: user_id },
+
+  // )
+
+  // db.Album.update(
+  //   { _id: album_id },  
+  //   { $push: { likes: user_id } }
+  // )
+  // then we take that user's id, and add it to the album.likes array in the db
+  // db.Album.findOneAndUpdate(
+  //  { _id: album_id }, { $push: { likes: user_id } }
+  // )
+  // if it's already liked, we remove it
 })
 
 module.exports = router;

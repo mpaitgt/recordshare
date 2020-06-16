@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {css} from '@emotion/core';
+import {css} from 'emotion';
 
 function Path(props) {
   return (
@@ -9,8 +9,7 @@ function Path(props) {
       className={css`
         text-decoration: none;
         color: inherit;
-        font-size: 13px;
-        color: var(--red-2);
+        color: var(--blue);
       `}> 
       {props.children} 
     </Link>

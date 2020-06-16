@@ -23,9 +23,9 @@
   --orange-1: #ff9b6a;
   --orange-2: #febc5c;
   --orange-3: #fbcb7f;
-  --yellow: #fde851;
+  --yellow: rgb(253, 232, 81);
   --headerfont: 'Yanone Kaffeesatz', sans-serif;
-  --subfont: 'Josefin Sans', sans-serif;
+  --subfont: 'Nanum Gothic', sans-serif;
 }
 
 body {

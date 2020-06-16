@@ -50,12 +50,6 @@
   font-size: 82px;
 }
 
-.description {
-  @extend .standard;
-  font-size: 20px;
-  margin: 20px 0px;
-}
-
 .p1 {
   @extend .content;
   font-size: 16px;
@@ -64,6 +58,15 @@
 .p2 {
   @extend .content;
   font-size: 14px;
+}
+
+.description {
+  @extend .p1;
+  color: var(--gray-5);
+  font-weight: 200;
+  font-size: 18px;
+  margin: 20px 0px;
+  // letter-spacing: -1px;
 }
 
 .label {

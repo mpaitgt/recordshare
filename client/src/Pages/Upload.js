@@ -2,9 +2,11 @@ import React from 'react';
 import {DetailsUpload, ImageUpload, StoryUpload, ConfirmSubmission} from '../Components/AlbumUpload';
 import {NewSubmissionSuccess} from '../Components/Success';
 import {Text, Input, Container} from '../Components/Elements';
+import {UserContext} from '../Components/Providers/UserProvider';
 import db from '../Utils/db';
 
 class Upload extends React.Component {
+  static contextType = UserContext;
   constructor(props) {
     super(props);
     this.state = {
@@ -13,8 +15,13 @@ class Upload extends React.Component {
       artist: '',
       image: null,
       story: '',
-      genres: []
+      genres: [],
+      user: null
     }
+  }
+
+  componentDidMount() {
+    this.setState({ user: this.context });
   }
 
   // proceed to next step

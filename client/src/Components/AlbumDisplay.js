@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useEffect, useContext} from 'react';
 import Button from '../Components/Elements/Button';
 import {Text, Image} from '../Components/Elements';
 import Like from '../Components/Like';
@@ -14,7 +14,12 @@ const Flex = styled.div`
   grid-template-columns: 40% 60%;
   flex-direction: row;
   align-items: center;
-  grid-gap: 50px;
+  justify-items: center;
+  grid-gap: 20px;
+`;
+
+const Content = styled.div`
+  max-width: 600px;
 `;
 
 function AlbumDisplay({ display, album }) {
@@ -37,16 +42,16 @@ function AlbumDisplay({ display, album }) {
       .catch(err => console.log(err));
   }
 
-  const likeAlbum = () => {
-
-  }
+  useEffect(() => {
+    console.log(album);
+  }, [])
 
   return (
     <Flex>
       <Image 
         style={{ justifySelf: 'center', margin: '20px' }} 
-        width="340" 
-        height="340"
+        width="360" 
+        height="360"
         src={image.url} 
         alt={`${album.title} by ${artist}`} 
       />
@@ -60,13 +65,15 @@ function AlbumDisplay({ display, album }) {
           })
         }
         </div>
-        <Text variant="p1">{story}</Text>
+        <Content>
+          <Text variant="p1">{story}</Text>
+        </Content>
         <div>
-          { user ? <Like album={album} /> : null }
+          {/* { user ? <Like album={album} /> : null } */}
           <Button margin="0px 20px 0px 0px" display="inline" onClick={() => recordDetails(title, artist)}>Details</Button>
           <Button margin="0px 20px 0px 0px" display="inline">Share your story</Button>
         </div>
-        <Text variant="description">Added on {helpers.convertDate(date_added)}</Text>
+        <Text variant="description">Added {helpers.convertDate(date_added)}</Text>
       </div>
     </Flex>
   )

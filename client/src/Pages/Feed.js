@@ -4,14 +4,16 @@ import RecordLoader from '../Components/Loader';
 import AlbumDisplay from '../Components/AlbumDisplay';
 import db from '../Utils/db';
 
-const Stories = () => {
+const Feed = () => {
   let [loaded, setLoaded] = useState(false);
   let [albums, setAlbums] = useState([]);
 
   useEffect(() => {
-    db.getAlbums().then(res => {
-      setAlbums(res.data);
-      setLoaded(true);
+    setTimeout(() => {
+      db.getAlbums().then(res => {
+        setAlbums(res.data);
+        setLoaded(true);
+      }, 2000);
     })
   }, []);
 
@@ -23,7 +25,7 @@ const Stories = () => {
     <div style={{ marginBottom: '100px' }}>
     <Container>
       <div>
-        <Text variant="h1">Recently Shared</Text>
+        <Text variant="h1">Feed</Text>
         <Button variant="h4">List</Button>
         <Button variant="h4">Grid</Button>
       </div>
@@ -33,4 +35,4 @@ const Stories = () => {
   )
 }
 
-export default Stories;
+export default Feed;

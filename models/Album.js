@@ -31,8 +31,11 @@ const AlbumSchema = new Schema({
     ref: "Comment"
   }],
   likes: {
-    type: Number,
-    default: 0
+    type: Array
+  },
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
   }
 })
 

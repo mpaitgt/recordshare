@@ -13,5 +13,8 @@ export default {
   },
   searchAlbums: function(query) {
     return axios.get(`/api/search/albums/${query}`);
+  },
+  likeAlbum: function(user, id) {
+    return axios.post(`/api/like/album/${user}/${id}`);
   }
 }
