@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { UserProvider } from './Components/Providers/UserProvider';
-import { PayloadProvider } from './Components/Providers/PayloadProvider';
+import { ResultsProvider } from './Components/Providers/ResultsProvider';
 
 ReactDOM.render(
   <UserProvider>
-    <PayloadProvider>
+    <ResultsProvider>
       <App />
-    </PayloadProvider>
+    </ResultsProvider>
   </UserProvider>, 
   document.getElementById('root')
 );

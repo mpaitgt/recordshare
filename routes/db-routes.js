@@ -68,6 +68,15 @@ router.post(`/like/album/:user/:id`, async function(req, res) {
   //  { _id: album_id }, { $push: { likes: user_id } }
   // )
   // if it's already liked, we remove it
+});
+
+// filter albums by genre
+router.post('/albums/genres/:term', function(req, res) {
+  let term = req.params.term;
+  console.log(term);
+  db.Album.find({ genres: term })
+    .then(data => res.send(data))
+    .catch(err => console.log(err))
 })
 
 module.exports = router;
