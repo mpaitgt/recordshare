@@ -1,12 +1,12 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {DetailsUpload, ImageUpload, StoryUpload, ConfirmSubmission} from '../Components/AlbumUpload';
 import {NewSubmissionSuccess} from '../Components/Success';
 import {Text, Input, Container} from '../Components/Elements';
 import {UserContext} from '../Components/Providers/UserProvider';
-import db from '../Utils/db';
+import API from '../Utils';
 
 const Upload = () => {
-  const [user, setUser] = useContext(UserContext);
+  // const [user, setUser] = useContext(UserContext);
   const [step, setStep] = useState(1);
   const [title, setTitle] = useState('');
   const [artist, setArtist] = useState('');
@@ -14,16 +14,22 @@ const Upload = () => {
   const [story, setStory] = useState('');
   const [genres, setGenres] = useState([]);
 
-  const album = async function() {
-      return {
-        submitted_by: { _id: await user._id, username: await user.username },
-        title: title,
-        artist: artist,
-        image: image,
-        story: story,
-        genres: genres
-      };
-  }
+  // useEffect(
+	// 	() => {
+  //     const userObj = JSON.parse(API.userauth.getLocalStorage('user'));
+	// 		if (userObj) setUser(userObj);
+  //   },
+	// 	[]
+	// );
+
+  const album = {
+    // submitted_by: { _id: user._id, username: user.username },
+    title: title,
+    artist: artist,
+    image: image,
+    story: story,
+    genres: genres
+  };
 
   const genresArray = ['Rock', 'Indie', 'Hip Hop', 'Folk', 'Alternative', 'Electronic', 'Pop', 'Punk', 'Reggae', 'Jazz', 'Funk', 'Hardcore'];
 
@@ -47,6 +53,7 @@ const Upload = () => {
             renderGenres={renderGenres} 
             setStep={setStep}
             step={step}
+            // user={user}
           />
         )
       case 2:
@@ -124,9 +131,9 @@ const Upload = () => {
       image: image,
       story: story, 
       genres: genres,
-      submitted_by: user
+      // submitted_by: user
     };
-    db.addAlbum(record);
+    API.db.addAlbum(record);
     setStep(step + 1);
   }
 

@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {Text, Container} from '../Components/Elements';
 import {ListDisplay, GridDisplay} from '../Components/Displays';
 import SearchBar from '../Components/Search/SearchBar';
+import {ResultsContext} from '../Components/Providers/ResultsProvider';
 import API from '../Utils';
 import styled from '@emotion/styled';
-import Loader from '../Components/Loader';
 
 const Flex = styled.div`
   display: flex;
@@ -15,7 +15,7 @@ const Flex = styled.div`
 const Search = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [input, setInput] = useState('');
-  const [results, setResults] = useState(null);
+  const [results, setResults] = useContext(ResultsContext);
   const [loaded, setLoaded] = useState(false);
 
   const onSubmit = e => {
@@ -26,9 +26,8 @@ const Search = () => {
           setSearchTerm(input);
           setResults(res.data);
           setLoaded(true);
-          console.log(res)
         } else {
-          console.log(res)
+          console.log('there is a situation', res)
         }
       })
       .catch(err => console.log(err))

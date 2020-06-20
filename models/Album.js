@@ -33,7 +33,7 @@ const AlbumSchema = new Schema({
   likes: {
     type: Array
   },
-  submitted_by: {
+  user: {
     type: Schema.Types.ObjectId,
     ref: 'User'
   }

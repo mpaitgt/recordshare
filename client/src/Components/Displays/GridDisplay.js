@@ -2,7 +2,6 @@ import React, {useEffect, useContext} from 'react';
 import Button from '../Elements/Button';
 import {Text, Image} from '../Elements';
 import Like from '../Like';
-import {PayloadContext} from '../Providers/PayloadProvider';
 import {UserContext} from '../Providers/UserProvider';
 import GenreTag from '../GenreTag';
 import styled from '@emotion/styled';
@@ -17,27 +16,26 @@ const Grid = styled.div`
 
 function GridDisplay({ display, album }) {
   const [user, setUser] = useContext(UserContext);
-  const [record, setRecord] = useContext(PayloadContext);
   const { image, title, artist, genres, story, date_added } = album;
 
-  const recordDetails = (title, artist) => {
-    spotify.getAlbums(title)
-      .then(res => {
-        let albumData = res.data.filter(item => {
-          return item.album_type === 'album' && item.artists[0].name === artist;
-        });
-        setRecord(albumData);
-        return albumData[0];
-      })
-      .then(data => {
-        window.location.replace(`/albums/id/${data.id}`)
-      })
-      .catch(err => console.log(err));
-  }
+  // const recordDetails = (title, artist) => {
+  //   spotify.getAlbums(title)
+  //     .then(res => {
+  //       let albumData = res.data.filter(item => {
+  //         return item.album_type === 'album' && item.artists[0].name === artist;
+  //       });
+  //       setRecord(albumData);
+  //       return albumData[0];
+  //     })
+  //     .then(data => {
+  //       window.location.replace(`/albums/id/${data.id}`)
+  //     })
+  //     .catch(err => console.log(err));
+  // }
 
-  useEffect(() => {
-    console.log(album);
-  }, [])
+  // useEffect(() => {
+  //   console.log(album);
+  // }, [])
 
   return (
     // <Grid>

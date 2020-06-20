@@ -11,9 +11,9 @@ const Tag = styled.div`
   // border-radius: 5px;
 `;
 
-function GenreTag({ genre }) {
+function GenreTag({ genre, onClick }) {
   return (
-    <Tag onClick={() => console.log('search genres!')}>
+    <Tag onClick={onClick}>
       <Text variant="tag">{genre}</Text>
     </Tag>
   )

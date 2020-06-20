@@ -11,7 +11,7 @@ const Button = ({ margin, children, type, onClick, variant }) => {
       letter-spacing: 1px;
       background: linear-gradient(90deg, var(--orange-1), var(--orange-2));
       border: none;
-      border-radius: 5px;
+      border-radius: 2px;
       padding: 6px 12px;
       margin: ${margin ? margin : '10px auto'};
       transition: all 0.1s;
