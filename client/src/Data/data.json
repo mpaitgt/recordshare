@@ -1,5 +1,72 @@
 {
-  "albums": [
-    
+  "data": [
+    {
+      "genres": ["Alternative", "Rock", "Punk"],
+      "comments": [],
+      "likes": [],
+      "artist": "Parquet Courts", 
+      "title": "Wide Awake!",
+      "story": "This album meant a lot to me in 2018 when it came out. In such a politically charged time, this album skates between the political and the emotional in a perfect way. It's a critique of society that pulls at my heart strings. It was my anthem in 2018, and it will always mean a lot to me.",
+      "image": {
+        "url": "http://res.cloudinary.com/recordshare/image/upload/v1591639341/cxkndwnmqfagufdt6hd5.webp",
+        "id": "cxkndwnmqfagufdt6hd5"
+      },
+      "date_added": "2020-06-08T18:02:21.527+00:00",
+      "submitted_by": {
+        "username": "mattpigs",
+        "_id": "ObjectId(5ee234898b34c41a60a12f42)"
+      }
+    },
+    {
+      "genres": ["Alternative", "Indie"],
+      "comments": [],
+      "likes": [],
+      "artist": "Jay Som", 
+      "title": "Anak Ko",
+      "story": "This was my introduction to Jay Som, having passed by her record, Everyone Works. I had heard Superbike before, but when I heard songs like If You Want It, Devotion, and Nighttime Drive, I knew she was my type of artist. Pop sensibilities with unique hooks and the ability to be whatever she needs to be when the song calls for it. It's loud, it's quiet, it's emotional, it's angry. So good!",
+      "image": {
+        "url": "http://res.cloudinary.com/recordshare/image/upload/v1591816780/cnf5wtpqjex52vlawvvo.jpg",
+        "id": "cnf5wtpqjex52vlawvvo"
+      },
+      "date_added": "2020-06-10T19:19:39.203+00:00",
+      "submitted_by": {
+        "username": "mattpigs",
+        "_id": "ObjectId(5ee234898b34c41a60a12f42)"
+      }
+    },
+    {
+      "genres": ["Rock", "Punk"],
+      "comments": [],
+      "likes": [],
+      "artist": "Fontaines DC", 
+      "title": "Dogrel",
+      "story": "I came across this album just as the pandemic was starting to ramp up back in March 2020. It's melodic post-punk with really great songwriting. It was the perfect soundtrack for this moment, and it's gotten me through the past few months. Would recommend to just about anybody.",
+      "image": {
+        "url": "http://res.cloudinary.com/recordshare/image/upload/v1591816149/qxmoiyetjej4hhn6qkiv.webp",
+        "id": "qxmoiyetjej4hhn6qkiv"
+      },
+      "date_added": "2020-06-10T19:09:08.279+00:00",
+      "submitted_by": {
+        "username": "mattpigs",
+        "_id": "ObjectId(5ee234898b34c41a60a12f42)"
+      }
+    },
+    {
+      "genres": ["Indie", "Folk", "Pop"],
+      "comments": [],
+      "likes": [],
+      "artist": "Elliott Smith", 
+      "title": "Either/Or",
+      "story": "When I heard Either/Or, I found the beauty in minimalist, bedroom pop. With hooks that are reminiscent of The Beatles, this album has everything a songwriter could dream of. A+ in my books.",
+      "image": {
+        "url": "http://res.cloudinary.com/recordshare/image/upload/v1591915522/pbbg7dsvg2occvssaxdz.jpg",
+        "id": "pbbg7dsvg2occvssaxdz"
+      },
+      "date_added": "2020-06-11T22:45:21.878+00:00",
+      "submitted_by": {
+        "username": "mattpigs",
+        "_id": "ObjectId(5ee234898b34c41a60a12f42)"
+      }
+    }
   ]
 }

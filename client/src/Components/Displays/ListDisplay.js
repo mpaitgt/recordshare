@@ -9,11 +9,10 @@ import styled from '@emotion/styled';
 import API from '../../Utils';
 
 const Flex = styled.div`
-  display: flex;
-
-  // grid-template-columns: 40% 60%;
+  display: grid;
+  grid-template-columns: 40% 60%;
   align-items: center;
-  justify-content: space-around;
+  // justify-content: space-around;
   // box-shadow: 3px 1px 6px 3px rgba(0,0,0,0.1);
   padding: 12px 0px;
   // background: var(--whiter);
@@ -27,16 +26,17 @@ const Content = styled.div`
 function ListDisplay({ display, album }) {
   const [user, setUser] = useContext(UserContext);
   const [results, setResults] = useContext(ResultsContext);
-  const { image, title, artist, genres, story, date_added } = album;
+  const { image, title, artist, genres, story, date_added, submitted_by } = album;
+
+  // useEffect(() => {
+  //   console.log(album);
+  // }, [])
 
   const genreClick = e => {
     e.preventDefault();
     API.db.filterGenres(e.target.textContent)
-      .then(res => {
-        console.log(res.data)
-        setResults(res.data);
-      })
-      .catch(err => console.log(err))
+      .then(res => setResults(res.data))
+      .catch(err => console.log(err));
   }
 
   return (
@@ -65,7 +65,7 @@ function ListDisplay({ display, album }) {
           <Button margin="0px 20px 0px 0px" display="inline">Details</Button>
           <Button margin="0px 20px 0px 0px" display="inline">Share your story</Button>
         </div>
-      <Text variant="description">Added {API.helpers.convertDate(date_added)} by </Text>
+      <Text variant="description">Added {API.helpers.convertDate(date_added)}</Text>
       </div>
     </Flex>
   )

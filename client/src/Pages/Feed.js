@@ -16,7 +16,6 @@ const Feed = () => {
   let [results, setResults] = useContext(ResultsContext);
   let [grid, setGrid] = useState(false);
   let [loaded, setLoaded] = useState(false);
-  // let [albums, setAlbums] = useState([]);
 
   useEffect(() => {
     setTimeout(() => getAllAlbums(), 2000);

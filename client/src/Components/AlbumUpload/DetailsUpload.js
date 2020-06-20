@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Input, Text, Card, Button} from '../Elements';
 import styled from '@emotion/styled';
 
@@ -10,6 +10,8 @@ const Grid = styled.div`
 `;
 
 const DetailsUpload = (props) => {
+  useEffect(() => console.log(props), [])
+
   return (
     <Card>
       <Text variant="h2">Share a new album</Text>

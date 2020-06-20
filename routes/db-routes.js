@@ -13,6 +13,7 @@ router.get('/get-albums', function(req, res) {
 
 // add an album
 router.post('/user/add-album', upload.single('image'), async function(req, res) {
+  console.log(req.user);
   let dataRetrieval = cloudinary.uploader.upload(req.file.path, function(err, result) {
     if (err) throw err;
     return result;
