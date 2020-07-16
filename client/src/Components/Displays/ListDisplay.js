@@ -6,6 +6,7 @@ import GenreTag from '../GenreTag';
 // import ResultsHOC from '../ResultsHOC';
 import {ResultsContext} from '../Providers/ResultsProvider';
 import styled from '@emotion/styled';
+import {css} from 'emotion';
 import API from '../../Utils';
 
 const Flex = styled.div`
@@ -48,9 +49,9 @@ function ListDisplay({ display, album }) {
         alt={`${album.title} by ${artist}`} 
       />
       <div>
-        <Text variant="h2">{title}</Text>
-        <Text variant="h3">by {artist}</Text>
-        <div style={{ display: 'flex' }}>
+        <Text variant="h3">{title}</Text>
+        <Text variant="h4">by {artist}</Text>
+        <div style={{ display: 'flex', margin: '8px 0px' }}>
         {
           genres.map(genre => {
             return <GenreTag genre={genre} onClick={genreClick} />
@@ -60,12 +61,13 @@ function ListDisplay({ display, album }) {
         <Content>
           <Text variant="p1">{story}</Text>
         </Content>
-        <div>
+        <div className={css`display: flex; margin: 20px 0px;`}>
           {/* { user ? <Like album={album} /> : null } */}
           <Button margin="0px 20px 0px 0px" display="inline">Details</Button>
           <Button margin="0px 20px 0px 0px" display="inline">Share your story</Button>
+          <Text variant="description">Added {API.helpers.convertDate(date_added)}</Text>
         </div>
-      <Text variant="description">Added {API.helpers.convertDate(date_added)}</Text>
+      
       </div>
     </Flex>
   )

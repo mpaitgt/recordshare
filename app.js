@@ -36,7 +36,6 @@ app.use(passport.session());
 app.use('/auth', authRouter);
 app.use('/api', dbRouter);
 app.use('/api', spotifyRouter);
-app.use('/auth', authRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,0 +1,21 @@
+.onload {
+  opacity: 0;
+}
+
+.slideLeft {
+  animation: slide-in-from-left 1s ease-in-out 0.5s 1 forwards;
+}
+
+.slideRight {
+  animation: slide-in-from-right 1s ease-in-out 0.5s 1 forwards;
+}
+
+@keyframes slide-in-from-left {
+  0% { transform: translateX(-100px); opacity: 0; }
+  100% { transform: translateX(0px); opacity: 1 }
+}
+
+@keyframes slide-in-from-right {
+  0% { transform: translateX(100px); opacity: 0; }
+  100% { transform: translateX(0px); opacity: 1 }
+}

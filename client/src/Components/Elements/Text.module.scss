@@ -1,7 +1,6 @@
 .standard {
-  font-family: var(--headerfont);
+  font-family: 'arial';
   color: var(--gray-0);
-  letter-spacing: 1px;
   // margin: 5px 0px;
 }
 
@@ -10,19 +9,21 @@
   color: var(--gray-0);
   letter-spacing: 0px;
   line-height: 24px;
-  // margin: 20px 0px 20px 0px;
+  // margin: 0px 0px 20px 0px;
 }
 
 .h1 {
   @extend .standard;
   font-size: 52px;
-  // margin: 20px 0px;
+  letter-spacing: -2px;
+  margin: 20px 0px;
 }
 
 .h2 {
   @extend .standard;
   font-size: 46px;
-  // margin: 20px 0px;
+  letter-spacing: -2px;
+  margin: 20px 0px;
 }
 
 .h3 {
@@ -53,6 +54,7 @@
 .p1 {
   @extend .content;
   font-size: 15px;
+  margin: 10px 0px;
 }
 
 .p2 {

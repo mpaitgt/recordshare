@@ -11,6 +11,7 @@ const Foot = styled.div`
   // left: 0;
   display: flex;
   justify-content: space-around;
+  padding: 20px 0px;
 `;
 
 function Footer() {

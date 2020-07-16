@@ -80,4 +80,17 @@ router.post('/albums/genres/:term', function(req, res) {
     .catch(err => console.log(err))
 })
 
+// get all images
+router.get('/get-images', function(req, res) {
+  db.Album.find({})
+    .then(data => {
+      console.log(res);
+      let images = [];
+      for (let i = 0; i < data.length; i++) {
+        images.push(data[i].image);
+      }
+      res.send(images);
+    })
+})
+
 module.exports = router;

@@ -1,93 +1,69 @@
-import React, {Fragment, useContext} from 'react';
+import React, {useRef, useState, Fragment, useContext} from 'react';
 import {Path} from '../Components/Elements';
 import Logo from '../Components/Logo';
 import { UserContext } from './Providers/UserProvider';
+import Burger from '../Components/Burger';
 import styled from '@emotion/styled';
 import userauth from '../Utils/userauth';
-
-const NAV = styled.nav`
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: var(--gray-0);
-  color: var(--gray-2);
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px;
-  margin: 0;
-  z-index: 999;
-`;
-
-const ITEM = styled.li`
-display: inline-block;
-  font-family: var(--subfont);
-  font-size: 14px;
-  padding: 8px 10px;
-  margin: 0px 24px;
-  cursor: pointer;
-  transition: all 0.1s ease-in;
-  color: var(--blue);
-  height: 100%;
-  &:hover {
-    transition: all 0.1s ease-in-out;
-    transform: translate(2px, -2px) scale(1.1);
-    background: var(--yellow);
-    color: var(--gray-1);
-    box-shadow: -4px 4px rgba(255,255,255,0.8);
-  }
-  &:focus {
-    border: 1px solid var(--blue);
-  }
-  a {
-    &:active {
-      color: var(--yellow);
-    }
-  }
-`;
-
-const NavItems = styled.ul`
-  padding-right: 40px;
-`;
+import styles from '../Modules/Navbar.module.scss';
 
 const Navbar = (props) => {
+  const [toggle, setToggle] = useState(false);
   const [user] = useContext(UserContext);
+  const nav = useRef(null);
+
+  const toggleMenu = () => {
+    if (toggle) {
+      setToggle(false);
+    } else {
+      setToggle(true);
+    }
+  }
 
   return (
-    <NAV>
+    <div className={styles.navbar}>
       <Path to="/">
         <Logo size="32px" padding="0px 0px 0px 40px" />
       </Path>
-      <NavItems>
-        <ITEM>
+      <Burger onClick={toggleMenu} />
+      <div ref={nav} className={styles.itemContainer}>
+        <div className={styles.navItem}>
           <Path to="/feed">
             Feed
           </Path>
-        </ITEM>
-        <ITEM>
+        </div>
+        <div className={styles.navItem}>
           <Path to="/search">
             Search
           </Path>
-        </ITEM>
-        {
+        </div>
+        <div className={styles.navItem}>
+          <Path to="/upload">
+            Upload
+          </Path>
+        </div>
+        <div className={styles.navItem}>
+          <Path to="/signup">
+            Sign Up
+          </Path>
+        </div>
+        {/* {
           user
           ? (
           <Fragment>
-            <ITEM><Path to="/dashboard">Dashboard</Path></ITEM>
-            <ITEM><Path to="/upload">Upload</Path></ITEM>
-            <ITEM onClick={() => userauth.userLogout()}>Logout</ITEM>
+            <div className={styles.navItem}><Path to="/dashboard">Dashboard</Path></div>
+            <div className={styles.navItem}><Path to="/upload">Upload</Path></div>
+            <div className={styles.navItem} onClick={() => userauth.userLogout()}>Logout</div>
           </Fragment>
           ) : (
           <Fragment>
-            <ITEM> <Path to="/login">Login</Path></ITEM>
-            <ITEM><Path to="/signup">Sign Up</Path></ITEM>
+            <div className={styles.navItem}> <Path to="/login">Login</Path></div>
+            <div className={styles.navItem}><Path to="/signup">Sign Up</Path></div>
           </Fragment>
           )
-        }
-      </NavItems>
-    </NAV>
+        } */}
+      </div>
+    </div>
   )
 }
 

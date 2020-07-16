@@ -18,6 +18,9 @@ export default {
     return axios.post(`/api/like/album/${user}/${id}`);
   },
   filterGenres: function(term) {
-    return axios.post(`api/albums/genres/${term}`)
+    return axios.post(`/api/albums/genres/${term}`)
+  },
+  getImages: function() {
+    return axios.get(`/api/get-images`);
   }
 }
