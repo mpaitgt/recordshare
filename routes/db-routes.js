@@ -13,7 +13,6 @@ router.get('/get-albums', function(req, res) {
 
 // add an album
 router.post('/user/add-album', upload.single('image'), async function(req, res) {
-  try {
   let dataRetrieval = cloudinary.uploader.upload(req.file.path, function(err, result) {
     if (err) throw err;
     return result;
@@ -32,9 +31,10 @@ router.post('/user/add-album', upload.single('image'), async function(req, res) 
     genres: req.body.genres.split(','),
     image: image
   }
-  db.Album.create(record) 
-    .then(data => console.log(data))
-    .catch(err => console.log(err))
+  try {
+    db.Album.create(record) 
+      .then(data => console.log(data))
+      .catch(err => console.log(err))
   }
   catch(err) {
     console.log(err);
