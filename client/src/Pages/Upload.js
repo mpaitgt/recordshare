@@ -14,16 +14,7 @@ const Upload = () => {
   const [story, setStory] = useState('');
   const [genres, setGenres] = useState([]);
 
-  // useEffect(
-	// 	() => {
-  //     const userObj = JSON.parse(API.userauth.getLocalStorage('user'));
-	// 		if (userObj) setUser(userObj);
-  //   },
-	// 	[]
-	// );
-
   const album = {
-    // submitted_by: { _id: user._id, username: user.username },
     title: title,
     artist: artist,
     image: image,
@@ -131,7 +122,6 @@ const Upload = () => {
       image: image,
       story: story, 
       genres: genres,
-      // submitted_by: user
     };
     API.db.addAlbum(record);
     setStep(step + 1);
