@@ -1,24 +1,14 @@
-import React, {useState, useEffect, useRef} from 'react';
-import {Text, Container, Image, Button} from '../Components/Elements';
+import React, {useRef} from 'react';
+import {Text, Container, Button} from '../Components/Elements';
 import Logo from '../Components/Logo';
-import PageBlock from '../Components/PageBlock';
+import PageBlock from '../Components/UI_Elements/PageBlock';
 import styled from '@emotion/styled';
 import {css} from 'emotion';
 import img from '../Images/record-shelf.jpg';
 import img2 from '../Images/home-image-2.jpg';
 import listen from '../Images/record-listening.jpg';
 import flip from '../Images/record-flipping.jpg';
-import Scroll from '../Components/ScrollHOC';
-import API from '../Utils';
-import HoverLink from '../Components/HoverLink';
-import styles from '../Modules/Animate.module.scss';
 import VisSensor from 'react-visibility-sensor';
-
-const Features = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-`;
 
 const ImageDisplay = styled.div`
   width: 80%;
@@ -37,17 +27,14 @@ const ImageDisplay = styled.div`
 const Img = styled.img`
   width: 400px;
   transition: all 0.5s ease-in-out;
-  // align-self: center;
-  // justify-self: center;
   cursor: pointer;
-  // padding: 50px;
 `;
 
 const Home = () => {
   const img1ref = useRef(null);
   const img2ref = useRef(null);
-  const [images, setImages] = useState([]);
-  const [index, setIndex] = useState(0);
+  // const [images, setImages] = useState([]);
+  // const [index, setIndex] = useState(0);
 
   const onChange = (isVisible) => {
     console.log('Element is now %s', isVisible ? 'visible' : 'hidden');
@@ -56,8 +43,7 @@ const Home = () => {
 
   return (
     <div>
-    <PageBlock image={img2} size="auto">
-    </PageBlock>
+    <PageBlock image={img2} size="auto" />
     <div className={css`
       width: 100%;
       color: blue;
@@ -95,15 +81,13 @@ const Home = () => {
                 Check out the public feed before signing up, 
                 and see what users are getting out of it.
               </Text>
-              <Button>Check out the feed</Button>
+              <Button display="inline">Check out the feed</Button>
             </div>
               <Img src={flip} />
           </ImageDisplay>
       </Container>
     </div>
-    <PageBlock image={img} size="cover">
-
-    </PageBlock>
+    <PageBlock image={img} size="cover" />
     </div>
   )
 }

@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react';
-import {Text, Button, Container} from '../Components/Elements';
+import {Text, Container} from '../Components/Elements';
 import RecordLoader from '../Components/Loader';
 import {ListDisplay, GridDisplay, DisplayToggle} from '../Components/Displays';
 import {ResultsContext} from '../Components/Providers/ResultsProvider';
@@ -31,9 +31,9 @@ const Feed = () => {
 
   const displayAlbums = results.map(album => {
     if (grid) {
-      return <GridDisplay album={album} />;
+      return <GridDisplay album={album} key={album._id} />;
     } else {
-      return <ListDisplay album={album} />;
+      return <ListDisplay album={album} key={album._id} />;
     }
   })
 

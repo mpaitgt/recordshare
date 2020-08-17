@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const mongoose = require('mongoose');
 const cloudinary = require('../config/cloudinary');
 const db = require('../models');
 const multer  = require('multer')
@@ -25,13 +26,17 @@ router.post('/user/add-album', upload.single('image'), async function(req, res) 
           id: data.public_id
         }
       })
+    console.log('============================================')
+    console.log(req.body)
     let record = {
       artist: req.body.artist,
       title: req.body.title,
       story: req.body.story,
       genres: req.body.genres.split(','),
-      image: image
+      image: image,
+      user_id: req.body.user_id
     }
+    console.log('============================================')
     db.Album.create(record) 
       .then(data => console.log(data))
       .catch(err => console.log(err))
@@ -54,25 +59,16 @@ router.get('/search/albums/:query', function(req, res) {
 
 // like an album
 router.post(`/like/album/:user/:id`, async function(req, res) {
-  let album_id = req.params.id;
   let user_id = req.params.user;
-  console.log(album_id, user_id);
+  let album_id = req.params.id;
+  console.log(user_id, album_id);
   // when user clicks to like this album
   // we search the db for this user
-  // db.User.findOneAndUpdate(
-  //   { _id: user_id },
-
-  // )
-
-  // db.Album.update(
-  //   { _id: album_id },  
-  //   { $push: { likes: user_id } }
-  // )
-  // then we take that user's id, and add it to the album.likes array in the db
-  // db.Album.findOneAndUpdate(
-  //  { _id: album_id }, { $push: { likes: user_id } }
-  // )
-  // if it's already liked, we remove it
+  db.User.findOneAndUpdate(
+    { _id: user_id }, 
+    { $push: { likes: mongoose.Types.ObjectId(album_id) } }, 
+    { new: true, upsert: true }
+  ).then(res => console.log(res));
 });
 
 // filter albums by genre

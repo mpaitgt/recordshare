@@ -78,7 +78,9 @@ class SignUp extends React.Component {
             {this.renderForm()}
             <Blurb>
               <Text variant="p1">
-                Recordshare is the place where you can come and share the records that mean something to you, and help others find the meaning in them too.
+                Recordshare is the place where you can come 
+                and share the records that mean something to 
+                you, and help others find the meaning in them too.
               </Text>
             </Blurb>
           </div>

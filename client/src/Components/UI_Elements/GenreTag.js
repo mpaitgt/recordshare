@@ -1,5 +1,5 @@
 import React from 'react';
-import Text from '../Components/Elements/Text';
+import Text from '../Elements/Text';
 import styled from '@emotion/styled';
 
 const Tag = styled.div`

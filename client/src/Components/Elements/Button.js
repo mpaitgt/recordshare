@@ -1,11 +1,10 @@
 import React from 'react';
-import styled from '@emotion/styled';
 import {css} from 'emotion'; 
 
-const Button = ({ margin, children, type, onClick, variant }) => {
+const Button = ({ margin, display, children, type, onClick, variant }) => {
   return (
     <button className={css`
-      display: inline;
+      display: ${display};
       font-family: var(--subfont);
       font-size: 14px;
       letter-spacing: 1px;

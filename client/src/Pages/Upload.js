@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState, useContext} from 'react';
 import {DetailsUpload, ImageUpload, StoryUpload, ConfirmSubmission} from '../Components/AlbumUpload';
 import {NewSubmissionSuccess} from '../Components/Success';
 import {Text, Input, Container} from '../Components/Elements';
@@ -6,7 +6,7 @@ import {UserContext} from '../Components/Providers/UserProvider';
 import API from '../Utils';
 
 const Upload = () => {
-  // const [user, setUser] = useContext(UserContext);
+  const [user, setUser] = useContext(UserContext);
   const [step, setStep] = useState(1);
   const [title, setTitle] = useState('');
   const [artist, setArtist] = useState('');
@@ -44,7 +44,6 @@ const Upload = () => {
             renderGenres={renderGenres} 
             setStep={setStep}
             step={step}
-            // user={user}
           />
         )
       case 2:
@@ -66,13 +65,13 @@ const Upload = () => {
           />
         )
       case 4: 
-      return (
-        <ConfirmSubmission
-          album={album}
-          onSubmit={onSubmit}
-          step={step}
-        />
-      )
+        return (
+          <ConfirmSubmission
+            album={album}
+            onSubmit={onSubmit}
+            step={step}
+          />
+        )
       case 5:
         return (
           <NewSubmissionSuccess />
@@ -116,12 +115,13 @@ const Upload = () => {
 
   const onSubmit = e => {
     e.preventDefault();
-    let record = {
-      artist: artist,
+    const record = {
       title: title,
+      artist: artist,
       image: image,
-      story: story, 
+      story: story,
       genres: genres,
+      user_id: user._id
     };
     API.db.addAlbum(record);
     setStep(step + 1);

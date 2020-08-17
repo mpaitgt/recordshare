@@ -2,7 +2,7 @@ import React, {useRef, useState, Fragment, useContext} from 'react';
 import {Path} from '../Components/Elements';
 import Logo from '../Components/Logo';
 import { UserContext } from './Providers/UserProvider';
-import Burger from '../Components/Burger';
+import Burger from '../Components/UI_Elements/Burger';
 import styled from '@emotion/styled';
 import userauth from '../Utils/userauth';
 import styles from '../Modules/Navbar.module.scss';
@@ -37,17 +37,7 @@ const Navbar = (props) => {
             Search
           </Path>
         </div>
-        <div className={styles.navItem}>
-          <Path to="/upload">
-            Upload
-          </Path>
-        </div>
-        <div className={styles.navItem}>
-          <Path to="/signup">
-            Sign Up
-          </Path>
-        </div>
-        {/* {
+        {
           user
           ? (
           <Fragment>
@@ -61,7 +51,7 @@ const Navbar = (props) => {
             <div className={styles.navItem}><Path to="/signup">Sign Up</Path></div>
           </Fragment>
           )
-        } */}
+        }
       </div>
     </div>
   )

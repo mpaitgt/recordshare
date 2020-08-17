@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {Path, Card, Button, Input, Text, Container} from '../Components/Elements';
 import API from '../Utils';
-import styled from '@emotion/styled';
 
 function Login() {
   const [email, setEmail] = useState('');

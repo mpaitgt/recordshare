@@ -30,10 +30,11 @@ const AlbumSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Comment"
   }],
-  likes: {
-    type: Array
-  },
-  user: {
+  likes: [{
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  }],
+  user_id: {
     type: Schema.Types.ObjectId,
     ref: 'User'
   }

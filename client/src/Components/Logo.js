@@ -9,7 +9,7 @@ const Logo = ({size, padding}) => {
       font-size: ${size};
       letter-spacing: 4px;
       text-transform: uppercase;
-      // text-align: center;
+      text-align: center;
       color: var(--white);
       background: -webkit-linear-gradient(var(--blue), var(--yellow));
       -webkit-background-clip: text;
