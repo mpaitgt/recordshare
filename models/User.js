@@ -24,10 +24,6 @@ const UserSchema = new Schema({
   albums: [{
     type: Schema.Types.ObjectId,
     ref: 'Album'
-  }],
-  likes: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Album'
   }]
 });
 

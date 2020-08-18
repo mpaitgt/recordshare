@@ -24,7 +24,7 @@ const Content = styled.div`
 function ListDisplay({ display, album }) {
   // const [user, setUser] = useContext(UserContext);
   const [results, setResults] = useContext(ResultsContext);
-  const { image, title, artist, genres, story, date_added, submitted_by } = album;
+  const { image, title, artist, genres, story, date_added, user_id } = album;
 
   const genreClick = e => {
     e.preventDefault();
@@ -58,7 +58,7 @@ function ListDisplay({ display, album }) {
           <Like album={album} />
           <Button margin="0px 20px 0px 0px" display="inline-block">Details</Button>
           <Button margin="0px 20px 0px 0px" display="inline-block">Share your story</Button>
-          <Text variant="description">Added {API.helpers.convertDate(date_added)}</Text>
+      <Text variant="description">Added {API.helpers.convertDate(date_added)} by {user_id.username}</Text>
         </div>
       </div>
     </Flex>

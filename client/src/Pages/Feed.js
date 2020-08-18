@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react';
-import {Text, Container} from '../Components/Elements';
+import {Text, Button, Container} from '../Components/Elements';
 import RecordLoader from '../Components/Loader';
 import {ListDisplay, GridDisplay, DisplayToggle} from '../Components/Displays';
 import {ResultsContext} from '../Components/Providers/ResultsProvider';
@@ -25,6 +25,7 @@ const Feed = () => {
     API.db.getAlbums()
       .then(res => {
         setResults(res.data);
+        console.log(res.data);
         setLoaded(true);
       })
   }
@@ -43,8 +44,8 @@ const Feed = () => {
         <Flex>
           <Text variant="h1">Feed</Text>
           <DisplayToggle grid={grid} setGrid={setGrid} />
+          <Button onClick={() => getAllAlbums()}>View all</Button>
         </Flex>
-        {/* <Button onClick={() => getAllAlbums()}>View all</Button> */}
         { loaded ? displayAlbums : <RecordLoader /> }
       </Container>
     </div>

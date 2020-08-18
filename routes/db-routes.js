@@ -9,7 +9,11 @@ const upload = multer({ dest: './uploads/' });
 // get all albums for display in feed
 router.get('/get-albums', function(req, res) {
   db.Album.find({})
-    .then(data => res.send(data));
+    .populate('user_id')
+    .then(data => {
+      console.log(data);
+      res.send(data)
+    });
 })
 
 // add an album
@@ -26,17 +30,14 @@ router.post('/user/add-album', upload.single('image'), async function(req, res) 
           id: data.public_id
         }
       })
-    console.log('============================================')
-    console.log(req.body)
     let record = {
       artist: req.body.artist,
       title: req.body.title,
       story: req.body.story,
       genres: req.body.genres.split(','),
       image: image,
-      user_id: req.body.user_id
+      user_id: mongoose.mongo.ObjectId(req.body.user_id)
     }
-    console.log('============================================')
     db.Album.create(record) 
       .then(data => console.log(data))
       .catch(err => console.log(err))
