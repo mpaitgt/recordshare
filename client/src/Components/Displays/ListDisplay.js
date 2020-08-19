@@ -58,7 +58,10 @@ function ListDisplay({ display, album }) {
           <Like album={album} />
           <Button margin="0px 20px 0px 0px" display="inline-block">Details</Button>
           <Button margin="0px 20px 0px 0px" display="inline-block">Share your story</Button>
-      <Text variant="description">Added {API.helpers.convertDate(date_added)} by {user_id.username}</Text>
+          <Text variant="description">
+            Added {API.helpers.convertDate(date_added)}<br/>
+            by {user_id.username}
+          </Text>
         </div>
       </div>
     </Flex>

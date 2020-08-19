@@ -65,11 +65,18 @@ router.post(`/like/album/:user/:id`, async function(req, res) {
   console.log(user_id, album_id);
   // when user clicks to like this album
   // we search the db for this user
-  db.User.findOneAndUpdate(
-    { _id: user_id }, 
-    { $push: { likes: mongoose.Types.ObjectId(album_id) } }, 
-    { new: true, upsert: true }
-  ).then(res => console.log(res));
+  // db.Album.findOneAndUpdate(
+  //   { _id: album_id }, 
+  //   { $push: { likes: mongoose.mongo.ObjectId(user_id) } }
+  // ).then(res => console.log(res));
+  db.Album.findOne({ _id: album_id })
+    .then(res => {
+      // for (let i = 0; i < res.likes.length; i++) {
+      //   if (res.likes[i] === mongoose.mongo.ObjectId(user_id)) {
+      //     res.likes.splice(i, 1);
+      //   }
+      // }
+    });
 });
 
 // filter albums by genre
