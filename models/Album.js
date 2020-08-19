@@ -14,9 +14,10 @@ const AlbumSchema = new Schema({
     type: Object,
     required: true
   },
-  story: {
-    type: String,
-    required: true
+  rating: {
+    type: Number,
+    required: true,
+    max: 10
   },
   date_added: {
     type: Date,

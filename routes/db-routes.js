@@ -33,7 +33,7 @@ router.post('/user/add-album', upload.single('image'), async function(req, res) 
     let record = {
       artist: req.body.artist,
       title: req.body.title,
-      story: req.body.story,
+      rating: req.body.rating,
       genres: req.body.genres.split(','),
       image: image,
       user_id: mongoose.mongo.ObjectId(req.body.user_id)

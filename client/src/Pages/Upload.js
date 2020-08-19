@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react';
-import {DetailsUpload, ImageUpload, StoryUpload, ConfirmSubmission} from '../Components/AlbumUpload';
+import {DetailsUpload, ImageUpload, RatingUpload, ConfirmSubmission} from '../Components/AlbumUpload';
 import {NewSubmissionSuccess} from '../Components/Success';
 import {Text, Input, Container} from '../Components/Elements';
 import {UserContext} from '../Components/Providers/UserProvider';
@@ -11,14 +11,14 @@ const Upload = () => {
   const [title, setTitle] = useState('');
   const [artist, setArtist] = useState('');
   const [image, setImage] = useState(null);
-  const [story, setStory] = useState('');
+  const [rating, setRating] = useState('');
   const [genres, setGenres] = useState([]);
 
   const album = {
     title: title,
     artist: artist,
     image: image,
-    story: story,
+    rating: rating,
     genres: genres
   };
 
@@ -57,8 +57,8 @@ const Upload = () => {
         )
       case 3:
         return (
-          <StoryUpload 
-            story={story}
+          <RatingUpload 
+            rating={rating}
             handleChange={handleChange}
             setStep={setStep}
             step={step}
@@ -107,8 +107,8 @@ const Upload = () => {
     if (type === 'text') {
       if (name === 'title') setTitle(value);
       if (name === 'artist') setArtist(value);
-      if (name === 'story') setStory(value);
     }
+    if (type === 'number') setRating(value);
     // for type file
     if (type === 'file') setImage(files[0]);
   }
@@ -119,7 +119,7 @@ const Upload = () => {
       title: title,
       artist: artist,
       image: image,
-      story: story,
+      rating: rating,
       genres: genres,
       user_id: user._id
     };

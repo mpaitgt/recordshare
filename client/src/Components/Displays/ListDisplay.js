@@ -15,16 +15,13 @@ const Flex = styled.div`
   align-items: center;
   padding: 12px 0px;
   margin: 20px 0px;
-`;
-
-const Content = styled.div`
-  max-width: 600px;
+  
 `;
 
 function ListDisplay({ display, album }) {
   // const [user, setUser] = useContext(UserContext);
   const [results, setResults] = useContext(ResultsContext);
-  const { image, title, artist, genres, story, date_added, user_id } = album;
+  const { image, title, artist, genres, rating, date_added, user_id } = album;
 
   const genreClick = e => {
     e.preventDefault();
@@ -51,18 +48,14 @@ function ListDisplay({ display, album }) {
           })
         }
         </div>
-        <Content>
-          <Text variant="p1">{story}</Text>
-        </Content>
-        <div className={css`display: flex; margin: 20px 0px; align-items: center;`}>
+        <div className={css`display: flex; margin: 20px 0px; align-items: center; justify-content: space-between;`}>
+          <Text variant="p1">{rating} / 10</Text>
           <Like album={album} />
           <Button margin="0px 20px 0px 0px" display="inline-block">Details</Button>
-          <Button margin="0px 20px 0px 0px" display="inline-block">Share your story</Button>
-          <Text variant="description">
-            Added {API.helpers.convertDate(date_added)}<br/>
-            by {user_id.username}
-          </Text>
         </div>
+        <Text variant="description">
+          Added {API.helpers.convertDate(date_added)} by {user_id.username}
+        </Text>
       </div>
     </Flex>
   )
