@@ -1,21 +1,20 @@
 import React, {useContext} from 'react';
 import {Text, Image, Button} from '../Elements';
 import Like from '../UI_Elements/Like';
+import StarRating from '../UI_Elements/StarRating';
 import {UserContext} from '../Providers/UserProvider';
 import GenreTag from '../UI_Elements/GenreTag';
 import {ResultsContext} from '../Providers/ResultsProvider';
 import styled from '@emotion/styled';
 import {css} from 'emotion';
 import API from '../../Utils';
-// import higherOrderComponent from '../Details-HOC';
 
 const Flex = styled.div`
   display: grid;
-  grid-template-columns: 40% 60%;
+  grid-template-columns: 50% 50%;
   align-items: center;
   padding: 12px 0px;
   margin: 20px 0px;
-  
 `;
 
 function ListDisplay({ display, album }) {
@@ -37,8 +36,10 @@ function ListDisplay({ display, album }) {
         height="300"
         src={image.url} 
         alt={`${album.title} by ${artist}`} 
+        className={css`justify-self: end;`}
       />
       <div>
+        <StarRating rating={rating} />
         <Text variant="h3">{title}</Text>
         <Text variant="h4">by {artist}</Text>
         <div style={{ display: 'flex', margin: '8px 0px' }}>
@@ -48,8 +49,8 @@ function ListDisplay({ display, album }) {
           })
         }
         </div>
-        <div className={css`display: flex; margin: 20px 0px; align-items: center; justify-content: space-between;`}>
-          <Text variant="p1">{rating} / 10</Text>
+        <div className={css``}>
+          
           <Like album={album} />
           <Button margin="0px 20px 0px 0px" display="inline-block">Details</Button>
         </div>

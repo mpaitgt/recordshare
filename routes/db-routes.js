@@ -30,16 +30,22 @@ router.post('/user/add-album', upload.single('image'), async function(req, res) 
           id: data.public_id
         }
       })
+    let user_id = mongoose.mongo.ObjectId(req.body.user_id);
     let record = {
       artist: req.body.artist,
       title: req.body.title,
       rating: req.body.rating,
       genres: req.body.genres.split(','),
       image: image,
-      user_id: mongoose.mongo.ObjectId(req.body.user_id)
+      user_id: user_id
     }
     db.Album.create(record) 
-      .then(data => console.log(data))
+      .then(data => {
+        db.User.update(
+          { _id: user_id },
+          { $push: { albums: mongoose.mongo.ObjectId(data._id) } }
+        );
+      })
       .catch(err => console.log(err))
   }
   catch(err) {

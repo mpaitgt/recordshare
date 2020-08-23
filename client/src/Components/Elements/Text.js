@@ -31,6 +31,8 @@ const Text = ({ variant, children, htmlFor }) => {
       return <p className={styles.tag}>{children}</p>;
     case 'likes':
       return <span className={styles.likes}>{children}</span>;
+    case 'rating':
+      return <span className={styles.rating}>{children}</span>
     default: 
       return <p className={styles.standard}>{children}</p>;
   }
