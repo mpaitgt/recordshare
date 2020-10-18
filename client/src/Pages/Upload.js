@@ -1,24 +1,24 @@
-import React, {useState, useEffect, useContext} from 'react';
-import {DetailsUpload, ImageUpload, StoryUpload, ConfirmSubmission} from '../Components/AlbumUpload';
+import React, {useState, useContext} from 'react';
+import {DetailsUpload, ImageUpload, RatingUpload, ConfirmSubmission} from '../Components/AlbumUpload';
 import {NewSubmissionSuccess} from '../Components/Success';
 import {Text, Input, Container} from '../Components/Elements';
 import {UserContext} from '../Components/Providers/UserProvider';
 import API from '../Utils';
 
 const Upload = () => {
-  // const [user, setUser] = useContext(UserContext);
+  const [user, setUser] = useContext(UserContext);
   const [step, setStep] = useState(1);
   const [title, setTitle] = useState('');
   const [artist, setArtist] = useState('');
   const [image, setImage] = useState(null);
-  const [story, setStory] = useState('');
+  const [rating, setRating] = useState('');
   const [genres, setGenres] = useState([]);
 
   const album = {
     title: title,
     artist: artist,
     image: image,
-    story: story,
+    rating: rating,
     genres: genres
   };
 
@@ -44,7 +44,6 @@ const Upload = () => {
             renderGenres={renderGenres} 
             setStep={setStep}
             step={step}
-            // user={user}
           />
         )
       case 2:
@@ -58,21 +57,21 @@ const Upload = () => {
         )
       case 3:
         return (
-          <StoryUpload 
-            story={story}
+          <RatingUpload 
+            rating={rating}
             handleChange={handleChange}
             setStep={setStep}
             step={step}
           />
         )
       case 4: 
-      return (
-        <ConfirmSubmission
-          album={album}
-          onSubmit={onSubmit}
-          step={step}
-        />
-      )
+        return (
+          <ConfirmSubmission
+            album={album}
+            onSubmit={onSubmit}
+            step={step}
+          />
+        )
       case 5:
         return (
           <NewSubmissionSuccess />
@@ -108,20 +107,21 @@ const Upload = () => {
     if (type === 'text') {
       if (name === 'title') setTitle(value);
       if (name === 'artist') setArtist(value);
-      if (name === 'story') setStory(value);
     }
+    if (type === 'number') setRating(value);
     // for type file
     if (type === 'file') setImage(files[0]);
   }
 
   const onSubmit = e => {
     e.preventDefault();
-    let record = {
-      artist: artist,
+    const record = {
       title: title,
+      artist: artist,
       image: image,
-      story: story, 
+      rating: rating,
       genres: genres,
+      user_id: user._id
     };
     API.db.addAlbum(record);
     setStep(step + 1);

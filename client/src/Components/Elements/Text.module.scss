@@ -109,3 +109,12 @@
   display: inline;
   margin: 0px 20px 0px 10px;
 }
+
+.rating {
+  @extend .standard;
+  color: var(--whiter);
+  font-family: var(--subfont);
+  font-size: 32px;
+  font-weight: 900;
+  letter-spacing: -2px;
+}

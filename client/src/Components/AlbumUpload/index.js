@@ -1,8 +1,8 @@
 import DetailsUpload from './DetailsUpload';
 import ImageUpload from './ImageUpload';
-import StoryUpload from './StoryUpload';
+import RatingUpload from './RatingUpload';
 import ConfirmSubmission from './ConfirmSubmission';
 
 export {
-  DetailsUpload, ImageUpload, StoryUpload, ConfirmSubmission
+  DetailsUpload, ImageUpload, RatingUpload, ConfirmSubmission
 };

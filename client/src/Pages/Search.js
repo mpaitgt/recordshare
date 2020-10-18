@@ -1,6 +1,6 @@
 import React, {useState, useContext} from 'react';
 import {Text, Container} from '../Components/Elements';
-import {ListDisplay, GridDisplay} from '../Components/Displays';
+import {ListDisplay} from '../Components/Displays';
 import SearchBar from '../Components/Search/SearchBar';
 import {ResultsContext} from '../Components/Providers/ResultsProvider';
 import API from '../Utils';

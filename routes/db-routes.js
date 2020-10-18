@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const mongoose = require('mongoose');
 const cloudinary = require('../config/cloudinary');
 const db = require('../models');
 const multer  = require('multer')
@@ -8,7 +9,11 @@ const upload = multer({ dest: './uploads/' });
 // get all albums for display in feed
 router.get('/get-albums', function(req, res) {
   db.Album.find({})
-    .then(data => res.send(data));
+    .populate('user_id')
+    .then(data => {
+      console.log(data);
+      res.send(data)
+    });
 })
 
 // add an album
@@ -25,15 +30,22 @@ router.post('/user/add-album', upload.single('image'), async function(req, res) 
           id: data.public_id
         }
       })
+    let user_id = mongoose.mongo.ObjectId(req.body.user_id);
     let record = {
       artist: req.body.artist,
       title: req.body.title,
-      story: req.body.story,
+      rating: req.body.rating,
       genres: req.body.genres.split(','),
-      image: image
+      image: image,
+      user_id: user_id
     }
     db.Album.create(record) 
-      .then(data => console.log(data))
+      .then(data => {
+        db.User.update(
+          { _id: user_id },
+          { $push: { albums: mongoose.mongo.ObjectId(data._id) } }
+        );
+      })
       .catch(err => console.log(err))
   }
   catch(err) {
@@ -54,25 +66,23 @@ router.get('/search/albums/:query', function(req, res) {
 
 // like an album
 router.post(`/like/album/:user/:id`, async function(req, res) {
-  let album_id = req.params.id;
   let user_id = req.params.user;
-  console.log(album_id, user_id);
+  let album_id = req.params.id;
+  console.log(user_id, album_id);
   // when user clicks to like this album
   // we search the db for this user
-  // db.User.findOneAndUpdate(
-  //   { _id: user_id },
-
-  // )
-
-  // db.Album.update(
-  //   { _id: album_id },  
-  //   { $push: { likes: user_id } }
-  // )
-  // then we take that user's id, and add it to the album.likes array in the db
   // db.Album.findOneAndUpdate(
-  //  { _id: album_id }, { $push: { likes: user_id } }
-  // )
-  // if it's already liked, we remove it
+  //   { _id: album_id }, 
+  //   { $push: { likes: mongoose.mongo.ObjectId(user_id) } }
+  // ).then(res => console.log(res));
+  db.Album.findOne({ _id: album_id })
+    .then(res => {
+      // for (let i = 0; i < res.likes.length; i++) {
+      //   if (res.likes[i] === mongoose.mongo.ObjectId(user_id)) {
+      //     res.likes.splice(i, 1);
+      //   }
+      // }
+    });
 });
 
 // filter albums by genre

@@ -25,15 +25,16 @@ const Feed = () => {
     API.db.getAlbums()
       .then(res => {
         setResults(res.data);
+        console.log(res.data);
         setLoaded(true);
       })
   }
 
   const displayAlbums = results.map(album => {
     if (grid) {
-      return <GridDisplay album={album} />;
+      return <GridDisplay album={album} key={album._id} />;
     } else {
-      return <ListDisplay album={album} />;
+      return <ListDisplay album={album} key={album._id} />;
     }
   })
 
@@ -44,7 +45,6 @@ const Feed = () => {
           <Text variant="h1">Feed</Text>
           <DisplayToggle grid={grid} setGrid={setGrid} />
         </Flex>
-        {/* <Button onClick={() => getAllAlbums()}>View all</Button> */}
         { loaded ? displayAlbums : <RecordLoader /> }
       </Container>
     </div>

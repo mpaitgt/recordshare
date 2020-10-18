@@ -14,9 +14,10 @@ const AlbumSchema = new Schema({
     type: Object,
     required: true
   },
-  story: {
-    type: String,
-    required: true
+  rating: {
+    type: Number,
+    required: true,
+    max: 10
   },
   date_added: {
     type: Date,
@@ -30,10 +31,11 @@ const AlbumSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Comment"
   }],
-  likes: {
-    type: Array
-  },
-  user: {
+  likes: [{
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  }],
+  user_id: {
     type: Schema.Types.ObjectId,
     ref: 'User'
   }

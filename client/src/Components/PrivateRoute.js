@@ -1,40 +1,21 @@
-import React from 'react';
-import { BrowserRouter, Route, Link, Redirect, withRouter } from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import {Route, Redirect} from 'react-router-dom';
+import userauth from '../Utils/userauth';
 
-const Public = () => <h3>Public Content</h3>;
-
-const Private = () => <h3>Private Content</h3>;
-
-const fakeAuth = {
-  isAuthenticated: false,
-  authenticate(cb) {
-    this.isAuthenticated = true;
-    setTimeout(cb, 300);
-  },
-  logout(cb) {
-    this.isAuthenticated = false;
-    setTimeout(cb, 300);
-  }
-}
-
-function PrivateRoute({ children, ...rest }) {
+const PrivateRoute = ({ component: Component, ...rest }) => {
   return (
     <Route 
       {...rest}
-      render={({ location }) => {
-        fakeAuth.isAuthenticated ? (
-          children
+      render={props => 
+        userauth.getLocalStorage('jwtToken') ? (
+          <Component {...props} />
         ) : (
-          <Redirect 
-            to={{
-              pathname: '/login',
-              state: { from: location }
-            }}
+          <Redirect
+            to='/login'
           />
         )
       }
-    }
-    />
+    />  
   )
 }
 
