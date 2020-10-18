@@ -44,7 +44,6 @@ const Feed = () => {
         <Flex>
           <Text variant="h1">Feed</Text>
           <DisplayToggle grid={grid} setGrid={setGrid} />
-          {/* <Button onClick={() => getAllAlbums()}>View all</Button> */}
         </Flex>
         { loaded ? displayAlbums : <RecordLoader /> }
       </Container>

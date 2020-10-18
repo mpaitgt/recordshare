@@ -18,7 +18,6 @@ const Flex = styled.div`
 `;
 
 function ListDisplay({ display, album }) {
-  // const [user, setUser] = useContext(UserContext);
   const [results, setResults] = useContext(ResultsContext);
   const { image, title, artist, genres, rating, date_added, user_id } = album;
 
@@ -32,8 +31,8 @@ function ListDisplay({ display, album }) {
   return (
     <Flex>
       <Image 
-        width="300" 
-        height="300"
+        width="260" 
+        height="260"
         src={image.url} 
         alt={`${album.title} by ${artist}`} 
         className={css`justify-self: end;`}
@@ -48,11 +47,6 @@ function ListDisplay({ display, album }) {
             return <GenreTag genre={genre} onClick={genreClick} key={index} />
           })
         }
-        </div>
-        <div className={css``}>
-          
-          <Like album={album} />
-          <Button margin="0px 20px 0px 0px" display="inline-block">Details</Button>
         </div>
         <Text variant="description">
           Added {API.helpers.convertDate(date_added)} by {user_id.username}
