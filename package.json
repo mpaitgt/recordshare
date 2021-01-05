@@ -10,7 +10,7 @@
     "dev": "concurrently \"nodemon app.js\" \"npm run client\""
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "bluebird": "^3.7.2",
     "cloudinary": "^1.21.0",
